@@ -1,8 +1,7 @@
-import "./App.css";
-import FetchData from "./FetchData";
+import Account from './pages/Account/Account';
 
 function App() {
-  return <FetchData />;
+  return <Account />;
 }
 
 export default App;
