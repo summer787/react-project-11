@@ -1,9 +1,8 @@
 @import "@/styles/global.css";
 
-
 .accountbutton{
   display: flex;
-  justify-content:space-around;
+  justify-content:center;
   align-items: center;
   background-color: transparent;
   font-size: 1.333rem;
@@ -11,7 +10,7 @@
   width: 100%;
   height: auto;
   border-style: solid;
-  border-width: 1px;
+  border-width: 0.063px;
   padding: 1.675rem 0;
   border-color: #4e4e4e;
   color: #a3a3a3; 
@@ -20,11 +19,11 @@
   &:hover {
     border-color: white; /* 호버 시 배경색 변경 */
   }
-
 }
 
-.tvingimg {
+.iconimage {
   
-  margin-right: 10px;
-  padding-right: 100px;
+  width: 2.25rem;
+  height: 100%;
+  padding-right: 6.25rem;
 }

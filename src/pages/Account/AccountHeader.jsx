@@ -4,7 +4,7 @@ function AccountHeader() {
   return (
     <div className={styles.accountheader}>
         <h1 className>
-            <img src="/logo-tving.svg" className={styles.headerimg} alt="TAING" />
+            <img src="/account_tving_logo.svg" className={styles.headerimg} alt="tving" />
         </h1>
       </div>
   )
@@ -12,13 +12,3 @@ function AccountHeader() {
 
 export default AccountHeader
 
-<div>
-      <h1>재사용 가능한 버튼</h1>
-      <div>
-        {buttonsData.map((button) => (
-          <button key={button.id} className={styles.button}>
-            {button.label}
-          </button>
-        ))}
-      </div>
-    </div>

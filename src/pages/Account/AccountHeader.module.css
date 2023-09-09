@@ -1,0 +1,13 @@
+@import "@/styles/global.css";
+
+.accountheader {
+  margin-left: 3.888rem;
+  margin-right: 3.888rem;
+  width: calc(100% - 7.776rem);
+}
+
+
+.headerimg {
+  width: 7.333rem;
+  height: 100%;
+}
