@@ -1,4 +1,4 @@
-@import "@/styles/global.css";
+
 
 .accountbutton{
   display: flex;
@@ -21,9 +21,15 @@
   }
 }
 
+.buttoncontent {
+  display: flex;
+  align-items: center;
+}
+
+
 .iconimage {
   
   width: 2.25rem;
   height: 100%;
-  padding-right: 6.25rem;
+  margin-right: 100px;
 }
