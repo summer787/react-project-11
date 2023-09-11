@@ -1,0 +1,28 @@
+.nav {
+  font: var(--paragraph-large);
+  color: var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & ul {
+    display: flex;
+    gap: 3.25rem;
+  }
+
+  & li {
+    display: flex;
+    align-items: center;
+  }
+
+  & .live a {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  & .live a img {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+}
