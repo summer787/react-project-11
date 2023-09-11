@@ -1,12 +1,12 @@
-
-.accountheader {
+@import "@/styles/global.css";
+.account_header {
   margin-left: 3.888rem;
   margin-right: 3.888rem;
   width: calc(100% - 7.776rem);
 }
 
 
-.headerimg {
+.header_img {
   width: 7.333rem;
   height: 100%;
 }

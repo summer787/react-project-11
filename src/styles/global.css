@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
-body{
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
+
+body {
   background: var(--black);
 }
 :root {
@@ -21,40 +22,38 @@ body{
   --brand-dark-bg-2: #212121;
 
   /* Fonts */
-  --heading-medium: 700 16px/140% "Noto Sans KR", sans-serif;
-  --heading-large: 700 21.33px/140% "Noto Sans KR", sans-serif;
-  --heading-xl: 700 28.43px/140% "Noto Sans KR", sans-serif;
-  --heading-xxl: 700 37.9px/140% "Noto Sans KR", sans-serif;
-  --heading-xxxl: 700 50.52px/140% "Noto Sans KR", sans-serif;
-  --label-small: 600 12px/150% "Noto Sans KR", sans-serif;
-  --label-medium: 600 16px/150% "Noto Sans KR", sans-serif;
-  --label-large: 600 21.33px/150% "Noto Sans KR", sans-serif;
-  --label-xl: 600 28.43px/150% "Noto Sans KR", sans-serif;
-  --label-xxl: 600 37.9px/150% "Noto Sans KR", sans-serif;
-  --paragraph-small: 400 12px/160% "Noto Sans KR", sans-serif;
-  --paragraph-medium: 400 16px/160% "Noto Sans KR", sans-serif;
-  --paragraph-large: 400 21.33px/160% "Noto Sans KR", sans-serif;
-  --paragraph-xl: 400 28.43px/160% "Noto Sans KR", sans-serif;
+  --heading-medium: 700 1rem/140% "Noto Sans KR", sans-serif;
+  --heading-large: 700 1.3331rem/140% "Noto Sans KR", sans-serif;
+  --heading-xl: 700 1.7769rem/140% "Noto Sans KR", sans-serif;
+  --heading-xxl: 700 2.3687rem/140% "Noto Sans KR", sans-serif;
+  --heading-xxxl: 700 3.1575rem/140% "Noto Sans KR", sans-serif;
+  --label-small: 600 0.75rem/150% "Noto Sans KR", sans-serif;
+  --label-medium: 600 1rem/150% "Noto Sans KR", sans-serif;
+  --label-large: 600 1.3331rem/150% "Noto Sans KR", sans-serif;
+  --label-xl: 600 1.7769rem/150% "Noto Sans KR", sans-serif;
+  --label-xxl: 600 2.3687rem/150% "Noto Sans KR", sans-serif;
+  --paragraph-small: 400 0.75rem/160% "Noto Sans KR", sans-serif;
+  --paragraph-medium: 400 1rem/160% "Noto Sans KR", sans-serif;
+  --paragraph-large: 400 1.3331rem/160% "Noto Sans KR", sans-serif;
+  --paragraph-xl: 400 1.7769rem/160% "Noto Sans KR", sans-serif;
 
   /* Effects */
-  --text-box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 1);
-  --above-high-box-shadow: 0px -16px 48px 0px rgba(0, 0, 0, 0.3);
-  --above-medium-box-shadow: 0px -8px 36px 0px rgba(0, 0, 0, 0.2);
-  --above-low-box-shadow: 0px -4px 24px 0px rgba(0, 0, 0, 0.1);
-  --below-high-box-shadow: 0px 16px 48px 0px rgba(0, 0, 0, 0.3);
-  --below-medium-box-shadow: 0px 8px 36px 0px rgba(0, 0, 0, 0.2);
-  --below-low-box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.1);
-
+  --text-box-shadow: inset 0.0625rem 0.0625rem 0rem 0rem rgba(0, 0, 0, 1);
+  --above-high-box-shadow: 0rem -1rem 3rem 0rem rgba(0, 0, 0, 0.3);
+  --above-medium-box-shadow: 0rem -0.5rem 2.25rem 0rem rgba(0, 0, 0, 0.2);
+  --above-low-box-shadow: 0rem -0.25rem 1.5rem 0rem rgba(0, 0, 0, 0.1);
+  --below-high-box-shadow: 0rem 1rem 3rem 0rem rgba(0, 0, 0, 0.3);
+  --below-medium-box-shadow: 0rem 0.5rem 2.25rem 0rem rgba(0, 0, 0, 0.2);
+  --below-low-box-shadow: 0rem 0.25rem 1.5rem 0rem rgba(0, 0, 0, 0.1);
 }
-
-  /* Accessibility Styles */
-  .a11yHidden,
-  legend {
-    overflow: hidden;
-    position: absolute !important;
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-  }
+/* Accessibility Styles */
+.a11yHidden,
+legend {
+  overflow: hidden;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  width: 0.0625rem;
+  height: 0.0625rem;
+  margin: -0.0625rem;
+}
