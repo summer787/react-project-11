@@ -1,21 +1,20 @@
 // /src/pages/Home.jsx
+// import pb from "@/api/pocketbase";
+// import getImageURL from "@/utils/getImageURL";
 import MainHeader from "@/layout/MainHeader/MainHeader";
+
+// const bannerData = await pb.collection("banners").getList(1, 50);
 
 function Home() {
   return (
-    <div
-      style={{
-        color: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "98vh",
-        fontSize: "3rem",
-        marginBottom: "5000px",
-      }}
-    >
+    <div>
       <MainHeader />
-      <div style={{ color: "white" }}>Home페이지입니다.</div>
+      {/* <div>
+        {bannerData.items &&
+          bannerData.items.map((item) => (
+            <img key={item.id} src={getImageURL(item, "banners")} alt="" />
+          ))}
+      </div> */}
     </div>
   );
 }
