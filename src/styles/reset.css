@@ -122,3 +122,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+html {
+  font-size: calc(6px + 0.5vw);
+}

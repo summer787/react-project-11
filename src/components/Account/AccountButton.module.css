@@ -1,0 +1,39 @@
+@import "@/styles/global.css";
+
+.account__button{
+  position: relative;
+  display: flex;
+  justify-content: center;; 
+  align-items:center;
+  background-color: transparent;
+  font-size: 1.333rem;
+  font-weight: 700;
+  box-sizing: border-box; 
+  width: 100%;
+  height: auto;
+  border-style: solid;
+  border-width: 0.063px;
+  padding: 1.675rem 0;
+  border-color: var(--gray-700);
+  color: var(--gray-300); 
+  cursor: pointer; 
+
+  &:hover {
+    border-color: var(--white); /* 호버 시 배경색 변경 */
+  }
+}
+
+.button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:1.875rem;
+}
+
+
+.icon__image {
+  position: absolute;
+  left: 1.25rem;
+  width: 2.25rem;
+  width: 2.25rem;
+}

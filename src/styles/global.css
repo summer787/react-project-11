@@ -25,7 +25,8 @@ body {
   --heading-medium: 700 1rem/140% 'Noto Sans KR', sans-serif;
   --heading-large: 700 1.3331rem/140% 'Noto Sans KR', sans-serif;
   --heading-xl: 700 1.7769rem/140% 'Noto Sans KR', sans-serif;
-  --heading-xxl: 700 2.3687rem/140% 'Noto Sans KR', sans-serif;
+  --heading-xxl: 700 2.5rem/140% 'Noto Sans KR', sans-serif;
+  /* --heading-xxl: 700 2.3687rem/140% 'Noto Sans KR', sans-serif; */
   --heading-xxxl: 700 3.1575rem/140% 'Noto Sans KR', sans-serif;
   --label-small: 600 0.75rem/150% 'Noto Sans KR', sans-serif;
   --label-medium: 600 1rem/150% 'Noto Sans KR', sans-serif;

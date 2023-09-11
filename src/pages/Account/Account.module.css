@@ -40,6 +40,6 @@
 
   & span {
     color: var(--white);
-    font: var(--heading-xl);
+    font: var(--heading-xxl);
   }
 }

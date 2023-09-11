@@ -4,7 +4,7 @@
 
   & h2 {
     color: var(--white);
-    font: var(--heading-xl);
+    font: var(--heading-xxl);
     padding: 2.5rem 0 1.5rem 0;
   }
 }
