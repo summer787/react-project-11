@@ -1,15 +1,15 @@
 
-import FetchData from "./FetchData";
-import AccountHeader from'./pages/Account/AccountHeader'
-import AccountButton from './pages/Account/AccountButton'
+import UserHeader from './components/User/UserHeader';
+import AccountButtonLIst from './components/Account/AccountButton';
+
 
 
 function App() {
   return (
     <div>
- <FetchData />
-  <AccountHeader />
- <AccountButton />
+ 
+  <UserHeader />
+ <AccountButtonLIst />
   </div>
   )
 }

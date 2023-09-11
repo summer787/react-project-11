@@ -16,9 +16,9 @@ const buttons = [
 
 function AccountButton({ id, text, image }) {
   return (
-    <button type="button" className={styles.account_button} key={id}>
-      <div className={styles.button_content}>
-        <img src={image} className={styles.icon_image} alt={text} />
+    <button type="button" className={styles.account__button} key={id}>
+      <div className={styles.button__content}>
+        <img src={image} className={styles.icon__image} alt={text} />
         <span>{text}</span>
       </div>
     </button>
