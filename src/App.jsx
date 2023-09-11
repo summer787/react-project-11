@@ -1,6 +1,8 @@
 
-import UserHeader from './components/User/UserHeader';
-import AccountButtonLIst from './components/Account/AccountButton';
+
+
+import FormInput from './components/Input/FormInput';
+
 
 
 
@@ -8,9 +10,9 @@ function App() {
   return (
     <div>
  
-  <UserHeader />
- <AccountButtonLIst />
-  </div>
+ <FormInput/>
+
+   </div>
   )
 }
 
