@@ -1,0 +1,23 @@
+.user__info {
+  text-align: center;
+
+  & span {
+    color: var(--gray-500);
+    margin-right: 1rem;
+  }
+
+  & a {
+    text-decoration: none;
+    color: var(--gray-300);
+  }
+}
+
+.text__small {
+  font: var(--paragraph-large);
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.text__large {
+  font: var(--paragraph-xl);
+}

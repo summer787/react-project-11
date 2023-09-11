@@ -1,0 +1,12 @@
+.user__main {
+  margin: 0 auto;
+  width: calc(100% - 7.776rem);
+  /* background: wheat; */
+
+  & section {
+    margin: 0 auto;
+    max-width: 41.667rem;
+    height: 100%;
+    /* background: rgb(45, 46, 46); */
+  }
+}
