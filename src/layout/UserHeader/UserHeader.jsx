@@ -5,7 +5,7 @@ function UserHeader() {
   return (
     <header className={styles.account__header}>
       <h1 className='a11yHidden'>티빙 로고</h1>
-      <NavLink>
+      <NavLink to='/'>
         <img
           src='/account_tving_logo.svg'
           className={styles.header__img}

@@ -8,7 +8,7 @@ const buttons = [
     id: 1,
     text: 'TVING ID로 시작하기',
     image: AccountImage.tvingIcon,
-    link: '/home',
+    link: '/user/tvingLogin',
     isService: true,
   },
   {

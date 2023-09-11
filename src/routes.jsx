@@ -15,6 +15,10 @@ const Tv = lazy(() => import('./pages/Tv'));
 const Movie = lazy(() => import('./pages/Movie'));
 const Paramount = lazy(() => import('./pages/Paramount'));
 
+const User = lazy(() => import('./layout/User/User'));
+const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
+const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Rootlayout />}>
@@ -24,6 +28,10 @@ const router = createBrowserRouter(
       <Route path='tv' element={<Tv />} />
       <Route path='movie' element={<Movie />} />
       <Route path='paramount' element={<Paramount />} />
+      <Route path='user' element={<User />}>
+        <Route path='tvingLogin' element={<TvingLogin />} />
+        <Route path='tvingRegist' element={<TvingRegist />} />
+      </Route>
     </Route>
   )
 );
