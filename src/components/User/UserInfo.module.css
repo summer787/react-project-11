@@ -13,11 +13,11 @@
 }
 
 .text__small {
-  font: var(--label-medium);
+  font: var(--paragraph-large);
   margin-top: 2rem;
   margin-bottom: 3rem;
 }
 
 .text__large {
-  font: var(--paragraph-medium);
+  font: var(--paragraph-xl);
 }
