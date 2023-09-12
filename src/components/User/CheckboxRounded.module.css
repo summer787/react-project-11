@@ -1,5 +1,7 @@
 .rounded__checkbox__wrapper {
   position: relative;
+
+  padding: 1rem 0;
 }
 
 .rounded__checkbox {
@@ -14,7 +16,8 @@
 .rounded__checkbox__label {
   font: var(--heading-large);
   color: var(--gray-500);
-  line-height: 3rem;
+  display: flex;
+  align-items: center;
 
   &.checked {
     color: var(--white);
@@ -26,11 +29,11 @@
     vertical-align: middle;
     background-image: url('../../assets/User/user_icon_check_default_Filled.svg');
     background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: contain;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 1rem;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-right: 0.8rem;
   }
 
   &.checked::before {
