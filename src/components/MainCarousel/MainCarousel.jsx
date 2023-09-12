@@ -82,7 +82,8 @@ function MainCarousel() {
   }, [bannerData]);
 
   return (
-    <div className={styles.mySwiper}>
+    <section className={styles.mySwiper}>
+      <h2 className="a11yHidden">메인페이지 이미지 슬라이드</h2>
       <Swiper
         id="MainCarouselSwiper"
         effect="fade"
@@ -141,7 +142,10 @@ function MainCarousel() {
         </button>
         <div id="MaincarouselPagination" className="swiper-pagination" />
       </div>
-    </div>
+      <a className={styles.moreLink} href="/">
+        자세히 보기
+      </a>
+    </section>
   );
 }
 

@@ -24,4 +24,23 @@
     left: 3rem;
     font: var(--paragraph-large);
   }
+
+  & .moreLink {
+    position: absolute;
+    z-index: 1002;
+    color: white;
+    bottom: 20%;
+    right: 3rem;
+    font: var(--paragraph-large);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 1em 2.5em;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+  }
+  & .moreLink:hover {
+    opacity: 1;
+  }
 }
