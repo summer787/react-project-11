@@ -1,0 +1,24 @@
+.join__containter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 0 1.5rem 0;
+}
+
+.join__subtitle {
+  display: flex;
+  justify-content: center;
+  font: var(--heading-xl);
+  font-weight: normal;
+  color: var(--gray-300);
+  padding: 0 2rem;
+  word-break: keep-all;
+}
+
+.join__info {
+  color: var(--gray-300);
+  margin: 1rem auto;
+  color: #6e6e6e;
+  word-break: keep-all;
+  font-size: 1.167rem;
+}

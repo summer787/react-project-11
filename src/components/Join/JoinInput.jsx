@@ -1,13 +1,12 @@
 import { oneOf, string } from 'prop-types';
-import styles from "./FormInput.module.css"
+import styles from "./JoinInput.module.css"
 
-function FormInput({ label, inputRef, type, id, placeholder }) {
+function JoinInput({ label, type, id, placeholder }) {
   return (
     <div className={styles.input__wrapper}>
       <label htmlFor={id} className="a11yHidden">{label}</label>
       <input
         className={styles.input}
-        ref={inputRef}
         type={type}
         name={id}
         id={id}
@@ -16,11 +15,10 @@ function FormInput({ label, inputRef, type, id, placeholder }) {
     </div>
   );
 }
-export default FormInput;
+export default JoinInput;
 
-FormInput.propTypes = {
+JoinInput.propTypes = {
   label: string.isRequired,
-  inputRef:,
   type: oneOf(['text', 'password', 'number', 'email']),
   name: string,
   id: string,
