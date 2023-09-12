@@ -7,7 +7,7 @@
   align-items: center;
   background-color: transparent;
   font-size: 1.333rem;
-  font-weight: 700;
+  font-weight: 400;
   box-sizing: border-box;
   width: 100%;
   height: auto;
@@ -15,8 +15,10 @@
   border-width: 0.063px;
   padding: 1.675rem 0;
   border-color: var(--gray-700);
+  border-radius: 0.156rem;
   color: var(--gray-300);
   cursor: pointer;
+  margin-top: 1rem;
 
   &:hover {
     border-color: var(--white); /* 호버 시 배경색 변경 */
