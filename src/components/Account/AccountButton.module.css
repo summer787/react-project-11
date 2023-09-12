@@ -21,7 +21,8 @@
   margin-top: 1rem;
 
   &:hover {
-    border-color: var(--white); /* 호버 시 배경색 변경 */
+    border-color: var(--white); 
+    color: var(--white);
   }
 }
 
