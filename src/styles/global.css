@@ -57,3 +57,55 @@ legend {
   height: 0.0625rem;
   margin: -0.0625rem;
 }
+
+/* Main Carousel Swiper Styles */
+
+#MainCarouselPrev::after,
+#MainCarouselNext::after {
+  color: var(--white);
+  font-size: 2rem;
+  opacity: 0.3;
+  transition: opacity 0.3s ease-in-out;
+}
+#MainCarouselPrev:hover::after,
+#MainCarouselNext:hover::after,
+#MainCarouselPrev:focus::after,
+#MainCarouselNext:focus::after {
+  opacity: 1;
+}
+
+#MaincarouselPagination {
+  position: relative;
+  text-align: left;
+  bottom: auto;
+  left: auto;
+  top: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+#MaincarouselPagination .swiper-pagination-bullet {
+  background: var(--white);
+  opacity: 0.3;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0 0.375rem;
+}
+#MaincarouselPagination .swiper-pagination-bullet:focus,
+#MaincarouselPagination .swiper-pagination-bullet:hover {
+  opacity: 1;
+}
+#MaincarouselPagination .swiper-pagination-bullet-active {
+  background: var(--white);
+  opacity: 1;
+}
+
+#carouselControll {
+  background: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin: 0 0.375rem;
+  cursor: pointer;
+}
