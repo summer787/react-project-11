@@ -11,7 +11,8 @@ const footerStyle = {
 
 const userInfo = {
   text: '아이디를 잊으셨나요?',
-  link: '아이디 찾기',
+  linkpath: '#',
+  linktext: '아이디 찾기',
   styleClass: 'text__small',
 };
 
