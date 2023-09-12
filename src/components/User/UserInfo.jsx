@@ -1,13 +1,14 @@
 import { shape, string } from 'prop-types';
+import { Link } from 'react-router-dom';
 import style from './UserInfo.module.css';
 
 function UserInfo({ userInfo }) {
-  const { text, link, styleClass } = userInfo;
+  const { text, linkpath, linktext, styleClass } = userInfo;
 
   return (
     <div className={`${style.user__info} ${style[styleClass]}`}>
       <span>{text}</span>
-      <a href='/'>{link}</a>
+      <Link to={linkpath}>{linktext}</Link>
     </div>
   );
 }
@@ -19,7 +20,8 @@ UserInfo.defaultProps = {
 UserInfo.propTypes = {
   userInfo: shape({
     text: string.isRequired,
-    link: string.isRequired,
+    linkpath: string.isRequired,
+    linktext: string.isRequired,
     styleClass: string.isRequired,
   }),
 };
