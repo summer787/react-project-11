@@ -1,5 +1,5 @@
-import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
 import { Link } from "react-router-dom";
+import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
 import styles from "./Nav.module.css";
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
       <ul>
         <li className={styles.live}>
           <Link to="/live">
-            <img src={MainHeaderImage.live} alt="live" />
+            <MainHeaderImage.Live />
             <span>실시간</span>
           </Link>
         </li>

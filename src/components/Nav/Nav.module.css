@@ -13,6 +13,19 @@
   & li {
     display: flex;
     align-items: center;
+    transition: color 0.3s ease-in-out;
+
+    & svg {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--gray-100);
+
+      & svg {
+        opacity: 1;
+      }
+    }
   }
 
   & .live a {
