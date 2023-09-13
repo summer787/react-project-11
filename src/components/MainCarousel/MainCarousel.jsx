@@ -19,12 +19,11 @@ function MainCarousel() {
   const [bannerData, setBannerData] = useState(null);
 
   async function fetchBannerData() {
-    const data = await pb.collection("banners").getList(1, 50);
+    const data = await pb
+      .collection("banners")
+      .getList(1, 50, { requestKey: null });
     setBannerData(data);
   }
-  useEffect(() => {
-    fetchBannerData();
-  }, []);
 
   const handleAutoplay = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -50,6 +49,10 @@ function MainCarousel() {
   const handleAction = (direction) => (e) => {
     if (e.key === "Enter" || e.type === "mousedown") slide(direction);
   };
+
+  useEffect(() => {
+    fetchBannerData();
+  }, []);
 
   useEffect(() => {
     const keydownHandler = (event) => {
@@ -145,6 +148,8 @@ function MainCarousel() {
       <a className={styles.moreLink} href="/">
         자세히 보기
       </a>
+
+      <div className={styles.backgroundGradient} />
     </section>
   );
 }
