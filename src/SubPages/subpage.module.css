@@ -1,0 +1,589 @@
+
+.contentWrap{
+    max-width: 120rem;
+    margin: 0rem auto;
+    position: relative;
+}
+
+
+.contentInformation{
+    position: relative;
+    margin: 0rem 2.5rem 7.75rem 2.5rem;
+    padding: 3rem 0;
+    z-index: 10;
+    height: 25rem;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: -5rem; /* 상위 요소보다 위로 5rem */
+    bottom: -5rem; 
+    left: -5rem; 
+    right: -5rem; 
+    background-image: url('../assets/Subpage/subpage_poster.png');
+    background-size: cover;
+    z-index: 0; 
+    
+}
+
+.blurOverlay {
+    position:absolute;
+    top: -5rem; /*상위 요소보다 위로 5rem */
+    bottom: -5rem;
+    left: -5rem;
+    right: -5rem; 
+    backdrop-filter :blur(1.25rem);
+    background-color: rgba(255, 255, 255, 0.614);
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    linear-gradient(to top, rgb(0, 0, 0), rgba(255, 255, 255, 0.436));
+    z-index: 0; 
+}
+
+.content{
+    max-width: 106.875rem;
+    height: 30.875rem;
+    position:absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 3.125rem;
+    border-bottom: 0.0625rem solid white;
+}
+
+.contentMain{
+    max-width: 39rem;
+    margin: 0 2rem;
+
+}
+
+
+.tagWrap {
+    width: 36.25rem;
+    height: 2.25rem;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--white);
+    align-items: center;
+    font: var(--paragraph-large);
+}
+
+.tag{
+    padding: 0.375rem 0.9375rem 0.125rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+}
+
+.titleImg img {
+    width: 27.125rem;
+    height: 6.25rem; 
+    margin: 1.5rem;
+}
+
+.tag {
+    margin-right: 0.625rem; 
+    box-shadow: inset 0 0 0 0.0625rem hsla(0,0%,100%,.3);
+    color: hsla(0,0%,100%,.7);
+    padding: 0.125rem;
+}
+
+.playButton{
+    width: 25.1875rem;
+    height: 5.8125rem;
+    position: relative;
+    margin-right: 2rem;
+    padding: 1.5rem 5rem;
+    background-color: rgb(255, 255, 255);
+    font: var(--heading-large);
+    line-height: 1.89;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    backdrop-filter: blur(1.875rem);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    white-space: nowrap;
+    transition: opacity 0.3s ease 0s, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+}
+
+.Buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.875rem;
+}
+
+.playButton{
+    border: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.playButton:hover {
+    transform: scale(1.1); 
+}
+
+
+
+.likeButton, .shareButton{
+    width: 5.25rem;
+    height: 5.25rem;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 5.333rem;
+    height: 5.333rem;
+    text-align: center;
+    margin: 0rem;
+    opacity: 0.87;
+    transition: opacity 0.1s ease 0s;
+    cursor: pointer;
+    background-color : transparent;
+    /* color: var(--gray-800); */
+    border: none;
+    font: var(--heading-medium);
+}
+
+.likeIcon, .shareIcon{
+    width: 3.125rem;
+    height: 3.125rem;
+    /* fill: var(--gray-200); */
+}
+
+.likeButton{   
+    margin-right: 0.625rem;
+}
+
+.likeButton:hover, .shareButton:hover{
+    color: var(--white);
+}
+
+.likeButton, .shareButton {
+    font: var(  --label-medium);
+    line-height: 0.86;
+    text-align: center;
+    color: var(--gray-100);
+}
+
+.information{
+    color: var(--gray-300);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 32.5rem;
+}
+/* 리액트로 더보기 버튼 누르면 확장되게 구현, 지금은 그냥 생략만 해 놈 */
+
+.creator, .actor {
+    display: flex;
+    line-height: 1.5;
+}
+
+.creator{
+    margin-top: 1.875rem;
+}
+
+.creator dt, .actor dt {
+    margin-right: 0.625rem;
+}
+
+.description{
+    text-overflow: ellipsis;
+    margin-top: 1.875rem;
+    color: var(--gray-300);
+    line-height: 1.5;
+}
+
+.posterWrap{
+    width: 21.4375rem;
+    height: 30.875rem;
+    margin: 0 3.125rem;
+}
+
+.poster{
+    width: 21.4375rem;
+    height: 30.875rem;
+}
+
+.videoPlayer{
+    padding: 0rem 3.75rem 3.75rem 3.75rem;
+}
+
+.videoPlayerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.videoPlayerTitle{
+    display: flex;
+    align-items: center;
+    width: 52.625rem;
+    height: 2.375rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.title, .number {
+    margin-right: 0.625rem; 
+}
+
+.title{
+    color: var(--white);
+    font: var(--label-large);
+}
+
+.number{
+    color: var(--gray-300);
+    display: flex;
+    justify-content: center;
+}
+
+.orderChoices{
+    width: 60.3125rem;
+    height: 2.1875rem;
+    color: var(--white);
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 4.0625rem;
+    align-items: center;
+}
+
+button{
+    background: transparent;
+    border: none; 
+    color: inherit;
+    padding: 0; 
+    font: inherit;
+    cursor: pointer; 
+    outline: none; 
+}
+
+.clickNew{
+    margin-left: 1.6875rem;
+    margin-right: 3rem;
+}
+
+
+.buttonWithEffects {
+    position: relative; /* ::before와 ::after가상 요소의 위치 기준 설정 */
+}
+
+.buttonWithEffects::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -1rem;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 1600px;
+    opacity: 0.34;
+    background-color: rgb(255, 255, 255);
+    transform: translateY(-50%);
+}
+
+.buttonWithEffects::after {
+    content:"";
+    position:absolute;
+    top :50%;
+    right:-1.5rem; 
+    width :0.083rem; 
+    height :1rem; 
+    opacity :0.31; 
+    background-color :rgb(255,255,255); 
+    transform :translateY(-50%);
+}
+
+.switch {
+    position: relative; 
+    width: 6.3125rem; 
+    height: 1.3125rem; 
+    display: flex;
+    align-items: center;
+    
+}
+
+
+[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    border: max(0.125rem, 0.1em) solid var(--gray-300);
+    border-radius: 16px;
+    width: 2.25em;
+    height: 1.25em;
+    background-color: var(--gray-600);
+}
+
+[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: scale(0.8);
+    background-color: var(--gray-100);
+    transition: left 250ms linear;
+}
+
+[type="checkbox"]:checked::before { /*둥근 버튼*/
+    background-color: var(--white);
+    left: 1em;
+}
+
+[type="checkbox"]:checked { /*켜졌을 때  배경색과 테두리 색*/
+    background-color: var(--brand-red-1);
+    border-color: var(--brand-red-1);
+}
+/* 글자색까지 바뀌는 건 리액트로 구현 */
+
+.seasonThumbnailWrap, .seasonThumbnailWrap1, .relatedVideoWrap, .recommendationWrap{
+    margin-right: 0.625rem;
+    position: relative; 
+    cursor: pointer;
+    transition: transform 0.3s ease-out,
+                opacity 1s linear;
+}
+
+.videoPlayerInformation{
+    display: flex;
+
+    /* justify-content: space-between;  */
+    padding-bottom: 3.75rem;
+    /* overflow-x: scroll;  */
+    /*width: 1800px; */
+
+}
+
+
+:global(.swiper-scrollbar-drag) {
+    background-color: #6b6b6b;
+}
+/* .swiperScrollbar {
+    left: 0;
+    bottom: -3rem!important;
+    width: 100%;
+    height: .25rem;
+  }
+  
+  .swiperScrollbarDrag {
+     background-color: hsla(0,0%,100%,.1);
+  } */
+   
+
+/* .videoPlayerInformation::-webkit-scrollbar {
+    width: 5px;
+} */
+
+/* .videoPlayerInformation::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(238, 233, 233, 0.3);
+} */
+
+/* .videoPlayerInformation::-webkit-scrollbar-thumb {
+    background-color: rgb(244, 234, 234);
+    outline: 1px solid rgb(8, 110, 213);
+} */
+
+
+
+.thumbnailPlayButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -150%);
+    width: 3.75rem;
+    height: 3.75rem; 
+    border-radius: 50%; 
+    background-size: cover; 
+
+    background-color: var(--gray-900);
+}
+
+.seasonThumbnailWrap:hover, .seasonThumbnailWrap1:hover, .relatedVideoWrap:hover, .recommendationWrap:hover {
+    transform: translateY(-0.625rem); 
+}
+
+.seasonThumbnailWrap1 img{
+    filter: brightness(40%);
+}
+
+.seasonThumbnailWrap:hover .itemDescription,
+.seasonThumbnailWrap:hover .itemTitle,
+.seasonThumbnailWrap1:hover .itemDescription,
+.seasonThumbnailWrap1:hover .itemTitle,
+.relatedVideoWrap:hover .itemDescription,
+.recommendationWrap:hover .recommendationDescription{
+    color:  var(--white);
+}
+
+.seasonThumbnailWrap:hover .itemSubInformation,
+.seasonThumbnailWrap1:hover .itemSubInformation{
+    color:  var(--gray-200);
+}
+
+.seasonThumbnailWrap1,
+.seasonThumbnailWrap{
+    width: 21.875rem;
+    height: 19.25rem;
+    margin-right: 1.25rem;
+}
+
+.seasonThumbnail, .itemThumbnail{
+    width: 21.875rem;
+    height: 12.375rem;
+
+    border-radius: 1%;
+    
+}
+
+.itemInformation{
+    width: 20.875rem;
+    height: 8rem;
+    padding: 0.625rem 1rem 0 0;
+}
+
+.itemTitle{
+    color: var(--gray-200);
+    font: var(--heading-medium);
+}
+
+.itemDescription{
+    margin-top: 0.625rem;
+    color: var(--gray-400);
+    font: var( --paragraph-medium);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+}
+
+.itemSubInformation{
+    margin-top: 0.3125rem;
+    color: var(--gray-400);
+    font: var( --paragraph-medium);
+}
+
+.relatedVideo{
+    padding: 1.875rem 2.8125rem 3.75rem 2.8125rem;
+}
+
+
+.relatedVideoHeader{
+    width: 98.4375rem;
+    height: 4.0625rem;
+    color: var(--white);
+
+}
+
+.relatedContentItem{
+    display: flex;
+}
+
+.recommendation{
+    /* display: flex; */
+    /* flex-direction: row; */
+    padding: 1.875rem 2.8125rem 0rem 2.8125rem;
+    
+}
+
+.recommendationAll {
+    display: flex;
+}
+
+:global(.swiper-pagination-bullet) {
+    width: 6px;
+    height: 6px;
+    background-color: var(--gray-100); /* Change the bullet color to black */
+}
+
+:global(.swiper-pagination-bullet-active) {
+    background-color:var(--white); /* Change the active bullet color to red */
+}
+
+:global(.swiper-pagination) {
+    width: auto;
+    justify-content: flex-end;
+}
+
+:global(.swiper-pagination-bullets){
+    width: 100px !important;
+}
+
+:global(.swiper-pagination-horizontal){
+    width: 100px !important;
+}
+
+
+  /* :global(.swiper-pagination) { */
+    /* justify-content: flex-end; */
+    /* text-align: right; */
+    /* position: absolute;  */
+    /* bottom: auto !important; */
+    /* top: 0; */
+    /* left: auto !important; */
+    /* right: 0; */
+    /* width: auto !important; */
+    /* width: 200px; */
+  /* }  */
+
+/* :global(.swiper-pagination) { */
+    /* position: absolute; 
+    bottom: auto;
+    top: 0;
+    /* left: auto !important; */
+    /* right: 0;*/
+    /* margin-right: 20px;
+    width: auto; */ 
+    /* width: 100%;
+    justify-content: flex-end; */
+  
+
+  /* :global(.custom-pagination){
+    position: absolute;
+    top: 0;
+    right: 0 !important; 
+  } */
+
+  /* :global(.swiper-pagination) {
+    position: absolute;
+    top: 0px;
+  } */
+
+
+.swiperWrapp{
+    margin-left: 0.625rem;
+}
+
+.recommendationVideoHeader{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: flex-end; */
+    padding-bottom: 0.9375rem;
+    /* width:2000px; */
+    /* background-color: aliceblue;*/
+} 
+
+
+.recommendationThumbnail{
+    width: 15.5rem;
+    height: 22.3125rem;
+    border-radius: 1%;
+}
+
+.recommendationDescription {
+    max-width: 14.375rem;
+    height: 1.75rem;
+    padding: 0.625rem 0 0 0.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--gray-200);
+}
+
+
+
