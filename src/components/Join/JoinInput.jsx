@@ -1,7 +1,7 @@
-import { oneOf, string } from 'prop-types';
+import { oneOf, string, number } from 'prop-types';
 import styles from "./JoinInput.module.css"
 
-function JoinInput({ label, type, id, placeholder }) {
+function JoinInput({ label, type, id, placeholder, tabIndex }) {
   return (
     <div className={styles.input__wrapper}>
       <label htmlFor={id} className="a11yHidden">{label}</label>
@@ -11,6 +11,7 @@ function JoinInput({ label, type, id, placeholder }) {
         name={id}
         id={id}
         placeholder={placeholder}
+        tabIndex={tabIndex}
       />
     </div>
   );
@@ -23,4 +24,5 @@ JoinInput.propTypes = {
   name: string,
   id: string,
   placeholder: string.isRequired,
+  tabIndex: number
 };
