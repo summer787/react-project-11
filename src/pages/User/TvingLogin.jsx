@@ -4,7 +4,6 @@ import UserInfo from '@/components/User/UserInfo';
 import UserTitle from '@/components/User/UserTitle';
 import debounce from '@/utils/debounce';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const userInfo = {
   text: '아직 계정이 없으신가요?',
@@ -47,9 +46,7 @@ function TvingLogin() {
       </form>
 
       <CheckboxRounded label='자동로그인' />
-      <Link to='/user/tvingRegist'>
-        <UserInfo userInfo={userInfo} />
-      </Link>
+      <UserInfo userInfo={userInfo} />
     </div>
   );
 }

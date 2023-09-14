@@ -1,5 +1,5 @@
 import { shape, string } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from './UserInfo.module.css';
 
 function UserInfo({ userInfo }) {
@@ -8,7 +8,9 @@ function UserInfo({ userInfo }) {
   return (
     <div className={`${style.user__info} ${style[styleClass]}`}>
       <span>{text}</span>
-      <Link to={linkpath}>{linktext}</Link>
+      <NavLink to={linkpath} className={`${style.link}`}>
+        {linktext}
+      </NavLink>
     </div>
   );
 }
