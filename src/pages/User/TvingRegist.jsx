@@ -1,16 +1,21 @@
 import UserTitle from "@/components/User/UserTitle";
 import pb from "@/api/pocketbase";
 
+import {RegUsername, RegPassword} from "@/utils/validation";
+
 import { ClientResponseError } from "pocketbase";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import RegistInput from "@/components/Regist/RegistInput";
 
 import styles from "./TvingRegist.module.css";
 
 function TvingRegist() {
+  
+  const navigate = useNavigate();
+  
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -20,6 +25,13 @@ function TvingRegist() {
 
   const handleRegist = async (e) => {
     e.preventDefault();
+
+    // if (RegUsername === '') {
+    //   ;
+    //   return;
+    // }
+
+
 
     // PocketBase SDK 인증 요청
     await pb.collection("users").create({
