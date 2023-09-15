@@ -1,28 +1,35 @@
+import { useId } from 'react';
 import { oneOf, string, number } from 'prop-types';
-import styles from "./JoinInput.module.css"
+import styles from "./RegistInput.module.css"
 
-function JoinInput({ label, type, id, placeholder, tabIndex }) {
-  return (
+function RegistInput({ type, name, label, placeholder, defaultValue, onChange}) {
+
+    const id = useId();
+
+    return (
     <div className={styles.input__wrapper}>
+      
       <label htmlFor={id} className="a11yHidden">{label}</label>
       <input
         className={styles.input}
         type={type}
-        name={id}
+        name={name}
         id={id}
         placeholder={placeholder}
-        tabIndex={tabIndex}
+        defaultValue={defaultValue}
+        onChange={onChange}
       />
     </div>
   );
 }
-export default JoinInput;
 
-JoinInput.propTypes = {
+RegistInput.propTypes = {
   label: string.isRequired,
   type: oneOf(['text', 'password', 'number', 'email']),
   name: string,
   id: string,
   placeholder: string.isRequired,
-  tabIndex: number
+  defaultValue : string,
 };
+
+export default RegistInput;

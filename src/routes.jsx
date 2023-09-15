@@ -17,7 +17,7 @@ const Paramount = lazy(() => import('./pages/Paramount'));
 
 const User = lazy(() => import('./layout/User/User'));
 const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
-const TvingRegist = lazy(() => import('./pages/User/TvingJoin'));
+const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
