@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { func, oneOf, string } from 'prop-types';
+import { bool, func, oneOf, string } from 'prop-types';
 import style from './UserInput.module.css';
 import InputClearButton from './InputClearButton';
 import PasswordVisibleButton from './PasswordVisibleButton';
@@ -8,8 +8,9 @@ function UserInput({
   type = 'text',
   name = null,
   label,
-  autoComplete,
   onChange = null,
+  togglePasswordVisibility,
+  passwordVisible,
 }) {
   const id = useId();
 
@@ -21,7 +22,6 @@ function UserInput({
           type={type}
           name={name}
           id={id}
-          autoComplete={autoComplete}
           onChange={onChange}
           placeholder={label}
           className={style.form__input}
@@ -29,22 +29,31 @@ function UserInput({
       </label>
       <div className={style.user__input__buttons}>
         <InputClearButton />
-        <PasswordVisibleButton />
+        {name.includes('password') && (
+          <PasswordVisibleButton
+            togglePasswordVisibility={togglePasswordVisibility}
+            passwordVisible={passwordVisible}
+          />
+        )}
       </div>
     </div>
   );
 }
 
 UserInput.defaultProps = {
+  type: 'text',
   onChange: null,
+  togglePasswordVisibility: null,
+  passwordVisible: false,
 };
 
 UserInput.propTypes = {
-  type: oneOf(['text', 'password', 'number', 'email', 'search']).isRequired,
+  type: oneOf(['text', 'password', 'number', 'email', 'search']),
   name: string.isRequired,
   label: string.isRequired,
-  autoComplete: string.isRequired,
   onChange: func,
+  togglePasswordVisibility: bool,
+  passwordVisible: bool,
 };
 
 export default UserInput;

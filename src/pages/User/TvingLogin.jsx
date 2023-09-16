@@ -11,13 +11,6 @@ import Spinner from '@/components/Spinner';
 import UserButton from '@/components/User/UserButton';
 import style from './TvingLogin.module.css';
 
-const userInfo = {
-  text: '아직 계정이 없으신가요?',
-  linkpath: '/user/tvingRegist',
-  linktext: '회원가입 하기',
-  styleClass: 'text__large',
-};
-
 function TvingLogin() {
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
@@ -25,6 +18,7 @@ function TvingLogin() {
     password: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleInput = debounce((e) => {
     const { name, value } = e.target;
@@ -62,32 +56,36 @@ function TvingLogin() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <div>
       <UserTitle title='TVING ID 로그인' />
 
       <form onSubmit={handleLogin}>
         <div className={style.form__wrapper}>
+          <UserInput name='id' label='아이디' onChange={handleInput} />
           <UserInput
-            type='text'
-            name='id'
-            label='아이디'
-            autoComplete='username'
-            onChange={handleInput}
-          />
-          <UserInput
-            type='password'
+            type={passwordVisible ? 'text' : 'password'}
             name='password'
             label='비밀번호'
-            autoComplete='current-password'
             onChange={handleInput}
+            togglePasswordVisibility={togglePasswordVisibility}
+            passwordVisible={passwordVisible}
           />
           <CheckboxRounded label='자동로그인' />
           <UserButton type='submit' text='로그인하기' isActive isRed />
         </div>
       </form>
       <FindUser />
-      <UserInfo userInfo={userInfo} />
+      <UserInfo
+        text='아직 계정이 없으신가요?'
+        linkpath='/user/tvingRegist'
+        linktext='회원가입 하기'
+        styleClass='text__large'
+      />
       <Spinner isOpen={isLoading} />
     </div>
   );
