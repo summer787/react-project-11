@@ -1,5 +1,6 @@
 .user__info {
   text-align: center;
+  margin-top: 3rem;
 
   & span {
     color: var(--gray-500);
@@ -14,6 +15,11 @@
     &:focus {
       color: var(--white);
     }
+
+    &:focus {
+      outline: 1px solid #6b6b6b;
+      border-radius: 3px;
+    }
   }
 }
 
@@ -24,7 +30,6 @@
 }
 
 .text__large {
-  font:
-    400 1.5rem/160% 'Noto Sans KR',
-    sans-serif;
+  font: var(--paragraph-large);
+  font-size: 1.6rem;
 }
