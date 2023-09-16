@@ -1,16 +1,19 @@
 import UserTitle from "@/components/User/UserTitle";
 import pb from "@/api/pocketbase";
 
-import {RegUsername, RegPassword} from "@/utils/validation";
+import {UsernameReg, PasswordReg} from "@/utils/validation";
 
 import { ClientResponseError } from "pocketbase";
 
 import { useState } from "react";
+
 import { useNavigate } from 'react-router-dom';
 
 import RegistInput from "@/components/Regist/RegistInput";
 
 import styles from "./TvingRegist.module.css";
+
+
 
 function TvingRegist() {
   
@@ -23,14 +26,33 @@ function TvingRegist() {
     email: "",
   });
 
+  const [errorInfo, setErrorInfo] = useState({
+    username: "영문 소문자 또는 영문 소문자, 숫자 조합 6~12 자리",
+    passwordConfirm: "영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15 자리"
+  });
+
+
+
+
   const handleRegist = async (e) => {
     e.preventDefault();
 
-    // if (RegUsername === '') {
-    //   ;
-    //   return;
-    // }
 
+    const { username, password, passwordConfirm } = formState;
+
+    if (!UsernameReg(username)) {
+      alert('다시 확인해보세요');
+      return;
+    }
+
+    if (!PasswordReg(password)) {
+      alert('비밀번호를 다시 만들어보세여');
+      return;
+    }
+    if (password !== passwordConfirm) {
+      alert('비밀번호가 서로 맞지 않아여');
+      return;
+    }
 
 
     // PocketBase SDK 인증 요청
@@ -39,6 +61,10 @@ function TvingRegist() {
       emailVisibility: true,
     });
   };
+
+
+
+
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -66,7 +92,10 @@ function TvingRegist() {
           placeholder="아이디"
           defaultValue={formState.username}
           onChange={handleInput}
+        
         />
+        <p className={styles.regist__info}>{errorInfo.username}</p>
+
 
         <RegistInput
           type="password"
@@ -85,6 +114,8 @@ function TvingRegist() {
           defaultValue={formState.passwordConfirm}
           onChange={handleInput}
         />
+         <p className={styles.regist__info}>{errorInfo.passwordConfirm}</p>
+
 
         <RegistInput
           type="email"
@@ -95,7 +126,10 @@ function TvingRegist() {
           onChange={handleInput}
         />
 
+
         <button type="submit">가입하기</button>
+
+
       </form>
     </div>
   );

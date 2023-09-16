@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { oneOf, string, number } from 'prop-types';
+import { oneOf, string } from 'prop-types';
 import styles from "./RegistInput.module.css"
 
 function RegistInput({ type, name, label, placeholder, defaultValue, onChange}) {
