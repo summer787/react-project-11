@@ -17,8 +17,7 @@ function Spinner({ message = '로딩 중 입니다.', isOpen = false }) {
           alignItems: 'center',
         },
         content: {
-          background: 'rgba(0,0,0,0.5)',
-          position: 'relative',
+          background: 'rgba(0, 0, 0, 1)',
           width: '40rem',
           height: '20rem',
           display: 'flex',
@@ -26,6 +25,7 @@ function Spinner({ message = '로딩 중 입니다.', isOpen = false }) {
           justifyContent: 'center',
           alignItems: 'center',
           border: 'none',
+          position: 'relative',
         },
       }}
     >
