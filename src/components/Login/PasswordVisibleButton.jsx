@@ -1,27 +1,27 @@
 import { bool, func } from 'prop-types';
 import style from './PasswordVisibleButton.module.css';
 
-function PasswordVisibleButton({ togglePasswordVisibility, passwordVisible }) {
+function PasswordVisibleButton({ isPasswordVisible, onClick }) {
   return (
     <button
       type='button'
-      aria-label='비밀번호 보이기'
+      aria-label={isPasswordVisible ? '비밀번호 숨기기' : '비밀번호 보이기'}
       className={`${style.password__visible} ${
-        passwordVisible && style.visible__active
+        isPasswordVisible && style.visible__active
       }`}
-      onClick={togglePasswordVisibility}
+      onClick={onClick}
     />
   );
 }
 
 PasswordVisibleButton.defaultProps = {
-  togglePasswordVisibility: null,
-  passwordVisible: false,
+  isPasswordVisible: false,
+  onClick: null,
 };
 
 PasswordVisibleButton.propTypes = {
-  togglePasswordVisibility: func,
-  passwordVisible: bool,
+  isPasswordVisible: bool,
+  onClick: func,
 };
 
 export default PasswordVisibleButton;

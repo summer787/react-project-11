@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import pb from '@/api/pocketbase';
 import debounce from '@/utils/debounce';
 import UserTitle from '@/components/User/UserTitle';
 import UserInput from '@/components/Login/UserInput';
+import UserButton from '@/components/User/UserButton';
+import Spinner from '@/components/Spinner';
+import FindUser from '@/components/Login/FindUser';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserInfo from '@/components/User/UserInfo';
-import FindUser from '@/components/Login/FindUser';
-import Spinner from '@/components/Spinner';
-import UserButton from '@/components/User/UserButton';
+import InputClearButton from '@/components/Login/InputClearButton';
+import PasswordVisibleButton from '@/components/Login/PasswordVisibleButton';
 import style from './TvingLogin.module.css';
 
 function TvingLogin() {
@@ -18,13 +20,54 @@ function TvingLogin() {
     password: '',
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [activeIdClear, setActiveIdClear] = useState(false);
+  const [activePasswordClear, setActivePasswordClear] = useState(false);
 
-  const handleInput = debounce((e) => {
+  const idInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+
+  // input 값 -> state에 넣기
+  const handleDebounceInput = debounce((e) => {
     const { name, value } = e.target;
+
     setFormState({ ...formState, [name]: value });
+
+    // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
+    if (name === 'id') {
+      setActiveIdClear(true);
+      if (value === '') {
+        setActiveIdClear(false);
+      }
+    } else if (name === 'password') {
+      setActivePasswordClear(true);
+      if (value === '') {
+        setActivePasswordClear(false);
+      }
+    }
   });
 
+  // input 값 초기화
+  const handleClearInput = (inputName) => {
+    setFormState({ ...formState, [inputName]: '' });
+
+    if (inputName === 'id') {
+      idInputRef.current.value = '';
+      setActiveIdClear(false);
+      idInputRef.current.focus();
+    } else if (inputName === 'password') {
+      passwordInputRef.current.value = '';
+      setActivePasswordClear(false);
+      passwordInputRef.current.focus();
+    }
+  };
+
+  // 비밀번호 숨기기 + 보이기
+  const handlePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  // 로그인하기
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -56,30 +99,57 @@ function TvingLogin() {
     }
   };
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
-
   return (
     <div>
       <UserTitle title='TVING ID 로그인' />
 
       <form onSubmit={handleLogin}>
         <div className={style.form__wrapper}>
-          <UserInput name='id' label='아이디' onChange={handleInput} />
+          {/* id 입력 */}
           <UserInput
-            type={passwordVisible ? 'text' : 'password'}
+            name='id'
+            label='아이디'
+            defaultValue={formState.id}
+            autoComplete='username'
+            onChange={handleDebounceInput}
+            ref={idInputRef}
+          >
+            {activeIdClear && (
+              <InputClearButton onClick={() => handleClearInput('id')} />
+            )}
+          </UserInput>
+
+          {/* 비밀번호 입력 */}
+          <UserInput
+            type={isPasswordVisible ? 'text' : 'password'}
             name='password'
             label='비밀번호'
-            onChange={handleInput}
-            togglePasswordVisibility={togglePasswordVisibility}
-            passwordVisible={passwordVisible}
-          />
+            defaultValue={formState.password}
+            autoComplete='current-password'
+            onChange={handleDebounceInput}
+            ref={passwordInputRef}
+          >
+            {activePasswordClear && (
+              <InputClearButton onClick={() => handleClearInput('password')} />
+            )}
+            <PasswordVisibleButton
+              isPasswordVisible={isPasswordVisible}
+              onClick={handlePasswordVisibility}
+            />
+          </UserInput>
+
+          {/* 자동로그인 체크 */}
           <CheckboxRounded label='자동로그인' />
+
+          {/* 로그인하기 버튼 */}
           <UserButton type='submit' text='로그인하기' isActive isRed />
         </div>
       </form>
+
+      {/* 아이디, 비밀번호 칮기 링크 */}
       <FindUser />
+
+      {/* 회원가입하기 링크 */}
       <UserInfo
         text='아직 계정이 없으신가요?'
         linkpath='/user/tvingRegist'
