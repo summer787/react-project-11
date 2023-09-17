@@ -1,5 +1,6 @@
 
 .input__wrapper {
+  position:relative;
 display: flex;
 flex-direction: column;
 }
@@ -23,3 +24,8 @@ flex-direction: column;
 
 }
 
+.user__input__buttons {
+  position: absolute;
+  top: 27%;
+  right: 5%;
+}

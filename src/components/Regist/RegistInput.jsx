@@ -1,15 +1,18 @@
-import { useId } from 'react';
-import { oneOf, string } from 'prop-types';
-import styles from "./RegistInput.module.css"
+import { forwardRef, useId } from "react";
+import { func, node, oneOf, string } from "prop-types";
+import styles from "./RegistInput.module.css";
 
-function RegistInput({ type, name, label, placeholder, defaultValue, onChange, onBlur}) {
+function RegistInput(
+  { type, name, label, placeholder, defaultValue, onChange, onBlur, children },
+  ref
+) {
+  const id = useId();
 
-    const id = useId();
-
-    return (
+  return (
     <div className={styles.input__wrapper}>
-      
-      <label htmlFor={id} className="a11yHidden">{label}</label>
+      <label htmlFor={id} className="a11yHidden">
+        {label}
+      </label>
       <input
         className={styles.input}
         type={type}
@@ -19,19 +22,35 @@ function RegistInput({ type, name, label, placeholder, defaultValue, onChange, o
         defaultValue={defaultValue}
         onChange={onChange}
         onBlur={onBlur}
+        ref={ref}
         // required
       />
+      <div className={styles.user__input__buttons}>{children}</div>
     </div>
   );
 }
+const RegistInputRef = forwardRef(RegistInput);
 
-RegistInput.propTypes = {
-  label: string.isRequired,
-  type: oneOf(['text', 'password', 'number', 'email']),
-  name: string,
-  id: string,
-  placeholder: string.isRequired,
-  defaultValue : string,
+RegistInput.defaultProps = {
+  label: "",
+  type: null,
+  name: "",
+  placeholder: "",
+  defaultValue: "",
+  onChange: null,
+  onBlur: null,
+  children: null,
 };
 
-export default RegistInput;
+RegistInput.propTypes = {
+  label: string,
+  type: oneOf(["text", "password", "number", "email"]),
+  name: string,
+  placeholder: string,
+  defaultValue: string,
+  onChange: func,
+  onBlur: func,
+  children: node,
+};
+
+export default RegistInputRef;

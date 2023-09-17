@@ -34,10 +34,16 @@
   font-size: 1.167rem;
   text-align: left;
 
-   &.isred {
+  &.isidempty,
+  &.ispwempty {
     color: var(--brand-red-1);
-   }
+  }
 }
+
+
+
+
+
 
 .agree__title {
 display: flex;
