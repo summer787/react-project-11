@@ -1,16 +1,12 @@
 import UserTitle from "@/components/User/UserTitle";
 import pb from "@/api/pocketbase";
-
 import {UsernameReg, PasswordReg} from "@/utils/validation";
 
 import { ClientResponseError } from "pocketbase";
 
 import { useState } from "react";
-
 import { useNavigate } from 'react-router-dom';
-
 import RegistInput from "@/components/Regist/RegistInput";
-
 import styles from "./TvingRegist.module.css";
 
 
@@ -32,14 +28,32 @@ function TvingRegist() {
   });
 
 
+ 
+const handleBlur = (event) => {
+  const inputName = event.target.name;
+
+  console.log(inputName);
+
+  const inputValue = formState[inputName];
+
+  console.log(inputValue);
+
+  if (!inputValue) { // 입력 필드가 비어있는 경우
+    setErrorInfo(currentState => ({
+      ...currentState,
+      [inputName]: '입력한 내용이 없어요.',
+      
+    }));
+  }
+};
 
 
   const handleRegist = async (e) => {
     e.preventDefault();
 
-
     const { username, password, passwordConfirm } = formState;
 
+      //아이디 비밀번호 유효성 검사 
     if (!UsernameReg(username)) {
       alert('다시 확인해보세요');
       return;
@@ -53,6 +67,11 @@ function TvingRegist() {
       alert('비밀번호가 서로 맞지 않아여');
       return;
     }
+
+    
+
+
+
 
 
     // PocketBase SDK 인증 요청
@@ -72,7 +91,26 @@ function TvingRegist() {
       ...formState,
       [name]: value,
     });
+
+      
+
+
+
+
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -92,9 +130,12 @@ function TvingRegist() {
           placeholder="아이디"
           defaultValue={formState.username}
           onChange={handleInput}
+          onBlur={handleBlur}
         
         />
         <p className={styles.regist__info}>{errorInfo.username}</p>
+        
+        
 
 
         <RegistInput
@@ -104,6 +145,7 @@ function TvingRegist() {
           placeholder="비밀번호"
           defaultValue={formState.password}
           onChange={handleInput}
+          onBlur={handleBlur}
         />
 
         <RegistInput
@@ -113,9 +155,10 @@ function TvingRegist() {
           placeholder="비밀번호 확인"
           defaultValue={formState.passwordConfirm}
           onChange={handleInput}
+          onBlur={handleBlur}
         />
          <p className={styles.regist__info}>{errorInfo.passwordConfirm}</p>
-
+        
 
         <RegistInput
           type="email"

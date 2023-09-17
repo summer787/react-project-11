@@ -34,7 +34,12 @@
   font-size: 1.167rem;
   text-align: left;
 
+   & error {
+    color: var(----brand-red-1);
+   }
 }
+
+
 
 .agree__title {
 display: flex;
