@@ -1,9 +1,10 @@
-.rounded__checkbox__wrapper {
+.nofilled__checkbox__wrapper {
   position: relative;
-  padding: 1rem 0;
+  margin-top: 0.67rem;
+
 }
 
-.rounded__checkbox {
+.nofilled__checkbox {
   appearance: none;
   position: absolute;
   width: 1.5rem;
@@ -12,12 +13,14 @@
   bottom: 0.9rem;
 }
 
-.rounded__checkbox__label {
-  font: var(--heading-large);
+.nofilled__checkbox__label {
+
+  min-height: 1.67rem;
+  font-size:  var(--label-medium);
   color: var(--gray-500);
   display: flex;
   align-items: center;
-
+  cursor: pointer;
   &.checked {
     color: var(--white);
   }
