@@ -7,9 +7,8 @@ import debounce from '@/utils/debounce';
 import RegistInput from "@/components/Regist/RegistInput";
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import CheckboxNoFilled from "@/components/Regist/CheckboxNoFilled";
+import UserButton from "@/components/User/UserButton";
 import styles from "./TvingRegist.module.css";
-
-
 
 
 
@@ -31,6 +30,10 @@ function TvingRegist() {
     passwordConfirm: "영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15 자리",
   });
 
+  const [isValidated, setIsValidated] = useState(false);
+
+  const [isred, setIsred] = useState(false);
+
   const handleBlur = (event) => {
     const inputName = event.target.name;
 
@@ -41,11 +44,12 @@ function TvingRegist() {
     console.log(inputValue);
 
     if (!inputValue) {
-      // 입력 필드가 비어있는 경우
       setErrorInfo((currentState) => ({
         ...currentState,
         [inputName]: "입력한 내용이 없어요.",
       }));
+
+      setIsred(true);
     }
   };
 
@@ -57,24 +61,33 @@ function TvingRegist() {
     //아이디 비밀번호 유효성 검사
     if (!UsernameReg(username)) {
       alert("다시 확인해보세요");
+      setIsValidated(false);
       return;
     }
 
     if (!PasswordReg(password)) {
       alert("비밀번호를 다시 만들어보세여");
+      setIsValidated(false);
       return;
     }
     if (password !== passwordConfirm) {
       alert("비밀번호가 서로 맞지 않아여");
+      setIsValidated(false);
       return;
     }
+    setIsValidated(true);
 
+    try {
     // PocketBase SDK 인증 요청
     await pb.collection("users").create({
       ...formState,
       emailVisibility: true,
     });
-  };
+  } catch (error) {
+    console.error(error); // 에러 로깅
+    alert('회원가입 중 오류가 발생했습니다.'); // 사용자에게 에러 상황 알림
+  }
+};
 
   const handleInput = debounce((e) => {
     const { name, value } = e.target;
@@ -82,6 +95,14 @@ function TvingRegist() {
       ...formState,
       [name]: value,
     });
+
+
+
+
+
+
+    
+
   });
 
 
@@ -105,7 +126,7 @@ function TvingRegist() {
           onChange={handleInput}
           onBlur={handleBlur}
         />
-        <p className={styles.regist__info}>{errorInfo.username}</p>
+        <p className={`${styles.regist__info} ${isred && styles.isred}`}>{errorInfo.username}</p>
 
         <RegistInput
           type="password"
@@ -126,7 +147,7 @@ function TvingRegist() {
           onChange={handleInput}
           onBlur={handleBlur}
         />
-        <p className={styles.regist__info}>{errorInfo.passwordConfirm}</p>
+        <p className={`${styles.regist__info} ${isred && styles.isred}`}>{errorInfo.passwordConfirm}</p>
 
         <RegistInput
           type="email"
@@ -162,10 +183,8 @@ function TvingRegist() {
         </li>
       </ul>
 
+      <button type="submit" >가입하기</button>
 
-
-
-        <button type="submit">가입하기</button>
       </form>
     </div>
   );

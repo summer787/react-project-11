@@ -1,7 +1,7 @@
 import { string } from 'prop-types';
 import { useState, useId } from 'react';
 import style from './CheckboxNoFilled.module.css';
-
+// 아이디 라벨이랑 연결하기기
 function CheckboxNoFilled({ label }) {
   const [isChecked, setIsChecked] = useState(false);
 

@@ -34,8 +34,8 @@
   font-size: 1.167rem;
   text-align: left;
 
-   & error {
-    color: var(----brand-red-1);
+   &.isred {
+    color: var(--brand-red-1);
    }
 }
 
@@ -49,12 +49,3 @@ cursor: pointer;
 font-weight: 500;
 }
 
-.agree__list{
-
-}
-
-.agree__item{
-  min-height: 1.67rem;
-  font-size: 1.167rem;
-  color: #6e6e6e;
-}

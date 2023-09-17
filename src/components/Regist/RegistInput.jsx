@@ -19,6 +19,7 @@ function RegistInput({ type, name, label, placeholder, defaultValue, onChange, o
         defaultValue={defaultValue}
         onChange={onChange}
         onBlur={onBlur}
+        // required
       />
     </div>
   );
