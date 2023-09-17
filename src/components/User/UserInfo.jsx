@@ -1,9 +1,9 @@
-import { shape, string } from 'prop-types';
+import { string } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import style from './UserInfo.module.css';
 
-function UserInfo({ userInfo }) {
-  const { text, linkpath, linktext, styleClass } = userInfo;
+function UserInfo({ text, linkpath, linktext, styleClass }) {
+  // const { text, linkpath, linktext, styleClass } = userInfo;
 
   return (
     <div className={`${style.user__info} ${style[styleClass]}`}>
@@ -16,16 +16,17 @@ function UserInfo({ userInfo }) {
 }
 
 UserInfo.defaultProps = {
-  userInfo: null,
+  text: '',
+  linkpath: '',
+  linktext: '',
+  styleClass: '',
 };
 
 UserInfo.propTypes = {
-  userInfo: shape({
-    text: string.isRequired,
-    linkpath: string.isRequired,
-    linktext: string.isRequired,
-    styleClass: string.isRequired,
-  }),
+  text: string,
+  linkpath: string,
+  linktext: string,
+  styleClass: string,
 };
 
 export default UserInfo;

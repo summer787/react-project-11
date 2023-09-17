@@ -11,13 +11,6 @@ function CheckboxRounded({ label }) {
 
   return (
     <div className={style.rounded__checkbox__wrapper}>
-      <input
-        type='checkbox'
-        name='rounded__checkbox'
-        id='rounded__checkbox'
-        className={style.rounded__checkbox}
-        onChange={handleCheck}
-      />
       <label
         htmlFor='rounded__checkbox'
         className={`${style.rounded__checkbox__label} ${
@@ -25,6 +18,13 @@ function CheckboxRounded({ label }) {
         }`}
         onChange={handleCheck}
       >
+        <input
+          type='checkbox'
+          name='rounded__checkbox'
+          id='rounded__checkbox'
+          className={style.rounded__checkbox}
+          onChange={handleCheck}
+        />
         {label}
       </label>
     </div>

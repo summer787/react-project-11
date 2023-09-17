@@ -15,7 +15,7 @@ function UserButton({ type, text, isActive, isRed }) {
   return (
     <button
       type={type ? 'submit' : 'button'}
-      className={style[className]}
+      className={`${style[className]} ${style.UserButton}`}
       disabled={!isActive}
     >
       {text}
