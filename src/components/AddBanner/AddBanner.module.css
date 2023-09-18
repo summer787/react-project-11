@@ -1,0 +1,15 @@
+.addBanner {
+  width: calc(100% - 7rem);
+  padding: 1.5rem 3.5rem;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  & img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+  }
+}

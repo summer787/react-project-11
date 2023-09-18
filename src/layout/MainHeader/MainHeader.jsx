@@ -55,6 +55,7 @@ function MainHeader() {
       {/* {searchClicked && <Search />} */}
       <Search
         isOpen={searchClicked}
+        // isOpenSet={setSearchClicked}
         onRequestClose={() => setSearchClicked(false)}
       />
     </>

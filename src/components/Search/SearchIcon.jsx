@@ -16,12 +16,16 @@ function Search({ searchClicked, setSearchClicked }) {
   useEffect(() => {
     if (searchClicked) {
       const scrollbarWidth = getScrollbarWidth();
-      document.querySelector(
-        `.${styles.menu}`
-      ).style.paddingRight = `${scrollbarWidth}px`;
+      const menuElement = document.querySelector(`.${styles.menu}`);
+      if (menuElement) {
+        menuElement.style.paddingRight = `${scrollbarWidth}px`;
+      }
     }
     return () => {
-      document.querySelector(`.${styles.menu}`).style.paddingRight = "0px";
+      const menuElement = document.querySelector(`.${styles.menu}`);
+      if (menuElement) {
+        menuElement.style.paddingRight = "0px";
+      }
     };
   }, [searchClicked]);
 

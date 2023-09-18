@@ -48,6 +48,11 @@ function MainCarousel() {
 
   const handleAction = (direction) => (e) => {
     if (e.key === "Enter" || e.type === "mousedown") slide(direction);
+    if (e.type === "mousedown") {
+      setTimeout(() => {
+        e.target.blur();
+      }, 300);
+    }
   };
 
   useEffect(() => {

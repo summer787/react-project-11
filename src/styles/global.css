@@ -84,21 +84,24 @@ legend {
   width: auto;
   display: flex;
   align-items: center;
-}
-#MaincarouselPagination .swiper-pagination-bullet {
-  background: var(--white);
-  opacity: 0.3;
-  width: 0.75rem;
-  height: 0.75rem;
-  margin: 0 0.375rem;
-}
-#MaincarouselPagination .swiper-pagination-bullet:focus,
-#MaincarouselPagination .swiper-pagination-bullet:hover {
-  opacity: 1;
-}
-#MaincarouselPagination .swiper-pagination-bullet-active {
-  background: var(--white);
-  opacity: 1;
+
+  & .swiper-pagination-bullet {
+    background: var(--white);
+    opacity: 0.3;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin: 0 0.375rem;
+
+    &:focus,
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  & .swiper-pagination-bullet-active {
+    background: var(--white);
+    opacity: 1;
+  }
 }
 
 #carouselControll {

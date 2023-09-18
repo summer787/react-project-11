@@ -13,6 +13,7 @@ const Live = lazy(() => import("./pages/Live"));
 const Tv = lazy(() => import("./pages/Tv"));
 const Movie = lazy(() => import("./pages/Movie"));
 const Paramount = lazy(() => import("./pages/Paramount"));
+const SearchResult = lazy(() => import("./pages/SearchResult"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="tv" element={<Tv />} />
       <Route path="movie" element={<Movie />} />
       <Route path="paramount" element={<Paramount />} />
+      <Route path="search/:searchResult" element={<SearchResult />} />
     </Route>
   )
 );
