@@ -13,6 +13,7 @@ import PasswordVisibleButton from "@/components/User/PasswordVisibleButton";
 import styles from "./TvingRegist.module.css";
 
 function TvingRegist() {
+
   const navigate = useNavigate();
 
   // console.log(pb)
@@ -24,6 +25,9 @@ function TvingRegist() {
     email: "",
   });
 
+
+
+  // 비밀번호 타입버튼 클리어 버튼 상태
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
   const [activeIdClear, setActiveIdClear] = useState(false);
@@ -36,74 +40,115 @@ function TvingRegist() {
   const confirmInputRef = useRef(null);
   const emailInputRef = useRef(null);
 
-  const [errorInfo, setErrorInfo] = useState({
-    username: "영문 소문자 또는 영문 소문자, 숫자 조합 6~12 자리",
-    passwordConfirm: "영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15 자리",
-  });
+  //  input 값 안내 문구 상태
+  const[usernameInfo, setUsernameInfo] = useState("영문 소문자 또는 영문 소문자, 숫자 조합 6~12자리")
+  const[passwordInfo, setPasswordInfo] = useState('')
+  const[pwconfirmInfo, setPwconfirmInfo] = useState("영문, 문자, 특수문자(~!@#$%^&*)조합 8~15 자리")
+
+  //안내 문구 색상 변화 위한 상태
+  const [usernameIsred, setUsernameIsred] = useState(false);
+  const [passwordIsred, setPasswordIsred] = useState(false);
+  const [pwConfirmIsred, setPwConfirmIsred] = useState(false);
+
 
   const [isValidated, setIsValidated] = useState(false);
 
-  const [isidempty, setIsidempty] = useState(false);
-  const [ispwempty, setIspwempty] = useState(false);
 
-  const handleBlur = (event) => {
-    const inputName = event.target.name;
 
-    console.log(inputName);
+ //입력한 값이 없을 때 onBlur함수 
+  const handleBlur = (name) => {
+    const { username,  passwordConfirm } = formState;
 
-    const inputValue = formState[inputName];
+  if (name === "username" && username === "") {
+    setUsernameInfo("입력한 값이 없어요");
+    setUsernameIsred(true);
+  }
 
-    console.log(inputValue);
+  if (name === "passwordConfirm" && passwordConfirm === "") {
+    setPwconfirmInfo("입력한 값이 없어요");
+    setPwConfirmIsred(true);
+  }
+}
 
-    if (!inputValue) {
-      setErrorInfo((currentState) => ({
-        ...currentState,
-        [inputName]: "입력한 내용이 없어요.",
-      }));
+  
+// 유효성 검사 함수
+  const handleValidate = (name, value) => {
 
-      if (inputName === "username") {
-        setIsidempty(true);
-      } else if (inputName === "passwordConfirm") {
-        setIspwempty(true);
-      }
+    const {password} = formState;
+    
+    //username 유효성 검사 실패
+    if (name === "username" && !UsernameReg(value)) {
+      setUsernameInfo("영문 소문자 또는 영문소문자, 숫자 조합 6~12 자리로 입력해주세요");
+      setUsernameIsred(true);
+      return;
     }
-  };
+
+    //username 유효성 검사 통과
+    if (name === "username" && UsernameReg(value)) {
+      setUsernameInfo("영문 소문자 또는 영문 소문자, 숫자 조합 6~12자리");
+      setUsernameIsred(false);
+      return;
+    }
+
+    // password 유효성 검사 실패
+  if (name === "password" && !PasswordReg(value)) {
+    setPasswordInfo("영문, 숫자, 특수문자 (~!@#$%^&*) 조합 8~15 자리 로 입력해주세요.");
+    setPasswordIsred(true);
+    return;
+  }
+
+    // password 유효성 검사 성공
+   if (name === "password" && PasswordReg(value)) {
+    setPasswordInfo(""); 
+    setPasswordIsred(false);
+    return;
+   }
+  
+   //비밀번호 값이 서로 다를 때 
+   if (name === "passwordConfirm" && password !== value) {
+     setPwconfirmInfo("일치하지 않습니다. 다시 입력해주세요.");
+     setPwConfirmIsred(true);
+     return;
+   }
+
+//비밀번호 값이 같을 때 
+   if (name === "passwordConfirm" && password === value) {
+     setPwconfirmInfo(""); 
+     setPwConfirmIsred(false);
+   }
+}
+  
+  
+
+  
 
   const handleRegist = async (e) => {
     e.preventDefault();
 
-    const { username, password, passwordConfirm } = formState;
 
-    //아이디 비밀번호 유효성 검사
-    if (!UsernameReg(username)) {
-      alert("다시 확인해보세요");
-      setIsValidated(false);
-      return;
-    }
 
-    if (!PasswordReg(password)) {
-      alert("비밀번호를 다시 만들어보세여");
-      setIsValidated(false);
-      return;
-    }
-    if (password !== passwordConfirm) {
-      alert("비밀번호가 서로 맞지 않아여");
-      setIsValidated(false);
-      return;
-    }
-    setIsValidated(true);
+    
+    
 
-    try {
-      // PocketBase SDK 인증 요청
+
+   
+      // PocketBase SDK 요청
       await pb.collection("users").create({
         ...formState,
         emailVisibility: true,
       });
-    } catch (error) {
-      console.error(error); // 에러 로깅
-      alert("회원가입 중 오류가 발생했습니다."); // 사용자에게 에러 상황 알림
-    }
+    
+  
   };
+
+
+
+
+
+
+
+
+
 
   const activeClearButton = (name, value) => {
     // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
@@ -129,9 +174,11 @@ function TvingRegist() {
       }
     }
   };
-
-
   
+ 
+
+
+
 
 
 
@@ -144,7 +191,17 @@ function TvingRegist() {
       [name]: value,
     });
 
-    activeClearButton(name, value);
+
+ 
+
+  activeClearButton(name, value);
+
+  handleValidate(name, value);
+  handleBlur(name)
+
+
+
+
   });
 
   // input 값 초기화
@@ -179,6 +236,12 @@ function TvingRegist() {
     }
   };
 
+
+
+
+
+
+
   return (
     <div>
       <UserTitle title="티빙 회원가입" />
@@ -194,7 +257,7 @@ function TvingRegist() {
           placeholder="아이디"
           defaultValue={formState.username}
           onChange={handleInput}
-          onBlur={handleBlur}
+          onBlur={() => handleBlur('username')}
           ref={idInputRef}
         >
           {activeIdClear && (
@@ -202,8 +265,9 @@ function TvingRegist() {
           )}
         </RegistInput>
 
-        <p className={`${styles.regist__info} ${isidempty && styles.isidempty}`}>
-          {errorInfo.username}
+        
+         <p className={`${styles.regist__info} ${usernameIsred && styles.isred}`}>
+          {usernameInfo}
         </p>
 
         <RegistInput
@@ -213,7 +277,6 @@ function TvingRegist() {
           placeholder="비밀번호"
           defaultValue={formState.password}
           onChange={handleInput}
-          onBlur={handleBlur}
           ref={passwordInputRef}
         >
           {activePasswordClear && (
@@ -224,6 +287,9 @@ function TvingRegist() {
             onClick={() => handlePasswordVisibility("password")}
           />
         </RegistInput>
+       <p className={`${styles.regist__info} ${passwordIsred && styles.isred}`}>
+       {passwordInfo}
+        </p>
 
         <RegistInput
           type={isConfirmVisible ? "text" : "password"}
@@ -232,7 +298,7 @@ function TvingRegist() {
           placeholder="비밀번호 확인"
           defaultValue={formState.passwordConfirm}
           onChange={handleInput}
-          onBlur={handleBlur}
+          onBlur={() => handleBlur('passwordConfirm')}
           ref={confirmInputRef}
         >
           {activeConfirmClear && (
@@ -246,8 +312,10 @@ function TvingRegist() {
           />
         </RegistInput>
 
-        <p className={`${styles.regist__info} ${ispwempty && styles.ispwempty}`}>
-          {errorInfo.passwordConfirm}
+            
+       
+        <p className={`${styles.regist__info} ${pwConfirmIsred && styles.isred}`}>
+          {pwconfirmInfo}
         </p>
 
         <RegistInput
@@ -263,7 +331,7 @@ function TvingRegist() {
             <InputClearButton onClick={() => handleClearInput("email")} />
           )}
         </RegistInput>
-
+     
         <ul>
           <li className={styles.agree__title}>
             <CheckboxRounded label="필수 및 선택 항목을 모두 포함하여 동의합니다." />
@@ -293,6 +361,6 @@ function TvingRegist() {
       </form>
     </div>
   );
-}
+          }
 
 export default TvingRegist;
