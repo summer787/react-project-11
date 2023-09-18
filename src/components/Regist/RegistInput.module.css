@@ -3,6 +3,7 @@
   position:relative;
 display: flex;
 flex-direction: column;
+margin-bottom: 1rem;
 }
 
 .input {
@@ -16,11 +17,13 @@ flex-direction: column;
   border-color:var(--brand-dark-bg-2);
   font-weight: 300;
   font-size: 1.5rem;
-  /* 수정 */
   text-indent: 1.333rem;
   color:var(--white);
-  margin-bottom: 1rem;
   
+  &::placeholder {
+    color:var(--gray-600);
+}
+
 
 }
 

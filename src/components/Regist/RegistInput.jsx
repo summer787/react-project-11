@@ -23,7 +23,6 @@ function RegistInput(
         onChange={onChange}
         onBlur={onBlur}
         ref={ref}
-        // required
       />
       <div className={styles.user__input__buttons}>{children}</div>
     </div>
