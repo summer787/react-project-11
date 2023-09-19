@@ -36,8 +36,8 @@ function VideoPlayer(){
 
 
 if(data) {
-    const seasonDescriptionArray = data.seasonDescription.시즌1;
-    const seasonReleaseArray = data.seasonRelease.시즌1;
+    const seasonDescriptionArray = data.seasonDescription['시즌1'];
+    const seasonReleaseArray = data.seasonRelease['시즌1'];
     console.log(data)
     return(
        
