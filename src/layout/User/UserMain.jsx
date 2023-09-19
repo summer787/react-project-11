@@ -4,7 +4,7 @@ import style from './UserMain.module.css';
 function UserMain({ children }) {
   return (
     <main className={`${style.user__main}`}>
-      <section style={{ color: 'white' }}>{children}</section>
+      <article style={{ color: 'white' }}>{children}</article>
     </main>
   );
 }

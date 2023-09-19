@@ -9,6 +9,7 @@ function UserInput(
     label,
     defaultValue,
     autoComplete,
+    styleClass,
     onChange = null,
     children,
   },
@@ -32,7 +33,9 @@ function UserInput(
           ref={ref}
         />
       </label>
-      <div className={style.user__input__buttons}>{children}</div>
+      <div className={`${style.user__input__buttons} ${style[styleClass]}`}>
+        {children}
+      </div>
     </div>
   );
 }
@@ -43,6 +46,7 @@ UserInput.defaultProps = {
   type: 'text',
   defaultValue: null,
   autoComplete: 'on',
+  styleClass: '',
   onChange: null,
   children: null,
 };
@@ -53,6 +57,7 @@ UserInput.propTypes = {
   label: string.isRequired,
   defaultValue: string,
   autoComplete: string,
+  styleClass: string,
   onChange: func,
   children: node,
 };

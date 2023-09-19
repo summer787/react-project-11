@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { lazy } from 'react';
 import Account from './pages/Account/Account';
+import FindUserId from './pages/User/FindUserId';
 
 const LandingRoute = lazy(() => import('./components/Routes/LandingRoute'));
 const PrivateRoute = lazy(() => import('./components/Routes/PrivateRoute'));
@@ -25,7 +26,7 @@ const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path='/*' element={<LandingRoute />} />
+      <Route path='/' element={<LandingRoute />} />
 
       <Route element={<PrivateRoute />}>
         <Route element={<Rootlayout />}>
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
           <Route path='tv' element={<Tv />} />
           <Route path='movie' element={<Movie />} />
           <Route path='paramount' element={<Paramount />} />
+          <Route path='search/:searchResult' element={<SearchResult />} />
         </Route>
       </Route>
 
@@ -41,6 +43,7 @@ const router = createBrowserRouter(
       <Route element={<UserLayout />}>
         <Route path='user/tvingLogin' element={<TvingLogin />} />
         <Route path='user/tvingRegist' element={<TvingRegist />} />
+        <Route path='user/findId' element={<FindUserId />} />
       </Route>
     </>
   )

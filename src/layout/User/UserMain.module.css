@@ -3,7 +3,7 @@
   width: calc(100% - 7.776rem);
   /* background: wheat; */
 
-  & section {
+  & article {
     margin: 0 auto;
     max-width: 41.667rem;
     height: 100%;
