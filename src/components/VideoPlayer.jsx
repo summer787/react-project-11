@@ -19,25 +19,37 @@ function VideoPlayer(){
     const [selectedEpisode, setSelectedEpisode] = useState(0);
     const [episodeIndices, setEpisodeIndices] = useState([]);
     const [selectedButton, setSelectedButton] = useState("first"); // 추가: 선택된 버튼
-
+    const [descriptionArray, setDescriptionArray] =useState();
+    const [releaseArray, setReleaseArray] =useState();
 
     useEffect(()=>{
         async function getTv(){
             try {
                 const record = await pb.collection('tv').getOne(id, {expand: 'tag'}, {expand: 'seasonDescription'});
                 setData(record);
-                setEpisodeIndices(Array.from({length: record.thumbnailSeason1.length}, (_, i) => i));
+                
+                // Check if the record exists and has the necessary properties
+                if (record && record.seasonDescription && record.seasonRelease) {
+                    setDescriptionArray(record.seasonDescription['시즌1']);
+                    setReleaseArray(record.seasonRelease['시즌1']);
+                    
+                    let indices = Array.from({length: record.thumbnailSeason1.length}, (_, i) => i);
+    
+                    if(selectedButton === 'new'){
+                        indices = [...indices].reverse();
+                    }
+                    
+                    setEpisodeIndices(indices);
+                }
             } catch (error) {
                 throw new Error(error)
             }
         }
         getTv()
-    },[id])
+    },[id, selectedButton]) 
 
 
 if(data) {
-    const seasonDescriptionArray = data.seasonDescription['시즌1'];
-    const seasonReleaseArray = data.seasonRelease['시즌1'];
     console.log(data)
     return(
        
@@ -155,18 +167,19 @@ if(data) {
                     
                     <div className={sub.itemInformation}>
                         <h2 className={sub.itemTitle}>{`${[index+1]}. 소용없어 거짓말 ${index + 1}화`}</h2> 
-                        {data && seasonDescriptionArray && (
+                        {data && descriptionArray && (
                             <p className={sub.itemDescription}>
-                            {seasonDescriptionArray[index]}
+                            {descriptionArray[index]}
                             </p>
                         )}
-                        {data&& seasonReleaseArray &&(
-                            <p className={sub.itemSubInformation}>{seasonReleaseArray[index]}</p>
+                        {data&& releaseArray &&(
+                            <p className={sub.itemSubInformation}>{releaseArray[index]}</p>
                         )}
                     </div>
                 </div>
               </SwiperSlide>
-            ))
+            )
+            )
             
             }
                 
