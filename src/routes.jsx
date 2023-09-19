@@ -7,11 +7,10 @@ import {
 } from 'react-router-dom';
 import { lazy } from 'react';
 
-import PrivateRoute from './components/Routes/PrivateRoute';
-// import LandingRoute from './components/Routes/LandingRoute';
+const LandingRoute = lazy(() => import('./components/Routes/LandingRoute'));
+const PrivateRoute = lazy(() => import('./components/Routes/PrivateRoute'));
 
 const Rootlayout = lazy(() => import('./layout/Rootlayout'));
-const Account = lazy(() => import('./pages/Account/Account'));
 const Home = lazy(() => import('./pages/Home'));
 const Live = lazy(() => import('./pages/Live'));
 const Tv = lazy(() => import('./pages/Tv'));
@@ -25,7 +24,7 @@ const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path='/' element={<Account />} />
+      <Route path='/' element={<LandingRoute />} />
 
       <Route element={<PrivateRoute />}>
         <Route element={<Rootlayout />}>

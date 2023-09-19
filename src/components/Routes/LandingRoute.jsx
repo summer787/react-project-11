@@ -1,12 +1,13 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import useStorage from '../../hooks/useStorage';
+import Home from '@/pages/Home';
+import Account from '@/pages/Account/Account';
+import useStorage from '@/hooks/useStorage';
+import { useAuth } from '@/components/contexts/AuthContext';
 
-function LandingRoute({ login, logout }) {
+function LandingRoute() {
   const { isAuth } = useAuth();
   const { storageData } = useStorage('pocketbase_auth');
 
-  return isAuth || storageData ? login : logout;
+  return isAuth || storageData ? <Home /> : <Account />;
 }
 
 export default LandingRoute;
