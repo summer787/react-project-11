@@ -1,12 +1,13 @@
 import { string } from 'prop-types';
 import { useState} from 'react';
 import style from './CheckboxNoFilled.module.css';
-// 아이디 라벨이랑 연결하기기
-function CheckboxNoFilled({ label }) {
+
+function CheckboxNoFilled({ label, checked, onChange }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
+    onChange()
   };
 
   return (
@@ -17,6 +18,7 @@ function CheckboxNoFilled({ label }) {
         id=  {label}
         className={style.nofilled__checkbox}
         onChange={handleCheck}
+        checked={checked}
       />
       <label
         htmlFor={label}
@@ -26,6 +28,7 @@ function CheckboxNoFilled({ label }) {
           isChecked && style.checked
         }`}
         onChange={handleCheck}
+       
       >
         {label}
 

@@ -60,7 +60,8 @@ const [requiredInfo, setRequiredInfo] = useState(false);
 const [optionalInfo, setOptionalInfo] = useState(false);
 const [marketingInfo, setMarketingInfo] = useState(false);
 
-
+// 버튼 활성화
+const [isActive, setIsActive] = useState(false);
 
   // 입력한 값이 없을 때 onBlur함수
   const handleBlur = (name) => {
@@ -192,7 +193,17 @@ const [marketingInfo, setMarketingInfo] = useState(false);
   }, [ageAgree,requiredService, requiredInfo,optionalInfo,marketingInfo])
 
 
-  
+  // 버튼 활성화
+  useEffect(() => {
+    if (usernameIsred === false && passwordIsred === false && pwConfirmIsred === false 
+        && ageAgree && requiredService && requiredInfo) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [usernameIsred, passwordIsred, pwConfirmIsred, ageAgree, requiredService, requiredInfo]);
+
+
 
   const handleRegist = async (e) => {
     e.preventDefault();
@@ -397,7 +408,7 @@ const [marketingInfo, setMarketingInfo] = useState(false);
           </li>
         </ul>
 
-        <UserButton type="submit" text="가입하기" isActive isRed />
+        <UserButton type="submit" text="가입하기" isActive={isActive}  isRed />
       </form>
     </div>
   );
