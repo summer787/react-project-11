@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import UserMain from './UserMain';
 import UserHeader from '../UserHeader/UserHeader';
 
-function User() {
+function UserLayout() {
   return (
     <>
       {/* 헤더 */}
@@ -15,4 +15,4 @@ function User() {
   );
 }
 
-export default User;
+export default UserLayout;

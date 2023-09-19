@@ -1,8 +1,18 @@
 import ReactModal from 'react-modal';
 import { bool, string } from 'prop-types';
+import { useEffect } from 'react';
 import style from './Spinner.module.css';
 
 function Spinner({ message = '로딩 중 입니다.', isOpen = false }) {
+  useEffect(() => {
+    // 컴포넌트가 마운트되면 body의 overflow를 hidden으로 설정하여 스크롤 제거
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      // 컴포넌트가 언마운트되면 body의 overflow를 원래대로 되돌림(스크롤 복구)
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
   return (
     <ReactModal
       isOpen={isOpen}
@@ -61,11 +71,12 @@ function Spinner({ message = '로딩 중 입니다.', isOpen = false }) {
 
 Spinner.defaultProps = {
   message: '로딩중 입니다.',
+  isOpen: false,
 };
 
 Spinner.propTypes = {
   message: string,
-  isOpen: bool.isRequired,
+  isOpen: bool,
 };
 
 export default Spinner;

@@ -7,6 +7,9 @@ import {
 } from 'react-router-dom';
 import { lazy } from 'react';
 
+import PrivateRoute from './components/Routes/PrivateRoute';
+// import LandingRoute from './components/Routes/LandingRoute';
+
 const Rootlayout = lazy(() => import('./layout/Rootlayout'));
 const Account = lazy(() => import('./pages/Account/Account'));
 const Home = lazy(() => import('./pages/Home'));
@@ -15,24 +18,30 @@ const Tv = lazy(() => import('./pages/Tv'));
 const Movie = lazy(() => import('./pages/Movie'));
 const Paramount = lazy(() => import('./pages/Paramount'));
 
-const User = lazy(() => import('./layout/User/User'));
+const UserLayout = lazy(() => import('./layout/User/UserLayout'));
 const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
 const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Rootlayout />}>
+    <>
       <Route path='/' element={<Account />} />
-      <Route path='home' element={<Home />} />
-      <Route path='live' element={<Live />} />
-      <Route path='tv' element={<Tv />} />
-      <Route path='movie' element={<Movie />} />
-      <Route path='paramount' element={<Paramount />} />
-      <Route path='user' element={<User />}>
-        <Route path='tvingLogin' element={<TvingLogin />} />
-        <Route path='tvingRegist' element={<TvingRegist />} />
+
+      <Route element={<PrivateRoute />}>
+        <Route element={<Rootlayout />}>
+          <Route path='home' element={<Home />} />
+          <Route path='live' element={<Live />} />
+          <Route path='tv' element={<Tv />} />
+          <Route path='movie' element={<Movie />} />
+          <Route path='paramount' element={<Paramount />} />
+        </Route>
       </Route>
-    </Route>
+
+      <Route element={<UserLayout />}>
+        <Route path='user/tvingLogin' element={<TvingLogin />} />
+        <Route path='user/tvingRegist' element={<TvingRegist />} />
+      </Route>
+    </>
   )
 );
 
