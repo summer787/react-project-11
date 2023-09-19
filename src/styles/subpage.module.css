@@ -275,12 +275,25 @@ button{
     cursor: pointer; 
     outline: none; 
 }
+.clickOn{
+ color: var(--gray-300);
+}
+
+.clickFirst{
+    color: white;
+}
+
+
 
 .clickNew{
     margin-left: 1.6875rem;
     margin-right: 3rem;
+    
 }
 
+.clickNewBtn{
+    color: white;
+}
 
 .buttonWithEffects {
     position: relative; /* ::before와 ::after가상 요소의 위치 기준 설정 */
@@ -378,7 +391,7 @@ button{
 }
 
 :global(.swiper-scrollbar){
-   margin-top: 80px;
+   margin-top: 300px;
 }
 
 :global(.swiper-scrollbar-drag) {
@@ -432,9 +445,6 @@ button{
     filter: brightness(40%);
 }
 
-.selectedSeasonThumbnailWrap1 img{
-    filter: none;
-}
 
 .seasonThumbnailWrap:hover .itemDescription,
 .seasonThumbnailWrap:hover .itemTitle,

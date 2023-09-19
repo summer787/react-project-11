@@ -12,7 +12,15 @@ import sub from "../styles/subpage.module.css";
 function SubPageTitle (){
     const {id} = useParams()
     const [data, setData] = useState()
-
+    const [showSharePopup, setShowSharePopup] = useState(false);
+    const copyToClipboard = async (text) => {
+        try {
+          await navigator.clipboard.writeText(text);
+          alert("링크가 클립보드에 복사되었습니다.");
+        } catch (err) {
+          alert("클립보드에 복사하지 못했습니다.", err);
+        }
+      };
     useEffect(()=>{
         async function getTv(){
             try {
@@ -65,10 +73,27 @@ if(data) {
                                     <img className={sub.likeIcon} src={likeIcon} alt="Like" />
                                     <span>찜</span>
                                 </button>
-                                <button type='button' className={sub.shareButton}>
+                                <button type='button' className={sub.shareButton} onClick={() => setShowSharePopup(true)} >
                                 <img className={sub.shareIcon} src={shareIcon} alt="Share" />
                                     <span>공유</span>
                                 </button>
+                                <div 
+                                className={sub.sharePopupWrapper} 
+                                onClick={() => setShowSharePopup(false)} // 바깥 부분 클릭 시 팝업 닫기
+                                >
+                                    {showSharePopup && (
+                                        <div className={sub.sharePopup}
+                                        onClick={(e) => e.stopPropagation()} 
+                                        >
+                                            <input type="text" value={`https://www.yourwebsite.com/video/${id}`} readOnly />
+                                            <button 
+                                            onClick={() => copyToClipboard(`https://www.yourwebsite.com/video/${id}`)} 
+                                            >
+                                            </button>
+                                            <button onClick={() => setShowSharePopup(false)}>닫기</button>
+                                        </div>
+                                    )}
+                                </div>
                             </nav>
                             <div className={sub.information}>
                                 <dl className={sub.creator}>

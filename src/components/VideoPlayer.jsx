@@ -17,14 +17,16 @@ function VideoPlayer(){
     const {id} = useParams()
     const [data, setData] = useState()
     const [selectedEpisode, setSelectedEpisode] = useState(0);
-    
-    // const [thumbnailImg, setThumbnailImg] = useState([]);
+    const [episodeIndices, setEpisodeIndices] = useState([]);
+    const [selectedButton, setSelectedButton] = useState("first"); // 추가: 선택된 버튼
+
 
     useEffect(()=>{
         async function getTv(){
             try {
                 const record = await pb.collection('tv').getOne(id, {expand: 'tag'}, {expand: 'seasonDescription'});
-                setData(record)
+                setData(record);
+                setEpisodeIndices(Array.from({length: record.thumbnailSeason1.length}, (_, i) => i));
             } catch (error) {
                 throw new Error(error)
             }
@@ -60,8 +62,17 @@ if(data) {
             </div>
             <div className={sub.orderChoices}>
                 <div className={sub.clickOn}>
-                    <button type="button" className={sub.clickFirst}>첫화부터</button>
-                    <button type="button" className={`${sub.clickNew} ${sub.buttonWithEffects}`}>최신화부터</button>
+                    <button type="button" className={selectedButton === "first" ? sub.clickFirst : sub.clickOn}
+                    onClick={() => {
+                        setEpisodeIndices([...episodeIndices].sort((a,b) => a - b));
+                        setSelectedButton("first");
+                    }}
+                    >첫화부터</button>
+                    <button type="button" className={`${selectedButton === "new" ? sub.clickNewBtn:  sub.clickOn} ${sub.clickNew} ${sub.buttonWithEffects}`}
+                    onClick={() => {
+                        setEpisodeIndices([...episodeIndices].sort((a,b) => b - a));
+                        setSelectedButton("new");
+                    }}>최신화부터</button>
                 </div>
                 <label className={sub.switch} htmlFor="s1">
                     <span className={sub.sliderRound}> 연속재생</span>
@@ -99,20 +110,27 @@ if(data) {
             >    
             {data &&
             data.thumbnailSeason1 &&
-            data.thumbnailSeason1.map((item, index) => (
-            <SwiperSlide key={item}>
-                <div className={sub.seasonThumbnailWrap1}>
+            episodeIndices.map((index) => (
+            <SwiperSlide key={index}>
+                <div className={selectedEpisode === index ? sub.seasonThumbnailWrap1 : sub.seasonThumbnailWrap }
+                onClick={()=>setSelectedEpisode(index)} 
+                onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setSelectedEpisode(index);
+                    }
+                }}
+                tabIndex={0} 
+                >
                     <img
                         className={sub.seasonThumbnail}
                         src={getImageURLThumbnail(data,  index, "thumbnailSeason1")}
                         alt="thumbnail"
                     /> 
-                    {console.log(item)}
                 <button
                     type="button"
-                    className={sub.thumbnailPlayButton}
-                    aria-label="Play"
-                    onClick={()=>setSelectedEpisode(index)}
+                    className={selectedEpisode === index ? sub.thumbnailPlayButton : null}
+                    aria-label="Play" 
                 >
                     {selectedEpisode === index && (
                         <svg
@@ -136,7 +154,7 @@ if(data) {
                 </button>
                     
                     <div className={sub.itemInformation}>
-                        <h2 className={sub.itemTitle}>{`${index + 1}. 소용없어 거짓말 ${index + 1}화`}</h2> 
+                        <h2 className={sub.itemTitle}>{`${[index+1]}. 소용없어 거짓말 ${index + 1}화`}</h2> 
                         {data && seasonDescriptionArray && (
                             <p className={sub.itemDescription}>
                             {seasonDescriptionArray[index]}
