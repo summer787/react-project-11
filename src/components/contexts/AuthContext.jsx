@@ -98,6 +98,5 @@ export const useAuth = () => {
   if (!authValue) {
     throw new Error('useAuth 훅은 AuthProvider 내부에서만 사용할 수 있습니다.');
   }
-
   return authValue;
 };

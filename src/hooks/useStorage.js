@@ -9,7 +9,7 @@ const setData = (key, nextData) => {
   storage.setItem(key, serialize(nextData));
 };
 
-const getData = (key) => {
+export const getData = (key) => {
   const result = deserialize(storage.getItem(key));
   return result;
 };
