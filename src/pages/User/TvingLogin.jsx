@@ -4,6 +4,8 @@ import { useAuth } from '@/components/contexts/AuthContext';
 import debounce from '@/utils/debounce';
 import UserTitle from '@/components/User/UserTitle';
 import UserInput from '@/components/Login/UserInput';
+import InputClearButton from '@/components/User/InputClearButton';
+import PasswordVisibleButton from '@/components/User/PasswordVisibleButton';
 // import InputClearButton from '@/components/Login/InputClearButton';
 // import PasswordVisibleButton from '@/components/Login/PasswordVisibleButton';
 import UserButton from '@/components/User/UserButton';
@@ -115,9 +117,9 @@ function TvingLogin() {
             onChange={handleDebounceInput}
             ref={idInputRef}
           >
-            {/* {activeIdClear && (
+            {activeIdClear && (
               <InputClearButton onClick={() => handleClearInput('id')} />
-            )} */}
+            )}
           </UserInput>
 
           {/* 비밀번호 입력 */}
@@ -130,13 +132,13 @@ function TvingLogin() {
             onChange={handleDebounceInput}
             ref={passwordInputRef}
           >
-            {/* {activePasswordClear && (
+            {activePasswordClear && (
               <InputClearButton onClick={() => handleClearInput('password')} />
-            )} */}
-            {/* <PasswordVisibleButton
+            )}
+            <PasswordVisibleButton
               isPasswordVisible={isPasswordVisible}
               onClick={handlePasswordVisibility}
-            /> */}
+            />
           </UserInput>
 
           {/* 자동로그인 체크 */}
