@@ -2,7 +2,7 @@ import UserTitle from "@/components/User/UserTitle";
 import pb from "@/api/pocketbase";
 import agreementIcon from '@/assets/Regist/agreement_icon_link.svg';
 import { UsernameReg, PasswordReg } from "@/utils/validation";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import debounce from "@/utils/debounce";
 import RegistInput from "@/components/Regist/RegistInput";
@@ -54,13 +54,11 @@ function TvingRegist() {
 
 // 체크 박스 상태 
 const [allChecked, setAllChecked] = useState(false);
-const [checked, setChecked] = useState({
-  ageAgree: false,
-  requiredService: false,
-  requiredPersonalInfo: false,
-  optionalPersonalInfo: false,
-  marketingInfo: false
-});
+const [ageAgree,setAgeAgree] = useState(false);
+const [requiredService, setRequiredService] = useState(false);
+const [requiredInfo, setRequiredInfo] = useState(false);
+const [optionalInfo, setOptionalInfo] = useState(false);
+const [marketingInfo, setMarketingInfo] = useState(false);
 
 
 
@@ -129,20 +127,72 @@ const [checked, setChecked] = useState({
     }
   };
 
-  // 체크 박스 한 번에 전부 선택
+  // 체크 박스 
   const handleAllChecked = () => {
-    setAllChecked(!allChecked);
-    setChecked({
-      ageAgree: !allChecked,
-      requiredService: !allChecked,
-      requiredPersonalInfo: !allChecked,
-      optionalPersonalInfo: !allChecked,
-      marketingInfo: !allChecked
-    });
+    if(allChecked === false) {
+    setAgeAgree(true);
+    setRequiredService(true);
+    setRequiredInfo(true);
+    setOptionalInfo(true);
+    setMarketingInfo(true);
+   }else {
+    setAgeAgree(false);
+    setRequiredService(false);
+    setRequiredInfo(false);
+    setOptionalInfo(false);
+    setMarketingInfo(false);
+   }
   };
+  const handleAgeCheck = () => {
+    if(ageAgree === false) {
+      setAgeAgree(true)
+    }else {
+      setAgeAgree(false)
+    }
+  }
+
+  const handleRequiredServiceCheck = () => {
+    if(requiredService === false) {
+      setRequiredService(true)
+    }else {
+      setRequiredService(false)
+    }
+  }
+
+ const handleRequiredInfoCheck = () => {
+  if(requiredInfo === false) {
+    setRequiredInfo(true)
+  }else {
+    setRequiredInfo(false)
+  }
+ }
+
+  const handleOptionalInfoCheck = () => {
+    if(optionalInfo === false) {
+      setOptionalInfo(true)
+    }else {
+      setOptionalInfo(false)
+    }
+  }
+
+  const handleMarketingInfoCheck = () => {
+    if(marketingInfo === false) {
+      setMarketingInfo(true)
+    }else {
+      setMarketingInfo(false)
+    }
+  }
+
+  useEffect(()=>{
+    if(ageAgree ===true && requiredService===true && requiredInfo===true && optionalInfo===true && marketingInfo===true){
+      setAllChecked(true)
+    } else {
+      setAllChecked(false)
+    }
+  }, [ageAgree,requiredService, requiredInfo,optionalInfo,marketingInfo])
 
 
-
+  
 
   const handleRegist = async (e) => {
     e.preventDefault();
@@ -189,6 +239,9 @@ const [checked, setChecked] = useState({
     activeClearButton(name, value);
 
     handleValidate(name, value);
+
+
+
   });
 
   // input 값 초기화
@@ -324,22 +377,22 @@ const [checked, setChecked] = useState({
 
         <ul className={styles.agree__list}>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="만 14세 이상입니다."  checked={checked.ageAgree}/>
+            <CheckboxNoFilled label="만 14세 이상입니다."  checked={ageAgree} onChange={handleAgeCheck} />
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[필수] 서비스 이용약관 동의" checked={checked.requiredService} />
+            <CheckboxNoFilled label="[필수] 서비스 이용약관 동의" checked={requiredService} onChange={handleRequiredServiceCheck} />
             <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[필수] 개인정보 수집 및 이용 동의"checked={checked.requiredPersonalInfo} />
+            <CheckboxNoFilled label="[필수] 개인정보 수집 및 이용 동의"checked={requiredInfo}  onChange={handleRequiredInfoCheck} />
             <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[선택] 개인정보 수집 및 이용동의" checked={checked.optionalPersonalInfo}/>
+            <CheckboxNoFilled label="[선택] 개인정보 수집 및 이용동의" checked={optionalInfo} onChange={handleOptionalInfoCheck} />
             <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[선택] 마케팅 정보 수신 동의" checked={checked.marketingInfo}/>
+            <CheckboxNoFilled label="[선택] 마케팅 정보 수신 동의" checked={marketingInfo} onChange={handleMarketingInfoCheck}/>
             <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
           </li>
         </ul>
