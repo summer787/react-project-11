@@ -57,8 +57,8 @@ const buttons = [
 
 function AccountButton({ id, text, image, link, isService }) {
   return (
-    <NavLink to={link}>
-      <button type='button' className={styles.account__button} key={id}>
+    <NavLink to={link} key={id}>
+      <button type='button' className={styles.account__button}>
         <div className={styles.button__content}>
           <img src={image} className={styles.icon__image} alt={text} />
         </div>
@@ -90,8 +90,6 @@ function AccountButtonLIst() {
   );
 }
 
-export default AccountButtonLIst;
-
 AccountButton.propTypes = {
   id: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
@@ -99,3 +97,5 @@ AccountButton.propTypes = {
   link: PropTypes.string.isRequired,
   isService: PropTypes.bool.isRequired,
 };
+
+export default AccountButtonLIst;
