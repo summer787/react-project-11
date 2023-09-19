@@ -1,5 +1,5 @@
 import { string } from 'prop-types';
-import { useState} from 'react';
+import { useState } from 'react';
 import style from './CheckboxNoFilled.module.css';
 
 function CheckboxNoFilled({ label, checked, onChange }) {
@@ -15,24 +15,20 @@ function CheckboxNoFilled({ label, checked, onChange }) {
       <input
         type='checkbox'
         name='nofilled__checkbox'
-        id=  {label}
+        id={label}
         className={style.nofilled__checkbox}
         onChange={handleCheck}
         checked={checked}
       />
       <label
         htmlFor={label}
-
-
         className={`${style.nofilled__checkbox__label} ${
-          isChecked && style.checked
+          checked && style.checked
         }`}
         onChange={handleCheck}
        
       >
         {label}
-
-        
       </label>
     </div>
   );

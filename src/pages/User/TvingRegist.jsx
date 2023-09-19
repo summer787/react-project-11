@@ -1,17 +1,17 @@
-import UserTitle from "@/components/User/UserTitle";
-import pb from "@/api/pocketbase";
+import UserTitle from '@/components/User/UserTitle';
+import pb from '@/api/pocketbase';
 import agreementIcon from '@/assets/Regist/agreement_icon_link.svg';
-import { UsernameReg, PasswordReg } from "@/utils/validation";
-import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import debounce from "@/utils/debounce";
-import RegistInput from "@/components/Regist/RegistInput";
-import CheckboxRounded from "@/components/User/CheckboxRounded";
-import CheckboxNoFilled from "@/components/Regist/CheckboxNoFilled";
-import UserButton from "@/components/User/UserButton";
-import InputClearButton from "@/components/User/InputClearButton";
-import PasswordVisibleButton from "@/components/User/PasswordVisibleButton";
-import styles from "./TvingRegist.module.css";
+import { UsernameReg, PasswordReg } from '@/utils/validation';
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import debounce from '@/utils/debounce';
+import RegistInput from '@/components/Regist/RegistInput';
+import CheckboxRounded from '@/components/User/CheckboxRounded';
+import CheckboxNoFilled from '@/components/Regist/CheckboxNoFilled';
+import UserButton from '@/components/User/UserButton';
+import InputClearButton from '@/components/User/InputClearButton';
+import PasswordVisibleButton from '@/components/User/PasswordVisibleButton';
+import styles from './TvingRegist.module.css';
 
 function TvingRegist() {
   const navigate = useNavigate();
@@ -19,10 +19,10 @@ function TvingRegist() {
   // console.log(pb)
 
   const [formState, setFormState] = useState({
-    username: "",
-    password: "",
-    passwordConfirm: "",
-    email: "",
+    username: '',
+    password: '',
+    passwordConfirm: '',
+    email: '',
   });
 
   // 비밀번호 타입버튼 클리어 버튼 상태
@@ -40,11 +40,11 @@ function TvingRegist() {
 
   //  input 값 안내 문구 상태
   const [usernameInfo, setUsernameInfo] = useState(
-    "영문 소문자 또는 영문 소문자, 숫자 조합 6~12자리"
+    '영문 소문자 또는 영문 소문자, 숫자 조합 6~12자리'
   );
-  const [passwordInfo, setPasswordInfo] = useState("");
+  const [passwordInfo, setPasswordInfo] = useState('');
   const [pwconfirmInfo, setPwconfirmInfo] = useState(
-    "영문, 문자, 특수문자(~!@#$%^&*)조합 8~15 자리"
+    '영문, 문자, 특수문자(~!@#$%^&*)조합 8~15 자리'
   );
 
   // 안내 문구 색상 변화 위한 상태
@@ -67,13 +67,13 @@ const [isActive, setIsActive] = useState(false);
   const handleBlur = (name) => {
     const { username, passwordConfirm } = formState;
 
-    if (name === "username" && username === "") {
-      setUsernameInfo("입력한 값이 없어요");
+    if (name === 'username' && username === '') {
+      setUsernameInfo('입력한 값이 없어요');
       setUsernameIsred(true);
     }
 
-    if (name === "passwordConfirm" && passwordConfirm === "") {
-      setPwconfirmInfo("입력한 값이 없어요");
+    if (name === 'passwordConfirm' && passwordConfirm === '') {
+      setPwconfirmInfo('입력한 값이 없어요');
       setPwConfirmIsred(true);
     }
   };
@@ -83,112 +83,123 @@ const [isActive, setIsActive] = useState(false);
     const { password } = formState;
 
     // username 유효성 검사 실패
-    if (name === "username" && !UsernameReg(value)) {
+    if (name === 'username' && !UsernameReg(value)) {
       setUsernameInfo(
-        "영문 소문자 또는 영문소문자, 숫자 조합 6~12 자리로 입력해주세요"
+        '영문 소문자 또는 영문소문자, 숫자 조합 6~12 자리로 입력해주세요'
       );
       setUsernameIsred(true);
       return;
     }
 
     // username 유효성 검사 통과
-    if (name === "username" && UsernameReg(value)) {
-      setUsernameInfo("영문 소문자 또는 영문 소문자, 숫자 조합 6~12자리");
+    if (name === 'username' && UsernameReg(value)) {
+      setUsernameInfo('영문 소문자 또는 영문 소문자, 숫자 조합 6~12자리');
       setUsernameIsred(false);
       return;
     }
 
     // password 유효성 검사 실패
-    if (name === "password" && !PasswordReg(value)) {
+    if (name === 'password' && !PasswordReg(value)) {
       setPasswordInfo(
-        "영문, 숫자, 특수문자 (~!@#$%^&*) 조합 8~15 자리 로 입력해주세요."
+        '영문, 숫자, 특수문자 (~!@#$%^&*) 조합 8~15 자리 로 입력해주세요.'
       );
       setPasswordIsred(true);
       return;
     }
 
     // password 유효성 검사 성공
-    if (name === "password" && PasswordReg(value)) {
-      setPasswordInfo("");
+    if (name === 'password' && PasswordReg(value)) {
+      setPasswordInfo('');
       setPasswordIsred(false);
       return;
     }
 
     // 비밀번호 값이 서로 다를 때
-    if (name === "passwordConfirm" && password !== value) {
-      setPwconfirmInfo("일치하지 않습니다. 다시 입력해주세요.");
+    if (name === 'passwordConfirm' && password !== value) {
+      setPwconfirmInfo('일치하지 않습니다. 다시 입력해주세요.');
       setPwConfirmIsred(true);
       return;
     }
 
     // 비밀번호 값이 같을 때
-    if (name === "passwordConfirm" && password === value) {
-      setPwconfirmInfo("");
+    if (name === 'passwordConfirm' && password === value) {
+      setPwconfirmInfo('');
       setPwConfirmIsred(false);
     }
   };
 
-  // 체크 박스 
+  // 체크 박스
   const handleAllChecked = () => {
-    if(allChecked === false) {
-    setAgeAgree(true);
-    setRequiredService(true);
-    setRequiredInfo(true);
-    setOptionalInfo(true);
-    setMarketingInfo(true);
-   }else {
-    setAgeAgree(false);
-    setRequiredService(false);
-    setRequiredInfo(false);
-    setOptionalInfo(false);
-    setMarketingInfo(false);
-   }
+    if (allChecked === false) {
+      setAgeAgree(true);
+      setRequiredService(true);
+      setRequiredInfo(true);
+      setOptionalInfo(true);
+      setMarketingInfo(true);
+    } else {
+      setAgeAgree(false);
+      setRequiredService(false);
+      setRequiredInfo(false);
+      setOptionalInfo(false);
+      setMarketingInfo(false);
+    }
   };
   const handleAgeCheck = () => {
-    if(ageAgree === false) {
-      setAgeAgree(true)
-    }else {
-      setAgeAgree(false)
+    if (ageAgree === false) {
+      setAgeAgree(true);
+    } else {
+      setAgeAgree(false);
+      setAllChecked(false);
     }
-  }
+  };
 
   const handleRequiredServiceCheck = () => {
-    if(requiredService === false) {
-      setRequiredService(true)
-    }else {
-      setRequiredService(false)
+    if (requiredService === false) {
+      setRequiredService(true);
+    } else {
+      setRequiredService(false);
+      setAllChecked(false);
     }
-  }
+  };
 
- const handleRequiredInfoCheck = () => {
-  if(requiredInfo === false) {
-    setRequiredInfo(true)
-  }else {
-    setRequiredInfo(false)
-  }
- }
+  const handleRequiredInfoCheck = () => {
+    if (requiredInfo === false) {
+      setRequiredInfo(true);
+    } else {
+      setRequiredInfo(false);
+      setAllChecked(false);
+    }
+  };
 
   const handleOptionalInfoCheck = () => {
-    if(optionalInfo === false) {
-      setOptionalInfo(true)
-    }else {
-      setOptionalInfo(false)
+    if (optionalInfo === false) {
+      setOptionalInfo(true);
+    } else {
+      setOptionalInfo(false);
+      setAllChecked(false);
     }
-  }
+  };
 
   const handleMarketingInfoCheck = () => {
-    if(marketingInfo === false) {
-      setMarketingInfo(true)
-    }else {
-      setMarketingInfo(false)
-    }
-  }
-
-  useEffect(()=>{
-    if(ageAgree ===true && requiredService===true && requiredInfo===true && optionalInfo===true && marketingInfo===true){
-      setAllChecked(true)
+    if (marketingInfo === false) {
+      setMarketingInfo(true);
     } else {
-      setAllChecked(false)
+      setMarketingInfo(false);
+      setAllChecked(false);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      ageAgree === true &&
+      requiredService === true &&
+      requiredInfo === true &&
+      optionalInfo === true &&
+      marketingInfo === true
+    ) {
+      setAllChecked(true);
+    } else {
+      setAllChecked(false);
     }
   }, [ageAgree,requiredService, requiredInfo,optionalInfo,marketingInfo])
 
@@ -209,7 +220,7 @@ const [isActive, setIsActive] = useState(false);
     e.preventDefault();
 
     // PocketBase SDK 요청
-    await pb.collection("users").create({
+    await pb.collection('users').create({
       ...formState,
       emailVisibility: true,
     });
@@ -217,24 +228,24 @@ const [isActive, setIsActive] = useState(false);
 
   const activeClearButton = (name, value) => {
     // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
-    if (name === "username") {
+    if (name === 'username') {
       setActiveIdClear(true);
-      if (value === "") {
+      if (value === '') {
         setActiveIdClear(false);
       }
-    } else if (name === "password") {
+    } else if (name === 'password') {
       setActivePasswordClear(true);
-      if (value === "") {
+      if (value === '') {
         setActivePasswordClear(false);
       }
-    } else if (name === "passwordConfirm") {
+    } else if (name === 'passwordConfirm') {
       setActiveConfirmClear(true);
-      if (value === "") {
+      if (value === '') {
         setActiveConfirmClear(false);
       }
-    } else if (name === "email") {
+    } else if (name === 'email') {
       setActiveEmailClear(true);
-      if (value === "") {
+      if (value === '') {
         setActiveEmailClear(false);
       }
     }
@@ -250,29 +261,26 @@ const [isActive, setIsActive] = useState(false);
     activeClearButton(name, value);
 
     handleValidate(name, value);
-
-
-
   });
 
   // input 값 초기화
   const handleClearInput = (inputName) => {
-    setFormState({ ...formState, [inputName]: "" });
+    setFormState({ ...formState, [inputName]: '' });
 
-    if (inputName === "id") {
-      idInputRef.current.value = "";
+    if (inputName === 'id') {
+      idInputRef.current.value = '';
       setActiveIdClear(false);
       idInputRef.current.focus();
-    } else if (inputName === "password") {
-      passwordInputRef.current.value = "";
+    } else if (inputName === 'password') {
+      passwordInputRef.current.value = '';
       setActivePasswordClear(false);
       passwordInputRef.current.focus();
-    } else if (inputName === "passwordConfirm") {
-      confirmInputRef.current.value = "";
+    } else if (inputName === 'passwordConfirm') {
+      confirmInputRef.current.value = '';
       setActiveConfirmClear(false);
       confirmInputRef.current.focus();
-    } else if (inputName === "email") {
-      emailInputRef.current.value = "";
+    } else if (inputName === 'email') {
+      emailInputRef.current.value = '';
       setActiveEmailClear(false);
       emailInputRef.current.focus();
     }
@@ -280,33 +288,33 @@ const [isActive, setIsActive] = useState(false);
 
   // 비밀번호 숨기기 + 보이기
   const handlePasswordVisibility = (inputName) => {
-    if (inputName === "password") {
+    if (inputName === 'password') {
       setIsPasswordVisible(!isPasswordVisible);
-    } else if (inputName === "passwordConfirm") {
+    } else if (inputName === 'passwordConfirm') {
       setIsConfirmVisible(!isConfirmVisible);
     }
   };
 
   return (
     <div>
-      <UserTitle title="티빙 회원가입" />
+      <UserTitle title='티빙 회원가입' />
       <h2 className={styles.regist__subtitle}>
         아이디와 이메일로 간편하게 티빙을 시작하세요!
       </h2>
 
       <form onSubmit={handleRegist} className={styles.regist__Form}>
         <RegistInput
-          type="text"
-          name="username"
-          label="아이디"
-          placeholder="아이디"
+          type='text'
+          name='username'
+          label='아이디'
+          placeholder='아이디'
           defaultValue={formState.username}
           onChange={handleInput}
-          onBlur={() => handleBlur("username")}
+          onBlur={() => handleBlur('username')}
           ref={idInputRef}
         >
           {activeIdClear && (
-            <InputClearButton onClick={() => handleClearInput("id")} />
+            <InputClearButton onClick={() => handleClearInput('id')} />
           )}
         </RegistInput>
 
@@ -317,20 +325,20 @@ const [isActive, setIsActive] = useState(false);
         </p>
 
         <RegistInput
-          type={isPasswordVisible ? "text" : "password"}
-          name="password"
-          label="비밀번호"
-          placeholder="비밀번호"
+          type={isPasswordVisible ? 'text' : 'password'}
+          name='password'
+          label='비밀번호'
+          placeholder='비밀번호'
           defaultValue={formState.password}
           onChange={handleInput}
           ref={passwordInputRef}
         >
           {activePasswordClear && (
-            <InputClearButton onClick={() => handleClearInput("password")} />
+            <InputClearButton onClick={() => handleClearInput('password')} />
           )}
           <PasswordVisibleButton
             isPasswordVisible={isPasswordVisible}
-            onClick={() => handlePasswordVisibility("password")}
+            onClick={() => handlePasswordVisibility('password')}
           />
         </RegistInput>
         <p
@@ -340,23 +348,23 @@ const [isActive, setIsActive] = useState(false);
         </p>
 
         <RegistInput
-          type={isConfirmVisible ? "text" : "password"}
-          name="passwordConfirm"
-          label="비밀번호 확인"
-          placeholder="비밀번호 확인"
+          type={isConfirmVisible ? 'text' : 'password'}
+          name='passwordConfirm'
+          label='비밀번호 확인'
+          placeholder='비밀번호 확인'
           defaultValue={formState.passwordConfirm}
           onChange={handleInput}
-          onBlur={() => handleBlur("passwordConfirm")}
+          onBlur={() => handleBlur('passwordConfirm')}
           ref={confirmInputRef}
         >
           {activeConfirmClear && (
             <InputClearButton
-              onClick={() => handleClearInput("passwordConfirm")}
+              onClick={() => handleClearInput('passwordConfirm')}
             />
           )}
           <PasswordVisibleButton
             isPasswordVisible={isConfirmVisible}
-            onClick={() => handlePasswordVisibility("passwordConfirm")}
+            onClick={() => handlePasswordVisibility('passwordConfirm')}
           />
         </RegistInput>
 
@@ -367,48 +375,85 @@ const [isActive, setIsActive] = useState(false);
         </p>
 
         <RegistInput
-          type="email"
-          name="email"
-          label="이메일"
-          placeholder="이메일"
+          type='email'
+          name='email'
+          label='이메일'
+          placeholder='이메일'
           defaultValue={formState.email}
           onChange={handleInput}
           ref={emailInputRef}
         >
           {activeEmailClear && (
-            <InputClearButton onClick={() => handleClearInput("email")} />
+            <InputClearButton onClick={() => handleClearInput('email')} />
           )}
         </RegistInput>
 
         <ul>
           <li className={styles.agree__title}>
-            <CheckboxRounded label="필수 및 선택 항목을 모두 포함하여 동의합니다." checked={allChecked} onChange={handleAllChecked}/>
+            <CheckboxRounded
+              label='필수 및 선택 항목을 모두 포함하여 동의합니다.'
+              checked={allChecked}
+              onChange={handleAllChecked}
+            />
           </li>
         </ul>
 
         <ul className={styles.agree__list}>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="만 14세 이상입니다."  checked={ageAgree} onChange={handleAgeCheck} />
+            <CheckboxNoFilled
+              label='만 14세 이상입니다.'
+              checked={ageAgree}
+              onChange={handleAgeCheck}
+            />
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[필수] 서비스 이용약관 동의" checked={requiredService} onChange={handleRequiredServiceCheck} />
-            <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
+            <CheckboxNoFilled
+              label='[필수] 서비스 이용약관 동의'
+              checked={requiredService}
+              onChange={handleRequiredServiceCheck}
+            />
+            <a href='#' className={styles.agree__link}>
+              {' '}
+              <img src={agreementIcon} alt='#' />{' '}
+            </a>
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[필수] 개인정보 수집 및 이용 동의"checked={requiredInfo}  onChange={handleRequiredInfoCheck} />
-            <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
+            <CheckboxNoFilled
+              label='[필수] 개인정보 수집 및 이용 동의'
+              checked={requiredInfo}
+              onChange={handleRequiredInfoCheck}
+            />
+            <a href='#' className={styles.agree__link}>
+              {' '}
+              <img src={agreementIcon} alt='#' />{' '}
+            </a>
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[선택] 개인정보 수집 및 이용동의" checked={optionalInfo} onChange={handleOptionalInfoCheck} />
-            <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
+            <CheckboxNoFilled
+              label='[선택] 개인정보 수집 및 이용동의'
+              checked={optionalInfo}
+              onChange={handleOptionalInfoCheck}
+            />
+            <a href='#' className={styles.agree__link}>
+              {' '}
+              <img src={agreementIcon} alt='#' />{' '}
+            </a>
           </li>
           <li className={styles.agree__item}>
-            <CheckboxNoFilled label="[선택] 마케팅 정보 수신 동의" checked={marketingInfo} onChange={handleMarketingInfoCheck}/>
-            <a href="#" className={styles.agree__link}> <img src={agreementIcon}  alt="#" /> </a>
+            <CheckboxNoFilled
+              label='[선택] 마케팅 정보 수신 동의'
+              checked={marketingInfo}
+              onChange={handleMarketingInfoCheck}
+            />
+            <a href='#' className={styles.agree__link}>
+              {' '}
+              <img src={agreementIcon} alt='#' />{' '}
+            </a>
           </li>
         </ul>
 
         <UserButton type="submit" text="가입하기" isActive={isActive}  isRed />
+        <UserButton type='submit' text='가입하기' isActive isRed />
       </form>
     </div>
   );

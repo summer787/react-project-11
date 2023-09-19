@@ -1,20 +1,23 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import pb from '@/api/pocketbase';
+import { useAuth } from '@/components/contexts/AuthContext';
 import debounce from '@/utils/debounce';
 import UserTitle from '@/components/User/UserTitle';
 import UserInput from '@/components/Login/UserInput';
+import InputClearButton from '@/components/User/InputClearButton';
+import PasswordVisibleButton from '@/components/User/PasswordVisibleButton';
+// import InputClearButton from '@/components/Login/InputClearButton';
+// import PasswordVisibleButton from '@/components/Login/PasswordVisibleButton';
 import UserButton from '@/components/User/UserButton';
 import Spinner from '@/components/Spinner';
 import FindUser from '@/components/Login/FindUser';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserInfo from '@/components/User/UserInfo';
-import InputClearButton from '@/components/Login/InputClearButton';
-import PasswordVisibleButton from '@/components/Login/PasswordVisibleButton';
 import style from './TvingLogin.module.css';
 
 function TvingLogin() {
   const navigate = useNavigate();
+  const { signIn } = useAuth();
   const [formState, setFormState] = useState({
     id: '',
     password: '',
@@ -87,7 +90,7 @@ function TvingLogin() {
 
     try {
       setIsLoading(true);
-      await pb.collection('users').authWithPassword(id, password);
+      await signIn(id, password);
       setIsLoading(false);
 
       navigate('/home');
@@ -156,7 +159,7 @@ function TvingLogin() {
         linktext='회원가입 하기'
         styleClass='text__large'
       />
-      <Spinner isOpen={isLoading} />
+      <Spinner message='로그인 중 입니다.' isOpen={isLoading} />
     </div>
   );
 }
