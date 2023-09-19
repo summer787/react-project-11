@@ -6,6 +6,7 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import { lazy } from 'react';
+import Account from './pages/Account/Account';
 
 const LandingRoute = lazy(() => import('./components/Routes/LandingRoute'));
 const PrivateRoute = lazy(() => import('./components/Routes/PrivateRoute'));
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         </Route>
       </Route>
 
+      <Route path='account' element={<Account />} />
       <Route element={<UserLayout />}>
         <Route path='user/tvingLogin' element={<TvingLogin />} />
         <Route path='user/tvingRegist' element={<TvingRegist />} />
