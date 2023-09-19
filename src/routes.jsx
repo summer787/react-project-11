@@ -24,7 +24,7 @@ const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path='/' element={<LandingRoute />} />
+      <Route path='/*' element={<LandingRoute />} />
 
       <Route element={<PrivateRoute />}>
         <Route element={<Rootlayout />}>
