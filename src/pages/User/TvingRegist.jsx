@@ -239,13 +239,13 @@ function TvingRegist() {
 
   const handleRegist = async (e) => {
     e.preventDefault();
-
-    // PocketBase SDK 요청
-    await pb.collection("users").create({
-      ...formState,
-      emailVisibility: true,
-    });
-  };
+   // PocketBase SDK 요청
+    
+      await pb.collection("users").create({
+        ...formState,
+        emailVisibility: true,
+      
+})};
 
   const activeClearButton = (name, value) => {
     // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
@@ -318,7 +318,9 @@ function TvingRegist() {
 
   return (
     <div>
+      
       <UserTitle title="티빙 회원가입" />
+
       <h2 className={styles.regist__subtitle}>
         아이디와 이메일로 간편하게 티빙을 시작하세요!
       </h2>
