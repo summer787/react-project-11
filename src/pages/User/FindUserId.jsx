@@ -1,22 +1,33 @@
+/* eslint-disable no-alert */
+import { useContext, useRef, useState } from 'react';
+import debounce from '@/utils/debounce';
+import pb from '@/api/pocketbase';
+import { EmailReg } from '@/utils/validation';
+
 import UserTitle from '@/components/User/UserTitle';
 import UserSubTitle from '@/components/User/UserSubTitle';
 import UserDescription from '@/components/User/UserDescription';
 import UserInput from '@/components/User/UserInput';
 import InputClearButton from '@/components/User/InputClearButton';
 import UserButton from '@/components/User/UserButton';
-import { useRef, useState } from 'react';
-import debounce from '@/utils/debounce';
+import Spinner from '@/components/Spinner';
+import { FindUserContext } from '@/components/contexts/FindUserContext';
+import { useNavigate } from 'react-router-dom';
 
 import style from './FindUserId.module.css';
 
 function FindUserId() {
-  const [userEmail, setUserEmail] = useState('');
+  const [userEmailInput, setUserEmailInput] = useState('');
   const [activeEmailClear, setActiveEmailClear] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const emailInputRef = useRef(null);
+  const { updateFindUserState } = useContext(FindUserContext);
+  const navigate = useNavigate();
 
+  // input 값 -> state(userEmail) 값
   const handleDebounceInput = debounce((e) => {
     const { value } = e.target;
-    setUserEmail(value);
+    setUserEmailInput(value);
 
     // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
     setActiveEmailClear(true);
@@ -27,17 +38,44 @@ function FindUserId() {
 
   // input 값 초기화
   const handleClearInput = () => {
-    setUserEmail('');
+    setUserEmailInput('');
     emailInputRef.current.value = '';
     setActiveEmailClear(false);
     emailInputRef.current.focus();
+  };
+
+  const getUserId = async (emailInput) => {
+    if (!EmailReg(emailInput)) {
+      alert('이메일 주소를 입력해주세요.');
+      return;
+    }
+    try {
+      setIsLoading(true);
+      const records = await pb
+        .collection('users')
+        .getFirstListItem(`email='${emailInput}'`);
+      updateFindUserState(records);
+      setIsLoading(false);
+      navigate('/user/resultFindId');
+    } catch (error) {
+      setIsLoading(false);
+      alert(
+        '일치하는 이메일 정보가 없습니다. \n입력 내용을 다시 한 번 확인해주세요.'
+      );
+    }
+  };
+
+  // 아이디 찾기
+  const handleFindId = (e) => {
+    e.preventDefault();
+    getUserId(userEmailInput);
   };
 
   return (
     <>
       <UserTitle title='아이디 찾기' />
       <section>
-        <form action='submit'>
+        <form action='submit' onSubmit={handleFindId}>
           <div className={style.find__id__rapper}>
             <div>
               <UserSubTitle text='이메일로 찾기' />
@@ -46,7 +84,7 @@ function FindUserId() {
             <UserInput
               name='email'
               label='이메일'
-              defaultValue={userEmail}
+              defaultValue={userEmailInput}
               autoComplete='email'
               onChange={handleDebounceInput}
               ref={emailInputRef}
@@ -55,7 +93,7 @@ function FindUserId() {
                 <InputClearButton onClick={handleClearInput} />
               )}
             </UserInput>
-            <UserButton type='submit' text='확인' />
+            <UserButton type='submit' text='확인' isActive={activeEmailClear} />
           </div>
         </form>
       </section>
@@ -70,6 +108,7 @@ function FindUserId() {
           <UserDescription text='이미 본인인증이 완료된 계정에 한하여 아이디 찾기가 가능합니다.' />
         </div>
         <UserButton type='button' text='본인인증하기' isActive />
+        <Spinner message='일치하는 정보를 찾는 중 입니다.' isOpen={isLoading} />
       </section>
     </>
   );

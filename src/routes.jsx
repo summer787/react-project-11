@@ -24,6 +24,7 @@ const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
 const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 const FindUserId = lazy(() => import('./pages/User/FindUserId'));
 const FindUserPassword = lazy(() => import('./pages/User/FindUserPassword'));
+const ResultFindId = lazy(() => import('./pages/User/ResultFindId'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,8 +46,10 @@ const router = createBrowserRouter(
       <Route element={<UserLayout />}>
         <Route path='user/tvingLogin' element={<TvingLogin />} />
         <Route path='user/tvingRegist' element={<TvingRegist />} />
+
         <Route path='user/findId' element={<FindUserId />} />
         <Route path='user/findPassword' element={<FindUserPassword />} />
+        <Route path='user/resultFindId' element={<ResultFindId />} />
       </Route>
     </>
   )
