@@ -10,7 +10,9 @@ function FindUser() {
         </NavLink>
       </li>
       <li className={style.find__user__item}>
-        <NavLink className={style.find__user__link}>비밀번호 찾기</NavLink>
+        <NavLink to='/user/findPassword' className={style.find__user__link}>
+          비밀번호 찾기
+        </NavLink>
       </li>
     </ul>
   );

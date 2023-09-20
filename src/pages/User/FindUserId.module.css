@@ -1,5 +1,26 @@
-.find__id__rapper {
+.find__id__rapper,
+.find__id__auth {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
+}
+
+.division__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #424242;
+  margin: 4rem auto;
+}
+
+.division__line {
+  width: 100%;
+  border: 1px solid #424242;
+  border-bottom-width: 0px;
+}
+
+.division__text {
+  font: var(--paragraph-medium);
+  min-width: 3rem;
+  text-align: center;
 }

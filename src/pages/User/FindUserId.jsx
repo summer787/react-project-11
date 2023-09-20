@@ -48,7 +48,6 @@ function FindUserId() {
               label='이메일'
               defaultValue={userEmail}
               autoComplete='email'
-              styleClass='find__layout'
               onChange={handleDebounceInput}
               ref={emailInputRef}
             >
@@ -59,6 +58,18 @@ function FindUserId() {
             <UserButton type='submit' text='확인' />
           </div>
         </form>
+      </section>
+      <div className={style.division__wrapper}>
+        <hr className={style.division__line} />
+        <span className={style.division__text}>또는</span>
+        <hr className={style.division__line} />
+      </div>
+      <section className={style.find__id__auth}>
+        <div>
+          <UserSubTitle text='본인인증으로 찾기' />
+          <UserDescription text='이미 본인인증이 완료된 계정에 한하여 아이디 찾기가 가능합니다.' />
+        </div>
+        <UserButton type='button' text='본인인증하기' isActive />
       </section>
     </>
   );

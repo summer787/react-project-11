@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import style from './UserInfo.module.css';
 
 function UserInfo({ text, linkpath, linktext, styleClass }) {
-  // const { text, linkpath, linktext, styleClass } = userInfo;
-
   return (
     <div className={`${style.user__info} ${style[styleClass]}`}>
       <span>{text}</span>
@@ -17,9 +15,9 @@ function UserInfo({ text, linkpath, linktext, styleClass }) {
 
 UserInfo.defaultProps = {
   text: '',
-  linkpath: '',
+  linkpath: '#',
   linktext: '',
-  styleClass: '',
+  styleClass: 'text__large',
 };
 
 UserInfo.propTypes = {
