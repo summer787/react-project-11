@@ -35,7 +35,7 @@ function FindUserPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('죄송합니다, 현재 비밀번호 찾기 기능은 지원하고 있지 않습니다.');
+    alert('현재 비밀번호 찾기 기능은 지원하고 있지 않습니다.');
   };
 
   return (
