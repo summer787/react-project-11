@@ -5,7 +5,7 @@ import UserDescription from '@/components/User/UserDescription';
 import UserInput from '@/components/User/UserInput';
 import InputClearButton from '@/components/User/InputClearButton';
 import UserButton from '@/components/User/UserButton';
-import UserInfo from '@/components/User/UserInfo';
+import Unavailable from '@/components/User/Unavailable';
 import style from './FindUserPassword.module.css';
 
 function FindUserPassword() {
@@ -13,6 +13,7 @@ function FindUserPassword() {
   const [activeIdClear, setActiveIdClear] = useState(false);
   const IdInputRef = useRef(null);
 
+  // input 값 -> state(userEmail) 값
   const handleDebounceInput = debounce((e) => {
     const { value } = e.target;
     setUserId(value);
@@ -38,27 +39,29 @@ function FindUserPassword() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={style.find__password__wrapper}>
-        <UserTitle title='비밀번호 찾기' />
-        <UserDescription text='아이디 확인 후 등록된 이메일 주소로 비밀번호 재설정을 위한 인증 메일이 발송됩니다. 이메일을 확인하여 12시간 이내에 비밀번호 재설정을 완료해주세요.' />
-        <UserInput
-          name='id'
-          label='아이디'
-          defaultValue={userId}
-          autoComplete='username'
-          onChange={handleDebounceInput}
-          ref={IdInputRef}
-        >
-          {activeIdClear && (
-            <InputClearButton onClick={() => handleClearInput('id')} />
-          )}
-        </UserInput>
+    <>
+      <form onSubmit={handleSubmit}>
+        <div className={style.find__password__wrapper}>
+          <UserTitle title='비밀번호 찾기' />
+          <UserDescription text='아이디 확인 후 등록된 이메일 주소로 비밀번호 재설정을 위한 인증 메일이 발송됩니다. 이메일을 확인하여 12시간 이내에 비밀번호 재설정을 완료해주세요.' />
+          <UserInput
+            name='id'
+            label='아이디'
+            defaultValue={userId}
+            autoComplete='username'
+            onChange={handleDebounceInput}
+            ref={IdInputRef}
+          >
+            {activeIdClear && (
+              <InputClearButton onClick={() => handleClearInput('id')} />
+            )}
+          </UserInput>
 
-        <UserButton type='submit' text='확인' isActive={activeIdClear} />
-      </div>
-      <UserInfo linktext='ⓘ 현재 이 기능은 지원 하고 있지 않습니다.' />
-    </form>
+          <UserButton type='submit' text='확인' isActive={activeIdClear} />
+        </div>
+      </form>
+      <Unavailable service='비밀번호 찾기' />
+    </>
   );
 }
 

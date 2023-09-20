@@ -10,6 +10,7 @@ import UserDescription from '@/components/User/UserDescription';
 import UserInput from '@/components/User/UserInput';
 import InputClearButton from '@/components/User/InputClearButton';
 import UserButton from '@/components/User/UserButton';
+import Unavailable from '@/components/User/Unavailable';
 import Spinner from '@/components/Spinner';
 import { FindUserContext } from '@/components/contexts/FindUserContext';
 import { useNavigate } from 'react-router-dom';
@@ -108,8 +109,9 @@ function FindUserId() {
           <UserDescription text='이미 본인인증이 완료된 계정에 한하여 아이디 찾기가 가능합니다.' />
         </div>
         <UserButton type='button' text='본인인증하기' isActive />
-        <Spinner message='일치하는 정보를 찾는 중 입니다.' isOpen={isLoading} />
       </section>
+      <Spinner message='일치하는 정보를 찾는 중 입니다.' isOpen={isLoading} />
+      <Unavailable service='본인인증으로 찾기' />
     </>
   );
 }

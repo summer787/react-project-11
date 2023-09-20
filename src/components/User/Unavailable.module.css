@@ -1,0 +1,26 @@
+.unavailable {
+  height: 6rem;
+  background: var(--brand-dark-bg-2);
+  border-radius: 3px;
+  margin-top: 5rem;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.unavailable__title {
+  font: var(--label-large);
+  color: #bababa;
+  margin-bottom: 0.4rem;
+
+  &::before {
+    content: 'ⓘ ';
+    margin-right: 0.2rem;
+  }
+}
+
+.unavailable__text {
+  font: var(--paragraph-large);
+  color: #6a6a6a;
+}

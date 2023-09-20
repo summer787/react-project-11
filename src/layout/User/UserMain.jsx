@@ -3,8 +3,8 @@ import style from './UserMain.module.css';
 
 function UserMain({ children }) {
   return (
-    <main className={`${style.user__main}`}>
-      <article style={{ color: 'white' }}>{children}</article>
+    <main className={style.user__main}>
+      <article className={style.user__main__artice}>{children}</article>
     </main>
   );
 }
