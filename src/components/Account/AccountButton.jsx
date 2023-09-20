@@ -23,7 +23,7 @@ const buttons = [
     text: '카카오로 시작하기',
     image: AccountImage.kakaoIcon,
     link: '#',
-    isService: true,
+    isService: false,
   },
   {
     id: 4,
@@ -83,7 +83,7 @@ function AccountButtonLIst() {
           text={button.text}
           link={button.link}
           isService={button.isService}
-          id={button.id} 
+          id={button.id}
         />
       ))}
     </div>

@@ -9,13 +9,6 @@ const footerStyle = {
   height: '21.25rem',
 };
 
-const userInfo = {
-  text: '아이디를 잊으셨나요?',
-  linkpath: '#',
-  linktext: '아이디 찾기',
-  styleClass: 'text__small',
-};
-
 function Account() {
   return (
     <div className={`${style.Account} ${style.background}`}>
@@ -29,7 +22,12 @@ function Account() {
           <span>계정을 선택해주세요.</span>
         </div>
         <AccountButtonLIst />
-        <UserInfo userInfo={userInfo} />
+        <UserInfo
+          text='아이디를 잊으셨나요?'
+          linkpath='/user/findId'
+          linktext='아이디 찾기'
+          styleClass='text__small'
+        />
       </UserMain>
       {/* 푸터 */}
       <footer style={footerStyle}>푸터</footer>
