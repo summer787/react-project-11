@@ -249,7 +249,14 @@ try{
       emailVisibility: true,
     });
     navigate("/user/RegistComplete");
-  }catch (error) 
+  }catch (error) {
+    toast.error('회원가입에 실패했습니다.',{
+      icon: '🚨',
+      ariaProps: {
+        role: 'alert',
+        'aria-live':'polite',
+      },
+    });
     
 }
   }
