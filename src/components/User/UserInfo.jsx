@@ -4,12 +4,12 @@ import style from './UserInfo.module.css';
 
 function UserInfo({ text, linkpath, linktext, styleClass }) {
   return (
-    <div className={`${style.user__info} ${style[styleClass]}`}>
+    <aside className={`${style.user__info} ${style[styleClass]}`}>
       <span>{text}</span>
       <NavLink to={linkpath} className={`${style.link}`}>
         {linktext}
       </NavLink>
-    </div>
+    </aside>
   );
 }
 
