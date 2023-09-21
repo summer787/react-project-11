@@ -3,7 +3,7 @@ import { bool, string } from 'prop-types';
 import { useEffect } from 'react';
 import style from './Spinner.module.css';
 
-function Spinner({ message = '로딩 중 입니다.', isOpen = false }) {
+function Spinner({ message = '로딩 중입니다.', isOpen = false }) {
   useEffect(() => {
     // 컴포넌트가 마운트되면 body의 overflow를 hidden으로 설정하여 스크롤 제거
     document.body.style.overflow = 'hidden';

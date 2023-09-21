@@ -3,7 +3,7 @@
   width: calc(100% - 7.776rem);
   color: var(--white);
 
-  & .user__main__artice {
+  & .user__main__section {
     margin: 0 auto;
     max-width: 41.667rem;
     height: 100%;

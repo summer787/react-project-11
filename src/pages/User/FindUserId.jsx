@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import { useContext, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import debounce from '@/utils/debounce';
 import pb from '@/api/pocketbase';
 import { EmailReg } from '@/utils/validation';
@@ -13,7 +14,6 @@ import UserButton from '@/components/User/UserButton';
 import Unavailable from '@/components/User/Unavailable';
 import Spinner from '@/components/Spinner';
 import { FindUserContext } from '@/components/contexts/FindUserContext';
-import { useNavigate } from 'react-router-dom';
 
 import style from './FindUserId.module.css';
 
@@ -110,7 +110,9 @@ function FindUserId() {
         </div>
         <UserButton type='button' text='본인인증하기' isActive />
       </section>
-      <Spinner message='일치하는 정보를 찾는 중 입니다.' isOpen={isLoading} />
+      {isLoading && (
+        <Spinner message='일치하는 정보를 찾는 중입니다.' isOpen={isLoading} />
+      )}
       <Unavailable service='본인인증으로 찾기' />
     </>
   );

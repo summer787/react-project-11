@@ -24,6 +24,7 @@ function TvingLogin() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [activeIdClear, setActiveIdClear] = useState(false);
   const [activePasswordClear, setActivePasswordClear] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const idInputRef = useRef(null);
   const passwordInputRef = useRef(null);
@@ -66,6 +67,11 @@ function TvingLogin() {
   // 비밀번호 숨기기 + 보이기
   const handlePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  // 체크박스 활성화
+  const handleCheckbox = () => {
+    setIsChecked(!isChecked);
   };
 
   // 로그인하기
@@ -140,7 +146,11 @@ function TvingLogin() {
           </UserInput>
 
           {/* 자동로그인 체크 */}
-          <CheckboxRounded label='자동로그인' />
+          <CheckboxRounded
+            label='자동로그인'
+            checked={isChecked}
+            onChange={handleCheckbox}
+          />
 
           {/* 로그인하기 버튼 */}
           <UserButton type='submit' text='로그인하기' isActive isRed />
@@ -157,7 +167,7 @@ function TvingLogin() {
         linktext='회원가입 하기'
         styleClass='text__large'
       />
-      <Spinner message='로그인 중 입니다.' isOpen={isLoading} />
+      {isLoading && <Spinner message='로그인 중 입니다.' isOpen={isLoading} />}
     </>
   );
 }
