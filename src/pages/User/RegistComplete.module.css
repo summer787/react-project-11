@@ -1,0 +1,36 @@
+
+.complete__container{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin-top:10rem;
+margin-left:-5rem;
+width:50rem;
+}
+
+.check__img {
+  width : 7.5rem;
+  height :7.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.complete__title{
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+
+}
+
+.complete__text{
+  padding: 0 2rem;
+  margin-top: 1rem;
+  color: #a3a3a3;
+  font-size: 1.677rem;
+  font-weight: normal;
+  word-break: keep-all;
+}
+
+.complete__text__bottom {
+  margin-bottom:2rem;
+}

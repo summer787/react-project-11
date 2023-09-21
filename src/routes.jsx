@@ -21,6 +21,7 @@ const Paramount = lazy(() => import('./pages/Paramount'));
 const UserLayout = lazy(() => import('./layout/User/UserLayout'));
 const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
 const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
+const RegistComplete = lazy(() => import('./pages/User/RegistComplete'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
       <Route element={<UserLayout />}>
         <Route path='user/tvingLogin' element={<TvingLogin />} />
         <Route path='user/tvingRegist' element={<TvingRegist />} />
+        <Route path='user/RegistComplete' element={<RegistComplete/>} />
       </Route>
     </>
   )

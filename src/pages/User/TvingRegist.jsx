@@ -4,6 +4,7 @@ import agreementIcon from "@/assets/Regist/agreement_icon_link.svg";
 import { UsernameReg, PasswordReg } from "@/utils/validation";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-hot-toast';
 import debounce from "@/utils/debounce";
 import RegistInput from "@/components/Regist/RegistInput";
 import CheckboxRounded from "@/components/User/CheckboxRounded";
@@ -153,6 +154,8 @@ function TvingRegist() {
       setMarketingInfo(false);
     }
   };
+
+  
   const handleAgeCheck = () => {
     if (ageAgree === false) {
       setAgeAgree(true);
@@ -239,14 +242,17 @@ function TvingRegist() {
 
   const handleRegist = async (e) => {
     e.preventDefault();
-   // PocketBase SDK 요청
+    // PocketBase SDK 요청
+try{
+    await pb.collection("users").create({
+      ...formState,
+      emailVisibility: true,
+    });
+    navigate("/user/RegistComplete");
+  }catch (error) 
     
-      await pb.collection("users").create({
-        ...formState,
-        emailVisibility: true,
-      
-})};
-
+}
+  }
   const activeClearButton = (name, value) => {
     // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
     if (name === "username") {
@@ -318,7 +324,6 @@ function TvingRegist() {
 
   return (
     <div>
-      
       <UserTitle title="티빙 회원가입" />
 
       <h2 className={styles.regist__subtitle}>

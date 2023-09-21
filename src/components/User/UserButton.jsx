@@ -1,7 +1,7 @@
-import { bool, string } from 'prop-types';
+import { bool, string,func } from 'prop-types';
 import style from './UserButton.module.css';
 
-function UserButton({ type, text, isActive, isRed }) {
+function UserButton({ type, text, isActive, isRed, onClick }) {
   let className;
 
   if (isActive && !isRed) {
@@ -17,6 +17,7 @@ function UserButton({ type, text, isActive, isRed }) {
       type={type ? 'submit' : 'button'}
       className={`${style[className]} ${style.UserButton}`}
       disabled={!isActive}
+      onClick={onClick}
     >
       {text}
     </button>
@@ -28,6 +29,7 @@ UserButton.defaultProps = {
   text: '',
   isActive: false,
   isRed: false,
+  onClick: null,
 };
 
 UserButton.propTypes = {
@@ -35,6 +37,7 @@ UserButton.propTypes = {
   text: string,
   isActive: bool,
   isRed: bool,
+  onClick: func,
 };
 
 export default UserButton;
