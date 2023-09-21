@@ -3,14 +3,14 @@ import { string, node } from 'prop-types';
 
 export const FindUserContext = createContext();
 
-function FindUserProvider({ displayName = 'FindUserProvider', children }) {
-  const [findUserState, setFindUserState] = useState({
-    email: '',
-    id: '',
-    username: '',
-  });
-  console.log(findUserState);
+const initialState = {
+  email: null,
+  id: null,
+  username: null,
+};
 
+function FindUserProvider({ displayName = 'FindUserProvider', children }) {
+  const [findUserState, setFindUserState] = useState(initialState);
   const FindUser = useMemo(
     () => ({
       ...findUserState,

@@ -1,0 +1,92 @@
+.result__findId__title__wrapper {
+  margin-top: 7rem;
+}
+
+.result__fintId__subtitle {
+  font:
+    700 2.5rem/140% 'Noto Sans KR',
+    sans-serif;
+
+  &::before {
+    content: url('../../assets/User/user_icon_check_big.svg');
+  }
+}
+
+.result__findId__description {
+  font:
+    400 1.7769rem/140% 'Noto Sans KR',
+    sans-serif;
+  color: #a3a3a3;
+}
+
+.result__fintId__subtitle,
+.result__fintId__subtitle::before,
+.result__findId__description {
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.result__findId__item__list {
+  background: var(--brand-dark-bg-1);
+  height: 5rem;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font: var(--paragraph-large);
+  padding: 0 3rem;
+  margin-top: 3.2rem;
+
+  &::before {
+    content: '';
+    background: url('../../assets/Account/account_icon_id_tving.svg') no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    width: 1.8rem;
+    height: 1.8rem;
+    position: relative;
+    top: 1px;
+  }
+}
+
+.result__findId__item__brand {
+  color: var(--gray-400);
+}
+
+.result__findId__info {
+  font:
+    400 1.2rem/160% 'Noto Sans KR',
+    sans-serif;
+  color: #6e6e6e;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+
+  &::before {
+    content: '※ ';
+  }
+}
+
+.result__findId__link {
+  display: flex;
+  height: 5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin-top: 3.5rem;
+  background-color: #dedede;
+  font:
+    700 1.5rem/140% 'Noto Sans KR',
+    sans-serif;
+  color: var(--black);
+
+  &:hover,
+  &:focus {
+    background-color: var(--white);
+  }
+
+  &:focus {
+    outline: auto;
+  }
+}

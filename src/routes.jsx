@@ -9,6 +9,9 @@ import { lazy } from 'react';
 
 const LandingRoute = lazy(() => import('./components/Routes/LandingRoute'));
 const PrivateRoute = lazy(() => import('./components/Routes/PrivateRoute'));
+const ResultFindUserRoute = lazy(() =>
+  import('./components/Routes/ResultFindUserRoute')
+);
 
 const Account = lazy(() => import('./pages/Account/Account'));
 
@@ -49,7 +52,14 @@ const router = createBrowserRouter(
 
         <Route path='user/findId' element={<FindUserId />} />
         <Route path='user/findPassword' element={<FindUserPassword />} />
-        <Route path='user/resultFindId' element={<ResultFindId />} />
+        <Route
+          path='user/resultFindId'
+          element={
+            <ResultFindUserRoute>
+              <ResultFindId />
+            </ResultFindUserRoute>
+          }
+        />
       </Route>
     </>
   )
