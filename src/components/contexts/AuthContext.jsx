@@ -86,12 +86,11 @@ AuthProvider.defaultProps = {
 
 AuthProvider.propTypes = {
   displayName: string,
-  children: node.isRequired, // React.ReactNode
+  children: node.isRequired,
 };
 
 export default AuthProvider;
 
-// 커스텀 훅
 // 인증 정보를 앱 어디서나 손쉽게 주입 받아 쓸 수 있도록 하는 함수
 export const useAuth = () => {
   const authValue = useContext(AuthContext);
