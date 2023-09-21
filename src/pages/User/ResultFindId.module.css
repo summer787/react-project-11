@@ -1,32 +1,3 @@
-.result__findId__title__wrapper {
-  margin-top: 7rem;
-}
-
-.result__fintId__subtitle {
-  font:
-    700 2.5rem/140% 'Noto Sans KR',
-    sans-serif;
-
-  &::before {
-    content: url('../../assets/User/user_icon_check_big.svg');
-  }
-}
-
-.result__findId__description {
-  font:
-    400 1.7769rem/140% 'Noto Sans KR',
-    sans-serif;
-  color: #a3a3a3;
-}
-
-.result__fintId__subtitle,
-.result__fintId__subtitle::before,
-.result__findId__description {
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
 .result__findId__item__list {
   background: var(--brand-dark-bg-1);
   height: 5rem;

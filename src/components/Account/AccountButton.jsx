@@ -55,7 +55,7 @@ const buttons = [
   },
 ];
 
-function AccountButton({ id, text, image, link, isService }) {
+export function AccountButton({ id, text, image, link, isService }) {
   return (
     <NavLink to={link} key={id}>
       <button type='button' className={styles.account__button}>

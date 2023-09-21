@@ -1,0 +1,30 @@
+.user__description__wrapper {
+  margin-top: 3rem;
+}
+
+.user__description__main {
+  font:
+    700 2.5rem/140% 'Noto Sans KR',
+    sans-serif;
+
+  &.active__check__image::before {
+    margin-top: 7rem;
+    content: url('../../assets/User/user_icon_check_big.svg');
+  }
+}
+
+.user__description__sub {
+  font:
+    400 1.7769rem/140% 'Noto Sans KR',
+    sans-serif;
+  color: #a3a3a3;
+  white-space: pre-wrap;
+}
+
+.user__description__main,
+.user__description__main::before,
+.user__description__sub {
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}

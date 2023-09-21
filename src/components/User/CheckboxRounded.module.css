@@ -1,5 +1,8 @@
 .rounded__checkbox__wrapper {
   margin: 1rem 0;
+  &.rounded__checkbox__center {
+    text-align: center;
+  }
 }
 
 .rounded__checkbox__label {

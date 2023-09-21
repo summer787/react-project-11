@@ -1,9 +1,15 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import UserTitle from '@/components/User/UserTitle';
 import { FindUserContext } from '@/components/contexts/FindUserContext';
+import UserTitle from '@/components/User/UserTitle';
+import UserTitleDescription from '@/components/User/UserTitleDescription';
 
 import style from './ResultFindId.module.css';
+
+const description = {
+  mainText: '입력하신 정보와 일치하는 결과입니다.',
+  subText: '개인정보 보호를 위해 \n 아이디 또는 이메일의 일부만 제공합니다.',
+};
 
 function ResultFindId() {
   const { username } = useContext(FindUserContext);
@@ -34,15 +40,7 @@ function ResultFindId() {
   return (
     <>
       <UserTitle title='아이디 찾기 결과' a11yHidden />
-      <div className={style.result__findId__title__wrapper}>
-        <span className={style.result__fintId__subtitle}>
-          입력하신 정보와 일치하는 결과입니다.
-        </span>
-        <span className={style.result__findId__description}>
-          개인정보 보호를 위해 <br /> 아이디 또는 이메일의 일부만 제공합니다.
-        </span>
-      </div>
-
+      <UserTitleDescription activeImage description={description} />
       <dl className={style.result__findId__item__list}>
         <dt className='a11yHidden'>계정명</dt>
         <dd
