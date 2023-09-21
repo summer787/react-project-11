@@ -101,7 +101,7 @@ function TvingLogin() {
   };
 
   return (
-    <div>
+    <>
       <UserTitle title='TVING ID 로그인' />
 
       <form onSubmit={handleLogin}>
@@ -158,7 +158,7 @@ function TvingLogin() {
         styleClass='text__large'
       />
       <Spinner message='로그인 중 입니다.' isOpen={isLoading} />
-    </div>
+    </>
   );
 }
 

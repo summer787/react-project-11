@@ -23,11 +23,14 @@ const Movie = lazy(() => import('./pages/Movie'));
 const Paramount = lazy(() => import('./pages/Paramount'));
 
 const UserLayout = lazy(() => import('./layout/User/UserLayout'));
+const UserWideMain = lazy(() => import('./layout/User/UserWideMain'));
+const UserMain = lazy(() => import('./layout/User/UserMain'));
 const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
 const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
 const FindUserId = lazy(() => import('./pages/User/FindUserId'));
 const FindUserPassword = lazy(() => import('./pages/User/FindUserPassword'));
 const ResultFindId = lazy(() => import('./pages/User/ResultFindId'));
+const CancelMembership = lazy(() => import('./pages/User/CancelMembership'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,19 +50,23 @@ const router = createBrowserRouter(
 
       <Route path='account' element={<Account />} />
       <Route element={<UserLayout />}>
-        <Route path='user/tvingLogin' element={<TvingLogin />} />
-        <Route path='user/tvingRegist' element={<TvingRegist />} />
-
-        <Route path='user/findId' element={<FindUserId />} />
-        <Route path='user/findPassword' element={<FindUserPassword />} />
-        <Route
-          path='user/resultFindId'
-          element={
-            <ResultFindUserRoute>
-              <ResultFindId />
-            </ResultFindUserRoute>
-          }
-        />
+        <Route element={<UserMain />}>
+          <Route path='user/tvingLogin' element={<TvingLogin />} />
+          <Route path='user/tvingRegist' element={<TvingRegist />} />
+          <Route path='user/findId' element={<FindUserId />} />
+          <Route path='user/findPassword' element={<FindUserPassword />} />
+          <Route
+            path='user/resultFindId'
+            element={
+              <ResultFindUserRoute>
+                <ResultFindId />
+              </ResultFindUserRoute>
+            }
+          />
+        </Route>
+        <Route element={<UserWideMain />}>
+          <Route path='user/cancelMembership' element={<CancelMembership />} />
+        </Route>
       </Route>
     </>
   )

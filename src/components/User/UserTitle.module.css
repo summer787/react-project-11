@@ -1,12 +1,18 @@
-.main__title {
-  /* background: yellowgreen; */
-  text-align: center;
-
-  & h2 {
-    color: var(--white);
-    font: var(--heading-xxl);
-    padding: 2.5rem 0 1.5rem 0;
+.main__title__wrapper {
+  &.main__title__center {
+    text-align: center;
     margin-top: 3rem;
-    margin-bottom: 2rem;
   }
+
+  &.main__title__side {
+    text-align: start;
+    margin-top: 2rem;
+  }
+}
+
+.main__title {
+  color: var(--white);
+  font: var(--heading-xxl);
+  padding: 2.5rem 0 1.5rem 0;
+  margin-bottom: 2rem;
 }

@@ -1,0 +1,5 @@
+.user__wide__main {
+  margin: 0 auto;
+  width: calc(100% - 7.776rem);
+  color: var(--white);
+}
