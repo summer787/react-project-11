@@ -64,8 +64,14 @@ const router = createBrowserRouter(
             }
           />
         </Route>
-        <Route element={<UserWideMain />}>
-          <Route path='user/cancelMembership' element={<CancelMembership />} />
+
+        <Route element={<PrivateRoute />}>
+          <Route element={<UserWideMain />}>
+            <Route
+              path='user/cancelMembership'
+              element={<CancelMembership />}
+            />
+          </Route>
         </Route>
       </Route>
     </>

@@ -1,7 +1,7 @@
-import { string } from 'prop-types';
+import { func, string } from 'prop-types';
 import style from './UserButtonShort.module.css';
 
-function UserButtonShort({ text, color }) {
+function UserButtonShort({ text, color, onChange }) {
   const className =
     color === 'black'
       ? 'user__button__short__black'
@@ -11,6 +11,7 @@ function UserButtonShort({ text, color }) {
     <button
       type='button'
       className={`${style.user__button__short} ${style[className]}`}
+      onClick={onChange}
     >
       {text}
     </button>
@@ -20,11 +21,13 @@ function UserButtonShort({ text, color }) {
 UserButtonShort.defaultProps = {
   text: '',
   color: 'white',
+  onChange: null,
 };
 
 UserButtonShort.propTypes = {
   text: string,
   color: string,
+  onChange: func,
 };
 
 export default UserButtonShort;

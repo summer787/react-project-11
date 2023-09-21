@@ -1,11 +1,16 @@
+/* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserTitle from '@/components/User/UserTitle';
 import UserTitleDescription from '@/components/User/UserTitleDescription';
 import UserCancelDescriptionList from '@/components/User/UserCancelDescriptionList';
 import UserUsingProductTable from '@/components/User/UserUsingProductTable';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserButtonShort from '@/components/User/UserButtonShort';
+import Spinner from '@/components/Spinner';
 
+import pb from '@/api/pocketbase';
 import style from './CancelMembership.module.css';
 
 const description = {
@@ -15,6 +20,37 @@ const description = {
 };
 
 function CancelMembership() {
+  const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // 이용중 상품 포기 동의 체크
+  const handleIsChecked = () => setIsChecked(!isChecked);
+
+  // 회원 탈퇴 취소
+  const handleCancel = () => navigate('/home');
+
+  // 회원 탈퇴
+  const handleCancelMembership = async () => {
+    const cancelConfirmMessage =
+      '확인을 누르시면 회원 탈퇴가 완료됩니다. \n 정말로 탈퇴하실 건가요?';
+
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm(cancelConfirmMessage)) {
+      if (pb.authStore.model) {
+        try {
+          setLoading(true);
+          await pb.collection('users').delete(pb.authStore.model.id);
+          alert('회원 탈퇴에 성공하였습니다. 시작 화면으로 이동합니다.');
+          setLoading(false);
+          navigate('/Account');
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+  };
+
   return (
     <>
       <UserTitle title='회원탈퇴' sidePosition />
@@ -26,14 +62,21 @@ function CancelMembership() {
       <section>
         <UserUsingProductTable />
         <CheckboxRounded
+          checked={isChecked}
           label='정기 결제 해지와 이용중이던 상품 포기에 동의합니다.'
+          onChange={handleIsChecked}
           isCenter
         />
         <div className={style.user__cancleMembership__button__wrapper}>
-          <UserButtonShort text='확인' color='white' />
-          <UserButtonShort text='취소' color='black' />
+          <UserButtonShort
+            text='확인'
+            color='white'
+            onChange={handleCancelMembership}
+          />
+          <UserButtonShort text='취소' color='black' onChange={handleCancel} />
         </div>
       </section>
+      {isLoading && <Spinner message='탈퇴 중입니다.' isOpen={isLoading} />}
     </>
   );
 }

@@ -1,14 +1,7 @@
 import { bool, func, string } from 'prop-types';
-import { useState } from 'react';
 import style from './CheckboxRounded.module.css';
 
 function CheckboxRounded({ checked, label, onChange, isCenter }) {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheck = () => {
-    setIsChecked(!isChecked);
-  };
-
   return (
     <div
       className={`${style.rounded__checkbox__wrapper} ${
@@ -18,16 +11,16 @@ function CheckboxRounded({ checked, label, onChange, isCenter }) {
       <label
         htmlFor='rounded__checkbox'
         className={`${style.rounded__checkbox__label} ${
-          isChecked && style.checked
-        } ${checked && style.checked}`}
-        onChange={onChange || handleCheck}
+          checked && style.checked
+        }`}
+        onChange={onChange}
       >
         <input
           type='checkbox'
           name='rounded__checkbox'
           id='rounded__checkbox'
           className={style.rounded__checkbox}
-          onChange={onChange || handleCheck}
+          onChange={onChange}
         />
         {label}
       </label>
@@ -46,7 +39,7 @@ CheckboxRounded.propTypes = {
   checked: bool,
   label: string,
   onChange: func,
-  isCenter: func,
+  isCenter: bool,
 };
 
 export default CheckboxRounded;
