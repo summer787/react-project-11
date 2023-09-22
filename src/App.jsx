@@ -10,14 +10,14 @@ import FindUserProvider from './components/contexts/FindUserContext';
 function App() {
   return (
     <HelmetProvider>
-    <AuthProvider>
-         <Toaster />
-         <FindUserProvider>
-      <Suspense fallback={<div>Loading</div>}>
-        <RouterProvider router={router} />
-      </Suspense>
-      </FindUserProvider>
-    </AuthProvider>
+      <AuthProvider>
+        <Toaster />
+        <FindUserProvider>
+          <Suspense fallback={<div>Loading</div>}>
+            <RouterProvider router={router} />
+          </Suspense>
+        </FindUserProvider>
+      </AuthProvider>
     </HelmetProvider>
   );
 }
