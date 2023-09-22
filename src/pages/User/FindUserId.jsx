@@ -1,8 +1,9 @@
 import { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { EmailReg } from '@/utils/validation';
+import { Helmet } from 'react-helmet-async';
 import debounce from '@/utils/debounce';
 import pb from '@/api/pocketbase';
-import { EmailReg } from '@/utils/validation';
 
 import UserTitle from '@/components/User/UserTitle';
 import UserSubTitle from '@/components/User/UserSubTitle';
@@ -69,6 +70,9 @@ function FindUserId() {
 
   return (
     <>
+      <Helmet>
+        <title>아이디찾기</title>
+      </Helmet>
       <UserTitle title='아이디 찾기' />
       <section>
         <form action='submit' onSubmit={handleFindId}>

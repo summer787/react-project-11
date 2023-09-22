@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import UserTitle from '@/components/User/UserTitle';
 import UserTitleDescription from '@/components/User/UserTitleDescription';
 import UserCancelDescriptionList from '@/components/User/UserCancelDescriptionList';
@@ -39,7 +40,7 @@ function CancelMembership() {
           alert('회원 탈퇴에 성공하였습니다. 시작 화면으로 이동합니다.');
           navigate('/Account');
         } catch (error) {
-          console.log(error);
+          throw new Error(error);
         }
       }
     }
@@ -47,6 +48,9 @@ function CancelMembership() {
 
   return (
     <>
+      <Helmet>
+        <title>티빙 | 언제 어디서나 티빙</title>
+      </Helmet>
       <UserTitle title='회원탈퇴' sidePosition />
       <section>
         <h3 className='a11yHidden'>회원 탈퇴 시 유의사항</h3>
