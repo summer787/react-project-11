@@ -40,7 +40,7 @@ function MainHeader() {
         } ${searchClicked ? styles.headerSearchClicked : ""}`}
       >
         <h1>
-          <Link to="/">
+          <Link to="/home">
             <img src={MainHeaderImage.logo} alt="티빙" />
           </Link>
         </h1>

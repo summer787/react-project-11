@@ -21,6 +21,11 @@
   & .poster {
     display: flex;
     flex-direction: column;
+    /* transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3%);
+    } */
 
     & .title {
       font: var(--paragraph-medium);

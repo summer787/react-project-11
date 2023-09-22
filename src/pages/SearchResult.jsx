@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Pagination, Navigation, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import pb from "@/api/pocketbase";
@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import styles from "./SearchResult.module.css";
+import Footer from "@/layout/Footer/Footer";
 
 function SearchResult() {
   const { searchResult } = useParams();
@@ -80,9 +81,13 @@ function SearchResult() {
           >
             {data &&
               data.items.map((item) => (
-                <SwiperSlide className={styles.poster} key={item.id}>
-                  <img src={getImageURL(item, "poster")} alt={item.title} />
-                  <p className={styles.title}>{item.title}</p>
+                <SwiperSlide key={item.id}>
+                  <Link to={`/tv/${item.id}`}>
+                    <div className={styles.poster}>
+                      <img src={getImageURL(item, "poster")} alt={item.title} />
+                      <p className={styles.title}>{item.title}</p>
+                    </div>
+                  </Link>
                 </SwiperSlide>
               ))}
           </Swiper>
@@ -100,14 +105,18 @@ function SearchResult() {
           >
             {movieData &&
               movieData.items.map((item) => (
-                <SwiperSlide className={styles.poster} key={item.id}>
-                  <img src={getImageURL(item, "poster")} alt={item.title} />
-                  <p className={styles.title}>{item.title}</p>
+                <SwiperSlide key={item.id}>
+                  <Link to={`/movie/${item.id}`} className={styles.poster}>
+                    <img src={getImageURL(item, "poster")} alt={item.title} />
+                    <p className={styles.title}>{item.title}</p>
+                  </Link>
                 </SwiperSlide>
               ))}
           </Swiper>
         </section>
       </section>
+
+      <Footer />
     </>
   );
 }
