@@ -54,3 +54,27 @@ font-weight: 500;;
   right: 0;
   width: 1.1rem;
 }
+
+.agree__marketinglist{
+display: flex;
+margin: -0.9375rem 0 1.25rem 1.5625rem;
+
+}
+
+.marketinglist__item {
+  margin-left: 10px;
+}
+
+
+.modal__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.1rem;
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none; 
+  cursor: pointer;
+}
+

@@ -4,7 +4,7 @@ import agreementIcon from "@/assets/Regist/agreement_icon_link.svg";
 import { UsernameReg, PasswordReg } from "@/utils/validation";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import debounce from "@/utils/debounce";
 import RegistInput from "@/components/Regist/RegistInput";
 import CheckboxRounded from "@/components/User/CheckboxRounded";
@@ -12,12 +12,14 @@ import CheckboxNoFilled from "@/components/Regist/CheckboxNoFilled";
 import UserButton from "@/components/User/UserButton";
 import InputClearButton from "@/components/User/InputClearButton";
 import PasswordVisibleButton from "@/components/User/PasswordVisibleButton";
+import RegistModalOne from "@/components/Regist/RegistModalOne";
+import RegistModalTwo from "@/components/Regist/RegistModalTwo";
+import RegistModalThree from "@/components/Regist/RegistModalThree";
+import RegistModalFour from "@/components/Regist/RegistModalFour";
 import styles from "./TvingRegist.module.css";
 
 function TvingRegist() {
   const navigate = useNavigate();
-
-  // console.log(pb)
 
   const [formState, setFormState] = useState({
     username: "",
@@ -60,12 +62,21 @@ function TvingRegist() {
   const [requiredInfo, setRequiredInfo] = useState(false);
   const [optionalInfo, setOptionalInfo] = useState(false);
   const [marketingInfo, setMarketingInfo] = useState(false);
+  const [pushInfo, setPushInfo] = useState(false);
+  const [emailInfo, setEmailInfo] = useState(false);
+  const [snsInfo, setSnsInfo] = useState(false);
 
   // 버튼 활성화
   const [isActive, setIsActive] = useState(false);
 
   // 유효성 검사 결과 상태
   const [isValid, setIsValid] = useState(false);
+
+  // 모달창 상태
+  const [isModalOpenOne, setIsModalOpenOne] = useState(false);
+  const [isModalOpenTwo, setIsModalOpenTwo] = useState(false);
+  const [isModalOpenThree, setIsModalOpenThree] = useState(false);
+  const [isModalOpenFour, setIsModalOpenFour] = useState(false);
 
   // 입력한 값이 없을 때 onBlur함수
   const handleBlur = (name) => {
@@ -146,16 +157,21 @@ function TvingRegist() {
       setRequiredInfo(true);
       setOptionalInfo(true);
       setMarketingInfo(true);
+      setPushInfo(true);
+      setEmailInfo(true);
+      setSnsInfo(true);
     } else {
       setAgeAgree(false);
       setRequiredService(false);
       setRequiredInfo(false);
       setOptionalInfo(false);
       setMarketingInfo(false);
+      setPushInfo(false);
+      setEmailInfo(false);
+      setSnsInfo(false);
     }
   };
 
-  
   const handleAgeCheck = () => {
     if (ageAgree === false) {
       setAgeAgree(true);
@@ -195,9 +211,39 @@ function TvingRegist() {
   const handleMarketingInfoCheck = () => {
     if (marketingInfo === false) {
       setMarketingInfo(true);
+      setPushInfo(true);
+      setEmailInfo(true);
+      setSnsInfo(true);
     } else {
       setMarketingInfo(false);
       setAllChecked(false);
+      setPushInfo(false);
+      setEmailInfo(false);
+      setSnsInfo(false);
+    }
+  };
+
+  const handlePushInfo = () => {
+    if (pushInfo === false) {
+      setPushInfo(true);
+    } else {
+      setPushInfo(false);
+    }
+  };
+
+  const handleEmailInfo = () => {
+    if (emailInfo === false) {
+      setEmailInfo(true);
+    } else {
+      setEmailInfo(false);
+    }
+  };
+
+  const handleSnsInfo = () => {
+    if (snsInfo === false) {
+      setSnsInfo(true);
+    } else {
+      setSnsInfo(false);
     }
   };
 
@@ -214,6 +260,47 @@ function TvingRegist() {
       setAllChecked(false);
     }
   }, [ageAgree, requiredService, requiredInfo, optionalInfo, marketingInfo]);
+
+  useEffect(() => {
+    if (pushInfo === true || emailInfo === true || snsInfo === true) {
+      setMarketingInfo(true);
+    } else {
+      setMarketingInfo(false);
+    }
+  }, [pushInfo, emailInfo, snsInfo]);
+
+  // 모달 창 함수
+  const handleOpenModalOne = () => {
+    setIsModalOpenOne(true);
+  };
+
+  const handleCloseModalOne = () => {
+    setIsModalOpenOne(false);
+  };
+
+  const handleOpenModalTwo = () => {
+    setIsModalOpenTwo(true);
+  };
+
+  const handleCloseModalTwo = () => {
+    setIsModalOpenTwo(false);
+  };
+
+  const handleOpenModalThree = () => {
+    setIsModalOpenThree(true);
+  };
+
+  const handleCloseModalThree = () => {
+    setIsModalOpenThree(false);
+  };
+
+  const handleOpenModalFour = () => {
+    setIsModalOpenFour(true);
+  };
+
+  const handleCloseModalFour = () => {
+    setIsModalOpenFour(false);
+  };
 
   // 버튼 활성화
   useEffect(() => {
@@ -243,23 +330,22 @@ function TvingRegist() {
   const handleRegist = async (e) => {
     e.preventDefault();
     // PocketBase SDK 요청
-try{
-    await pb.collection("users").create({
-      ...formState,
-      emailVisibility: true,
-    });
-    navigate("/user/RegistComplete");
-  }catch (error) {
-    toast.error('회원가입에 실패했습니다.',{
-      icon: '🚨',
-      ariaProps: {
-        role: 'alert',
-        'aria-live':'polite',
-      },
-    });
-    
-}
-  }
+    try {
+      await pb.collection("users").create({
+        ...formState,
+        emailVisibility: true,
+      });
+      navigate("/user/RegistComplete");
+    } catch (error) {
+      toast.error("회원가입에 실패했습니다.", {
+        icon: "🚨",
+        ariaProps: {
+          role: "alert",
+          "aria-live": "polite",
+        },
+      });
+    }
+  };
   const activeClearButton = (name, value) => {
     // 값이 있거나 없음에 따라 clear 버튼 활성화 또는 비활성화
     if (name === "username") {
@@ -447,21 +533,45 @@ try{
               checked={requiredService}
               onChange={handleRequiredServiceCheck}
             />
-            <a href="#" className={styles.agree__link}>
-              {" "}
-              <img src={agreementIcon} alt="#" />{" "}
-            </a>
+            <button
+              type="button"
+              className={styles.modal__button}
+              onClick={handleOpenModalOne}
+            >
+              <img src={agreementIcon} alt="서비스 이용약관 안내" />
+            </button>
+            {isModalOpenOne && (
+              <RegistModalOne
+                isOpen={isModalOpenOne}
+                onClose={handleCloseModalOne}
+                title="서비스 이용약관"
+              />
+            )}
           </li>
+
           <li className={styles.agree__item}>
             <CheckboxNoFilled
               label="[필수] 개인정보 수집 및 이용 동의"
               checked={requiredInfo}
               onChange={handleRequiredInfoCheck}
             />
-            <a href="#" className={styles.agree__link}>
-              {" "}
-              <img src={agreementIcon} alt="#" />{" "}
-            </a>
+            <button
+              type="button"
+              className={styles.modal__button}
+              onClick={handleOpenModalTwo}
+            >
+              <img
+                src={agreementIcon}
+                alt="[필수] 개인정보 수집 및 이용 동의안내"
+              />
+            </button>
+            {isModalOpenTwo && (
+              <RegistModalTwo
+                isOpen={isModalOpenTwo}
+                onClose={handleCloseModalTwo}
+                title="개인정보 수집 및 이용 동의"
+              />
+            )}
           </li>
           <li className={styles.agree__item}>
             <CheckboxNoFilled
@@ -469,10 +579,23 @@ try{
               checked={optionalInfo}
               onChange={handleOptionalInfoCheck}
             />
-            <a href="#" className={styles.agree__link}>
-              {" "}
-              <img src={agreementIcon} alt="#" />{" "}
-            </a>
+            <button
+              type="button"
+              className={styles.modal__button}
+              onClick={handleOpenModalThree}
+            >
+              <img
+                src={agreementIcon}
+                alt="[선택] 개인정보 수집 및 이용 동의 안내"
+              />
+            </button>
+            {isModalOpenThree && (
+              <RegistModalThree
+                isOpen={isModalOpenThree}
+                onClose={handleCloseModalThree}
+                title="개인정보 수집 및 이용 동의"
+              />
+            )}
           </li>
           <li className={styles.agree__item}>
             <CheckboxNoFilled
@@ -480,10 +603,44 @@ try{
               checked={marketingInfo}
               onChange={handleMarketingInfoCheck}
             />
-            <a href="#" className={styles.agree__link}>
-              {" "}
-              <img src={agreementIcon} alt="#" />{" "}
-            </a>
+            <button
+              type="button"
+              className={styles.modal__button}
+              onClick={handleOpenModalFour}
+            >
+              <img src={agreementIcon} alt="마케팅 정보 수신 동의 안내" />
+            </button>
+            {isModalOpenFour && (
+              <RegistModalFour
+                isOpen={isModalOpenFour}
+                onClose={handleCloseModalFour}
+                title="마케팅 정보 수신 동의"
+              />
+            )}
+          </li>
+        </ul>
+
+        <ul className={styles.agree__marketinglist}>
+          <li className={styles.marketinglist__item}>
+            <CheckboxNoFilled
+              label="푸쉬알림"
+              checked={pushInfo}
+              onChange={handlePushInfo}
+            />
+          </li>
+          <li className={styles.marketinglist__item}>
+            <CheckboxNoFilled
+              label="이메일"
+              checked={emailInfo}
+              onChange={handleEmailInfo}
+            />
+          </li>
+          <li className={styles.marketinglist__item}>
+            <CheckboxNoFilled
+              label="SNS"
+              checked={snsInfo}
+              onChange={handleSnsInfo}
+            />
           </li>
         </ul>
 
