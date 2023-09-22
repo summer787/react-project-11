@@ -182,7 +182,7 @@ function VideoPlayer({ record }) {
               },
               1300: {
                 slidesPerView: 3,
-              }
+              },
               1500: {
                 slidesPerView: 3.8,
               },
