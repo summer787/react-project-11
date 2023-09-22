@@ -3,6 +3,7 @@ import MainHeader from "@/layout/MainHeader/MainHeader";
 import MainCarousel from "@/components/MainCarousel/MainCarousel";
 import Program from "@/components/Program/Program";
 import AddBanner from "@/components/AddBanner/AddBanner";
+import Footer from "@/layout/Footer/Footer";
 
 function Home() {
   return (
@@ -37,6 +38,7 @@ function Home() {
           filter={"broadcasting='TVING'"}
         />
       </section>
+      <Footer />
     </div>
   );
 }

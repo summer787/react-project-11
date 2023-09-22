@@ -118,7 +118,7 @@ function MainCarousel() {
               <img
                 className={styles.bannerImage}
                 src={getImageURL(item, "bannerImage")}
-                alt={item.title}
+                alt={item.information}
               />
               <p className={styles.bannerInformation} key={item.id}>
                 {item.information}
@@ -145,7 +145,12 @@ function MainCarousel() {
         onKeyDown={handleAction("next")}
       />
       <div className={styles.playWrapper}>
-        <button id="carouselControll" type="button" onClick={handleAutoplay}>
+        <button
+          id="carouselControll"
+          type="button"
+          onClick={handleAutoplay}
+          aria-label="재생/정지"
+        >
           {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </button>
         <div id="MaincarouselPagination" className="swiper-pagination" />

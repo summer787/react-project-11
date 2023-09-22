@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
 import styles from "./Nav.module.css";
 
 function Nav() {
+  const location = useLocation();
+
   return (
     <nav className={styles.nav}>
       <ul>
@@ -13,10 +15,20 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/tv">TV프로그램</Link>
+          <Link
+            to="/tv"
+            className={`${location.pathname === "/tv" ? styles.accent : ""}`}
+          >
+            TV프로그램
+          </Link>
         </li>
         <li>
-          <Link to="/movie">영화</Link>
+          <Link
+            to="/movie"
+            className={`${location.pathname === "/movie" ? styles.accent : ""}`}
+          >
+            영화
+          </Link>
         </li>
         <li>
           <Link to="/paramount">파라마운트+</Link>

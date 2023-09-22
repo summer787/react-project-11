@@ -32,7 +32,12 @@ function Search({ searchClicked, setSearchClicked }) {
   return (
     <ul className={styles.menu}>
       <li>
-        <button onClick={onClick} className={styles.search} type="button">
+        <button
+          onClick={onClick}
+          className={styles.search}
+          type="button"
+          aria-label="검색"
+        >
           {searchClicked ? (
             <MainHeaderImage.Cancel />
           ) : (

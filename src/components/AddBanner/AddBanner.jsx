@@ -29,7 +29,7 @@ function AddBanner({ imageNum }) {
       <h3 className="a11yHidden">광고</h3>
       <a href="/">
         <div>
-          <img src={imagePath} alt="" />
+          <img src={imagePath} alt="광고배너" />
         </div>
       </a>
     </div>

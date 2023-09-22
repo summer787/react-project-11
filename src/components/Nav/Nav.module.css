@@ -38,4 +38,9 @@
     width: 2.125rem;
     height: 2.125rem;
   }
+
+  & .accent {
+    color: var(--white);
+    font-weight: bold;
+  }
 }
