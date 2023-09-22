@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { bool, string, node } from "prop-types";
+import { bool, string, node, func } from "prop-types";
 import { useEffect } from "react";
 import closebutton from "@/assets/Regist/close_button_icon.svg";
 import style from "./RegistModal.module.css";
@@ -54,14 +54,14 @@ function RegistModal({ isOpen = false, onClose = false, title, children }) {
 
 RegistModal.defaultProps = {
   isOpen: false,
-  onClose: false,
+  onClose: () => {},
   children: node,
   title: "",
 };
 
 RegistModal.propTypes = {
   isOpen: bool,
-  onClose: bool,
+  onClose: func,
   children: node,
   title: string,
 };

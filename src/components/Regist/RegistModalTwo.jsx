@@ -1,4 +1,4 @@
-import { bool, string } from "prop-types";
+import { bool, string, func } from "prop-types";
 import ReactModal from "./RegistModal";
 import styles from "./RegistModalTwo.module.css";
 
@@ -66,13 +66,13 @@ function RegistModalTwo({ isOpen = false, onClose = false, title }) {
 
 RegistModalTwo.defaultProps = {
   isOpen: false,
-  onClose: false,
+  onClose:  () => {},
   title: "",
 };
 
 RegistModalTwo.propTypes = {
   isOpen: bool,
-  onClose: bool,
+  onClose: func,
   title: string,
 };
 

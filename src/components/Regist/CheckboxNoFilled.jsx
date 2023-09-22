@@ -1,20 +1,20 @@
-import { string } from 'prop-types';
-import { useState } from 'react';
-import style from './CheckboxNoFilled.module.css';
+import { string } from "prop-types";
+import { useState } from "react";
+import style from "./CheckboxNoFilled.module.css";
 
 function CheckboxNoFilled({ label, checked, onChange }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheck = () => {
     setIsChecked(!isChecked);
-    onChange()
+    onChange();
   };
 
   return (
     <div className={style.nofilled__checkbox__wrapper}>
       <input
-        type='checkbox'
-        name='nofilled__checkbox'
+        type="checkbox"
+        name="nofilled__checkbox"
         id={label}
         className={style.nofilled__checkbox}
         onChange={handleCheck}
@@ -26,7 +26,6 @@ function CheckboxNoFilled({ label, checked, onChange }) {
           checked && style.checked
         }`}
         onChange={handleCheck}
-       
       >
         {label}
       </label>
@@ -35,7 +34,7 @@ function CheckboxNoFilled({ label, checked, onChange }) {
 }
 
 CheckboxNoFilled.defaultProps = {
-  label: '',
+  label: "",
 };
 
 CheckboxNoFilled.propTypes = {
