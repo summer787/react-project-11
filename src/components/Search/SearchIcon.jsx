@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { PropTypes } from "prop-types";
 import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
+import { Link } from "react-router-dom";
 import styles from "./SearchIcon.module.css";
 
 function Search({ searchClicked, setSearchClicked }) {
@@ -55,24 +56,24 @@ function Search({ searchClicked, setSearchClicked }) {
               </div>
               <div>
                 <p>유동균</p>
-                <a href="/">프로필전환 &gt;</a>
+                <Link to="/home">프로필전환 &gt;</Link>
               </div>
             </div>
             <ul className={styles.user}>
               <li>
-                <a href="/">MY</a>
+                <Link to="/home">MY</Link>
               </li>
               <li>
-                <a href="/">이용권</a>
+                <Link to="/home">이용권</Link>
               </li>
               <li>
-                <a href="/">쿠폰등록</a>
+                <Link to="/home">쿠폰등록</Link>
               </li>
               <li>
-                <a href="/">고객센터</a>
+                <Link to="/home">고객센터</Link>
               </li>
               <li>
-                <a href="/">로그아웃</a>
+                <Link to="/home">로그아웃</Link>
               </li>
             </ul>
           </div>

@@ -4,6 +4,7 @@ import pb from "@/api/pocketbase";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PlayIcon, PauseIcon } from "@/assets/MainCarousel/Icons";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -155,9 +156,9 @@ function MainCarousel() {
         </button>
         <div id="MaincarouselPagination" className="swiper-pagination" />
       </div>
-      <a className={styles.moreLink} href="/">
+      <Link className={styles.moreLink} to="/home">
         자세히 보기
-      </a>
+      </Link>
 
       <div className={styles.backgroundGradient} />
     </section>

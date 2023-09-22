@@ -11,6 +11,7 @@ import SearchContext from "@/context/SearchContext";
 
 import nowDate from "../../utils/getNowDate";
 import styles from "./Search.module.css";
+import Movie from "../../pages/Movie";
 
 function Search({ isOpen, onRequestClose }) {
   const inputRef = useRef(null);
@@ -39,6 +40,7 @@ function Search({ isOpen, onRequestClose }) {
   };
 
   const handleSearchInput = (event) => {
+    event.preventDefault();
     setSearchInput(event.target.value);
   };
 
@@ -138,17 +140,17 @@ function Search({ isOpen, onRequestClose }) {
             <div className={styles.searchPoster}>
               {data &&
                 data.items.slice(0, 3).map((item) => (
-                  <a key={item.id} href="/">
+                  <Link key={item.id} href={item.id}>
                     <img src={getImageURL(item, "poster")} alt="" />
                     <span>{item.title}</span>
-                  </a>
+                  </Link>
                 ))}
               {movieData &&
                 movieData.items.slice(0, 3).map((item) => (
-                  <a key={item.id} href="/">
+                  <Link key={item.id} href={item.id}>
                     <img src={getImageURL(item, "poster")} alt="" />
                     <span>{item.title}</span>
-                  </a>
+                  </Link>
                 ))}
             </div>
             <div>
@@ -157,18 +159,18 @@ function Search({ isOpen, onRequestClose }) {
                   data.items.length > 7 &&
                   data.items.slice(7, 9).map((item) => (
                     <li key={item.id}>
-                      <a href="/">
+                      <Link to={`/tv/${item.id}`}>
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 {movieData &&
                   movieData.items.length > 7 &&
                   movieData.items.slice(7, 9).map((item) => (
                     <li key={item.id}>
-                      <a href="/">
+                      <Link to={`/Movie/${item.id}`}>
                         <span>{item.title}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
               </ul>
@@ -210,34 +212,34 @@ function Search({ isOpen, onRequestClose }) {
               <h3>실시간 인기 검색어</h3>
               <ul>
                 <li>
-                  <a href="/">신병</a>
+                  <Link to="/01p0cbd3klqayud">신병</Link>
                 </li>
                 <li>
-                  <a href="/">스트릿 우먼 파이터 시즌2</a>
+                  <Link to="/029xbvsrk5be1ng">스트릿 우먼 파이터 시즌2</Link>
                 </li>
                 <li>
-                  <a href="/">나는 SOLO</a>
+                  <Link to="/00iqeegqywou8m4">경이로운 소문</Link>
                 </li>
                 <li>
-                  <a href="/">회장님네 사람들</a>
+                  <Link to="/u3h3tc1xw3bsq33">마녀사냥 2023</Link>
                 </li>
                 <li>
-                  <a href="/">벌거벗은 세계사</a>
+                  <Link to="/5cjkrpudv37hkqi">나는 지금 화가 나있어</Link>
                 </li>
                 <li>
-                  <a href="/">짱구는못말려23</a>
+                  <Link to="/9fwlipzvz11vwn1">알쓸인잡</Link>
                 </li>
                 <li>
-                  <a href="/">남남</a>
+                  <Link to="/rn0iuqct243iwo7">신서유기5</Link>
                 </li>
                 <li>
-                  <a href="/">스트릿 우먼 파이터</a>
+                  <Link to="/5as2h3oozdxmoix">오은영의 금쪽상담소</Link>
                 </li>
                 <li>
-                  <a href="/">아스달 연대기</a>
+                  <Link to="/1harhvi80da3wup">뿅뿅 지구오락실2</Link>
                 </li>
                 <li>
-                  <a href="/">유 퀴즈 온 더 블럭</a>
+                  <Link to="/hksainlo69jjanq">유 퀴즈 온 더 블럭</Link>
                 </li>
               </ul>
               <p>

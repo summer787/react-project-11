@@ -1,5 +1,6 @@
 // src/layout/Footer/Footer.jsx
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -16,9 +17,9 @@ function Footer() {
         <div>
           <span className={styles.margin}>공시지사항</span>
           <span className={styles.accent}>
-            <a href="/">
+            <Link to="/home">
               [안내] 휴대폰 신규 결제 서비스 종료 (2023년 10월 4일)
-            </a>
+            </Link>
           </span>
         </div>
         <div>
@@ -37,32 +38,32 @@ function Footer() {
       <div className={styles.util}>
         <div className={styles.utilnav}>
           <span className={styles.accent}>
-            <a href="/">고객센터</a>
+            <Link to="/home">고객센터</Link>
           </span>
           <span className={styles.accent}>
-            <a href="/">이용약관</a>
+            <Link to="/home">이용약관</Link>
           </span>
           <span className={styles.accent}>
-            <a href="/">개인정보처리방침</a>
+            <Link to="/home">개인정보처리방침</Link>
           </span>
           <span className={styles.accent}>
-            <a href="/">청소년 보호정책</a>
+            <Link to="/home">청소년 보호정책</Link>
           </span>
           <span className={styles.accent}>
-            <a href="/">법적 고지</a>
+            <Link to="/home">법적 고지</Link>
           </span>
           <span className={styles.accent}>
-            <a href="/">이벤트</a>
+            <Link to="/home">이벤트</Link>
           </span>
           <span className={styles.accent}>
-            <a href="/">인재채용</a>
+            <Link to="/home">인재채용</Link>
           </span>
         </div>
         <div>
           <p>
             <span className={styles.slash}>대표이사 : 최주희</span>
             <span className={`${styles.slash} ${styles.underline}`}>
-              <a href="/">사업자정보확인</a>
+              <Link to="/home">사업자정보확인</Link>
             </span>
             <span className={styles.slash}>사업자등록번호 : 188-88-01893</span>
             <span>통신판매신고번호 : 2020-서울마포-3641호</span>
@@ -78,7 +79,7 @@ function Footer() {
               고객센터 (평일 09시~17시/점심시간 13시~14시)
             </span>
             <span className={`${styles.slash} ${styles.underline}`}>
-              <a href="/">1:1 게시판 문의</a>
+              <Link to="/home">1:1 게시판 문의</Link>
             </span>
             <span className={styles.slash}>대표메일 : tving@cj.net</span>
             <span>전화번호(ARS) : 1670-1525 (챗봇/채팅 상담 연결)</span>
@@ -94,24 +95,24 @@ function Footer() {
       <div className={styles.icons}>
         {/* <IconColorProvider> */}
         <div>
-          <a href="/">
+          <Link to="/home">
             <YoutubeIcon />
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="/">
+          <Link to="/home">
             <InstagramIcon />
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="/">
+          <Link to="/home">
             <TwitterIcon />
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="/">
+          <Link to="/home">
             <FacebookIcon />
-          </a>
+          </Link>
         </div>
         {/* </IconColorProvider> */}
       </div>
