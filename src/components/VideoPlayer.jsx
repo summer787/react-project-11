@@ -3,73 +3,104 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-// import thumbnail from '../assets/Subpage/season_thumbnail_1.png';
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import getImageURLThumbnail from '@/utils/getImgURLThumbmail';
 import pb from '@/api/pocketbase';
+import arrowIcon from '../assets/Subpage/arrow_icon.svg'
+import playButton from '../assets/Subpage/play_button.svg'
 import sub from "../styles/subpage.module.css";
 
-function VideoPlayer(){
+function VideoPlayer({record}){
     const {id} = useParams()
     const [data, setData] = useState()
     const [selectedEpisode, setSelectedEpisode] = useState(0);
     const [episodeIndices, setEpisodeIndices] = useState([]);
-    const [selectedButton, setSelectedButton] = useState("first"); // 추가: 선택된 버튼
+    const [selectedButton, setSelectedButton] = useState("first"); 
     const [descriptionArray, setDescriptionArray] =useState();
     const [releaseArray, setReleaseArray] =useState();
+    const [showModal, setShowModal] = useState(false);  
+    const [seasonsData, setSeasonsData] = useState([]); 
+    const [selectedSeasonKey, setSelectedSeasonKey] = useState("");  
+
 
     useEffect(()=>{
-        async function getTv(){
-            try {
-                const record = await pb.collection('tv').getOne(id, {expand: 'tag'}, {expand: 'seasonDescription'});
-                setData(record);
-                console.log()
+        setData(record);
+
+            if (record) {
+                const seasonKeys = Object.keys(record).filter(key => key.startsWith("thumbnailSeason"));
+                const validSeasonKeys = seasonKeys.filter(seasonKey => Array.isArray(record[seasonKey]) && record[seasonKey].length > 0);
+                setSeasonsData(validSeasonKeys);
                 
-                // Check if the record exists and has the necessary properties
-                if (record && record.seasonDescription && record.seasonRelease) {
-                    setDescriptionArray(record.seasonDescription['시즌1']);
-                    setReleaseArray(record.seasonRelease['시즌1']);
+                if (validSeasonKeys.length > 0) {
+                    setSelectedSeasonKey(validSeasonKeys[0]);
+                    setDescriptionArray(record.seasonDescription[`시즌${validSeasonKeys[0].slice(-1)}`]); 
+                    setReleaseArray(record.seasonRelease[`시즌${validSeasonKeys[0].slice(-1)}`]); 
                     
-                    let indices = Array.from({length: record.thumbnailSeason1.length}, (_, i) => i);
-    
+                    let indices = Array.from({length: record[validSeasonKeys[0]].length}, (_, i) => i); 
+        
                     if(selectedButton === 'new'){
                         indices = [...indices].reverse();
                     }
-                    
-                    setEpisodeIndices(indices);
+                        
+                    setEpisodeIndices(indices); 
                 }
-            } catch (error) {
-                throw new Error(error)
             }
-        }
-        getTv()
-    },[id, selectedButton]) 
+    },[selectedButton, record]) 
 
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (showModal && !event.target.closest('.modal')) {
+                setShowModal(false);
+            }
+        };
+
+        window.addEventListener('click', handleOutsideClick);
+
+        return () => window.removeEventListener('click', handleOutsideClick);
+    }, [showModal]);
+
+
+    const handleSeasonSelect = (seasonKey) => {  
+        setSelectedEpisode(0);
+        setSelectedButton("first");
+        setSelectedSeasonKey(seasonKey); 
+        
+        setDescriptionArray(data.seasonDescription[`시즌${seasonKey.slice(-1)}`]); 
+        setReleaseArray(data.seasonRelease[`시즌${seasonKey.slice(-1)}`]); 
+    
+        let indices = Array.from({length: data[seasonKey].length}, (_, i) => i); 
+    
+        if(selectedButton === 'new'){
+            indices = [...indices].reverse();
+        }
+    
+        setEpisodeIndices(indices); 
+    
+        setShowModal(false);
+    }
+    
+    
+
+    const handleModalToggle = () => {
+        setShowModal(!showModal);
+    }
 
 if(data) {
-    const  {title} =data;
+    const  {title, thumbnailSeason1} =data;
     return(
         <section className={sub.videoPlayer}>
             <article className={sub.videoPlayerHeader}>
-                {/* <Select 
-                    className="select__control css-1s2u09g-control"
-                    classNamePrefix="select"
-                    options={options}
-                    isSearchable={false}
-                    placeholder="소용없어 거짓말(총 12화)"
-                /> */}
-                <div className={sub.videoPlayerTitle}>
+                <div className={sub.videoPlayerTitle}  onClick={(e) => { e.stopPropagation(); handleModalToggle(); }}>
                     <h2 className={sub.title}>
-                        {title}
+                    {`${title}${selectedSeasonKey.slice(-1) !== '1' ? ` ${selectedSeasonKey.slice(-1)}` : ''}`}
                     </h2>
                     <h3 className={sub.number}>
-                        (총 12화)
+                        {`(총 ${thumbnailSeason1.length}화)`}
+                        
                     </h3>
-                    <svg fill='#fff' width="40" height="40" viewBox="0 0 32 32"/>
+                    <img className={`${sub.arrowIcon} ${showModal ? sub.rotated : ''}`}   src={arrowIcon} alt='아래 방향 화살표'/>
                 </div>
                 <div className={sub.orderChoices}>
                     <div className={sub.clickOn}>
@@ -92,6 +123,16 @@ if(data) {
                 </div>
             </article>
             <article className={sub.videoPlayerInformation}>
+             {showModal && (
+                        <div className={sub.modal}  onClick={(e) => e.stopPropagation()}>
+                            {seasonsData.map((seasonKey, index) => (
+                                <div key={index} onClick={() => handleSeasonSelect(seasonKey)}>
+                                    {`${data.title} 시즌 ${index + 1}`} 
+                                    {selectedSeasonKey === seasonKey && <span>✔</span>} 
+                                </div>
+                            ))}
+                        </div>
+                        )}
             <Swiper
                 modules={[ Navigation, Scrollbar]}
                 breakpoints={{
@@ -108,7 +149,7 @@ if(data) {
                         slidesPerView: 3.8,
                     },
                     1920:{
-                        slidesPerView : 4.8 ,}
+                        slidesPerView : 5.2 ,}
                 }}
                 navigation={{
                     nextEl: '.swiper-button-next',
@@ -120,7 +161,7 @@ if(data) {
                 }}
                 >    
                 {data &&
-                data.thumbnailSeason1 &&
+                 data[selectedSeasonKey]  &&
                 episodeIndices.map((index) => (
                 <SwiperSlide key={index}>
                     <div className={selectedEpisode === index ? sub.seasonThumbnailWrap1 : sub.seasonThumbnailWrap }
@@ -134,8 +175,8 @@ if(data) {
                     tabIndex={0} 
                     >
                         <img
-                            className={sub.seasonThumbnail}
-                            src={getImageURLThumbnail(data,  index, "thumbnailSeason1")}
+                            className={`${sub.seasonThumbnail} ${selectedEpisode === index ? sub.seasonThumbnail1:  sub.seasonThumbnailWrap}`}
+                            src={getImageURLThumbnail(data,  index, selectedSeasonKey)} 
                             alt="thumbnail"
                         /> 
                     <button
@@ -144,28 +185,15 @@ if(data) {
                         aria-label="Play" 
                     >
                         {selectedEpisode === index && (
-                            <svg
-                            className={sub.svgIcon}
-                            data-name="Layer 1"
-                            id="Layer_1"
-                            viewBox="0 0 100 100"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fill="#ffffff"
-                                d="M50,5A45,45,0,1,0,95,50,45.00058,45.00058,0,0,0,50,5Zm0,88A43.00024,43.00024,0,1,1,80.40552,80.40552,42.86137,42.86137,0,0,1,50,93Z"
-                            />
-                            <path
-                                fill="#ffffff"
-                                d="M69.78345,47.76355,40.96753,29.40466a2.54663,2.54663,0,0,0-1.37195-.4046,2.5884,2.5884,0,0,0-1.81012.74756A2.64065,2.64065,0,0,0,37,31.64111V68.35889a2.64062,2.64062,0,0,0,.78546,1.89343,2.588,2.588,0,0,0,1.81012.74756,2.54663,2.54663,0,0,0,1.37195-.4046L69.78345,52.23645a2.66383,2.66383,0,0,0,0-4.4729Zm-1.07477,2.78619L39.89282,68.90857a.54048.54048,0,0,1-.29724.09131.591.591,0,0,1-.40777-.17353A.634.634,0,0,1,39,68.35889V31.64111a.63378.63378,0,0,1,.18781-.46746.59111.59111,0,0,1,.40777-.17359.54161.54161,0,0,1,.29724.09131L68.70874,49.45032a.66419.66419,0,0,1-.00006,1.09942Z"
-                            />
-
-                        </svg>
+                            <img src={playButton } alt='playButton '
+                            className={sub.svgIcon}/>
+                            
                         )}
                     </button>
                         
                         <div className={sub.itemInformation}>
-                            <h2 className={sub.itemTitle}>{`${[index+1]}. ${title} ${index + 1}화`}</h2> 
+                        <h2 className={sub.itemTitle}>{`${[index+1]}. ${title}${selectedSeasonKey.slice(-1) !== '1' ? ` ${selectedSeasonKey.slice(-1)}` : ''} ${index + 1}화`}</h2>
+
                             {data && descriptionArray && (
                                 <p className={sub.itemDescription}>
                                 {descriptionArray[index]}
@@ -177,11 +205,7 @@ if(data) {
                         </div>
                     </div>
                 </SwiperSlide>
-                )
-                )
-                
-                }
-                    
+                ))}
                     </Swiper>
                     <div className="swiper-button-next" style={{ position: "absolute",width: "3.888rem", top: "50%", right: "10px", color:"white", padding:"5px",zIndex: 9999}}/>
                     <div className="swiper-button-prev" style={{ position: "absolute",width: "3.888rem", top: "50%", left: "10px",  color:"white", padding:"5px", zIndex: 9999}}/>

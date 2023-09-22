@@ -14,7 +14,7 @@ import twitter from '../assets/Subpage/twitter_icon.svg';
 import link from '../assets/Subpage/link_icon.svg';
 import sub from "../styles/subpage.module.css";
 
-function SubPageTitle ({record}){
+function MovieSubPageTitle ({record}){
     const {id} = useParams()
     const [data, setData] = useState()
     const [showSharePopup, setShowSharePopup] = useState(false);
@@ -28,7 +28,7 @@ function SubPageTitle ({record}){
         setShowLinkCopiedPopup(true);
         setTimeout(() => {
             setShowLinkCopiedPopup(false);
-        }, 2000); 
+        }, 2000);  
     };
     const [isLiked, setIsLiked] = useState(false); 
     const [showPostPopup, setShowPostPopup] = useState(false);
@@ -81,7 +81,7 @@ const handleModalToggle = (event) => {
 
     
 if(data) {
-    const {title, audiencerating, release, broadcasting, season, creator, actor, description, expand} = data;
+    const {title, audiencerating, release, runningtime, isParmount, creator, actor, description, expand} = data;
     const {tag: tagArray} = expand;
     const {tag}=tagArray[0];
     console.log(data)
@@ -105,8 +105,8 @@ if(data) {
                                 <li className={sub.tag}>{audiencerating}</li>
                                 <li className={sub.tag}>{release.slice(0,4)}</li>
                                 <li className={sub.tag}>{tag}</li>
-                                <li className={sub.tag}>{broadcasting}</li>
-                                <li className={sub.tag}>{`시즌 ${season}개`}</li>
+                                <li className={sub.tag}>{`${runningtime}분`}</li>
+                                <li className={sub.tag}>{isParmount}</li>
                             </ul>
                             <nav className={sub.Buttons}>
                                 <button type='button' className={sub.playButton}>
@@ -173,4 +173,4 @@ if(data) {
     )}
 }
 
-export default SubPageTitle;
+export default MovieSubPageTitle;

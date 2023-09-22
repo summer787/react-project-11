@@ -13,35 +13,30 @@
     margin: 0rem 2.5rem 0 1rem;
     padding: 3rem 0;
     z-index: 10;
-    height: 500px;
-    /* overflow: hidden; */
+    height: 31.25rem;
 }
 
 .PageTitleExpanded{
-    /* height: 700px;  */
     height: auto;
-    /* 디스크립션의 길이만큼 늘어나야 된다. ?? 어떻게 */
 }
 
 .backgroundImage {
     position: absolute;
-    top: -5rem; /* 상위 요소보다 위로 5rem */
+    top: -5rem; 
     bottom: -10rem; 
     left: -5rem; 
     right: -5rem; 
-    /* background-image: url('../assets/Subpage/subpage_poster.png'); */
     background-size: cover;
     z-index: -1; 
-    /* margin-bottom: 20px; */
 }
 
 .blurOverlay {
     position:absolute;
-    top: -5rem; /*상위 요소보다 위로 5rem */
+    top: -5rem; 
     bottom: -15rem;
     left: -5rem;
     right: -5rem; 
-    backdrop-filter :blur(20px);
+    backdrop-filter :blur(1.25rem);
     background-color: rgba(255, 255, 255, 0.614);
     background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0)),
@@ -52,39 +47,23 @@
 
 .content{
     max-width: 106.875rem;
-    /* height: 30.875rem; */
-    height: auto;
     position:relative;
-    /* 수정한 부분 */
     display: flex;
     justify-content: space-between;
-    /* width: 100%; */
+    padding: 1.25rem;
     padding-bottom: 3.125rem;
-    /* border-bottom: 0.0625rem solid white; */
     border-bottom: 1px solid var(--gray-300);
 }
 
-.borderBottom{
-    position: relative;
-    width: 100%;
-    height: 1px;
-    /* background-color: ); */
-    z-index: 20;
-    /* margin-top: 550px; */
-}
-
 .contentMain{
-    max-width: 580px;
-    /* max-height: 526px; */
+    max-width: 36.25rem;
     margin: 0 2rem;
-
 }
 
 
 .tagWrap {
-    /* position: relative; */
-    width: 500px;
-    height: 36px;
+    width: 31.25rem;
+    height: 2.25rem;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -94,24 +73,26 @@
 }
 
 .tagWrap li{
-    padding: 2px 5px;
+    padding: 2px 0.3125rem;
 }
 
 .tag{
-    /* position: absolute; */
-    /* justify-content: flex-start; */
-    /* padding: 15px; */
     margin-top: 0.5rem;
     border-radius: 5px;
 }
 
 
-
-.titleImg img {
+.titleImg {
     width: 27.125rem;
     height: 6.25rem; 
     margin: 1.5rem;
 }
+
+.titleImg img{
+    width: auto;
+    height: 5.9375rem;
+}
+
 
 .tag {
     margin-right: 0.625rem; 
@@ -140,9 +121,9 @@
 }
 
 .playIcon{
-    width: 20px;
-    height: 22px;
-    margin-right: 15px;
+    width: 1.25rem;
+    height: 1.375rem;
+    margin-right: 0.9375rem;
 }
 
 .Buttons {
@@ -162,8 +143,6 @@
     transform: scale(1.1); 
 }
 
-
-
 .likeButton, .shareButton{
     width: 5.25rem;
     height: 5.25rem;
@@ -181,7 +160,6 @@
     transition: opacity 0.1s ease 0s;
     cursor: pointer;
     background-color : transparent;
-    /* color: var(--gray-800); */
     border: none;
     font: var(--heading-medium);
 }
@@ -194,7 +172,6 @@
     color: white;
     width: 3.125rem;
     height: 3.125rem;
-    /* fill: var(--gray-200); */
 }
 
 .likeButton{   
@@ -228,7 +205,6 @@
     justify-content: space-between;
 }
 
-
 .linkCopiedPopup {
     
     display: flex;
@@ -238,12 +214,12 @@
     top:90%;
     left: 50%;
     transform : translate(-50%, -50%);
-    width : 400px ;
-    height : 100px ;  
+    width : 25rem ;
+    height : 6.25rem ;  
 
     background-color : #151414 ;
     color : #fff ;
-    border-radius :10px ;
+    border-radius :0.625rem ;
     opacity: .9;
     z-index: 9999; 
     transform: translate(-50%, -50%) scale(1); 
@@ -261,36 +237,32 @@
     top:90%;
     left: 50%;
     transform : translate(-50%, -50%);
-    width : 400px ;
-    height : 100px ;  
+    width : 25rem ;
+    height : 6.25rem ;  
 
     background-color : #151414 ;
     color : #fff ;
     border-radius :10px ;
     opacity: .9;
+    z-index: 9999;
 }
 
 .sharePopupWrapper {
     display: none;
     position: absolute;
-    top: -80px;
-    right: -100px;   
-    width: 218px;
-    height: 44px;
-    /* background-color: rgb(219, 218, 218); */
-    /* border-radius: 10px; */
+    top: -5rem;
+    right: -6.25rem;   
+    width: 13.625rem;
+    height: 2.75rem;
     background-color: rgba(219, 218, 218, .4);
-    padding: 20px;
-    /* box-shadow: 0px 0px 10px rgba(0,0,0,0.1); */
-    /* filter: blur(1px); */
-    /* opacity: .4; */
+    padding: 1.25rem;
 
     ::after {
         content: "";
         position: absolute;
-        bottom: -19.6px; /* 꼬리 위치 조정 */
-        left: 50%; /* 꼬리 위치 조정 */
-        transform: translateX(-50%); /* 꼬리 위치 조정 */
+        bottom: -1.25rem; 
+        left: 50%; 
+        transform: translateX(-50%);
         border-width: 10px; 
         border-style:solid; 
         border-color:
@@ -307,18 +279,13 @@
 
 
 .sharePopup button{
-    width: 43px;
+    width: 2.6875rem;
 }
 
 .information{
     color: var(--gray-300);
-    /* white-space: normal; */
-    /* overflow: hidden; */
     font-weight: 600;
-    /* text-overflow: ellipsis; */
-    /* max-width: 32.5rem; */
 }
-/* 리액트로 더보기 버튼 누르면 확장되게 구현, 지금은 그냥 생략만 해 놈 */
 
 .creator {
     display: flex;
@@ -334,7 +301,7 @@
 
 .actor dt{
     margin-right: 0.625rem;  
-    width: 60px
+    width: 3.75rem
 }
 
 .actor dd {
@@ -351,11 +318,11 @@
 
 .actorClamp dt {
     margin-right: 0.625rem;  
-    width: 60px
+    width: 3.75rem
 }
 
 .actorClamp dd {
-   white-space: normal; 
+    white-space: normal; 
 }
 
 .description { 
@@ -370,14 +337,6 @@
     margin-right: 0.625rem;
 }
 
-/* .actorClamp {
-    display: -webkit-box;
-    overflow:hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 1; 
-    -webkit-box-orient: vertical;  
-} */
-
 .descriptionClamp {
     display: -webkit-box;
     overflow:hidden;
@@ -387,7 +346,6 @@
 }
 
 .description{
-    /* text-overflow: ellipsis; */
     margin-top: 1.875rem;
     color: var(--gray-300);
     line-height: 1.5;
@@ -408,15 +366,19 @@
     position: relative;
     padding: 0rem 1.75rem 3.75rem 3.75rem;
     z-index: 5;
-    padding-top: 30px;
+    padding-top: 1.875rem;
     z-index: 999; 
+}
+
+.videoPlayerTitle {
+    cursor: pointer;
 }
 
 .videoPlayerHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.25rem;
+    margin-top: 1.875rem;
 }
 
 .videoPlayerTitle{
@@ -428,19 +390,65 @@
     justify-content: flex-start;
 }
 
+.modal {
+    position: absolute;
+    top: 40;
+    left: 20;
+    padding: 0.625rem 1.875rem 0.625rem 0.625rem;
+    width: auto;
+    height: auto;
+    background-color: rgb(30, 30, 30);
+    font: var(--paragraph-medium) ;
+    color: var(--gray-200);
+    border: 2px solid rgb(75, 75, 75);
+    border-radius: 3%;
+    z-index :9999; 
+    line-height: 2.3;  
+}
+
+.modal span{
+    margin-left: 0.4375rem;
+}
+
+.modal div{
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.modal div:hover {
+    width: 100%;
+    background-color: rgb(50, 50, 50); 
+}
+
 .title, .number {
     margin-right: 0.625rem; 
+}
+
+.number{
+    font-size: large;
 }
 
 .title{
     color: var(--white);
     font: var(--heading-xl);
+    
 }
 
 .number{
     color: var(--gray-300);
     display: flex;
     justify-content: center;
+
+}
+
+.arrowIcon{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.625rem;
+}
+
+.arrowIcon.rotated {
+    transform: rotate(180deg);
 }
 
 .orderChoices{
@@ -451,6 +459,7 @@
     justify-content: flex-end;
     margin: 0 4.0625rem;
     align-items: center;
+    cursor: pointer;
 }
 
 button{
@@ -463,14 +472,12 @@ button{
     outline: none; 
 }
 .clickOn{
- color: var(--gray-300);
+    color: var(--gray-300);
 }
 
 .clickFirst{
     color: white;
 }
-
-
 
 .clickNew{
     margin-left: 1.6875rem;
@@ -483,7 +490,7 @@ button{
 }
 
 .buttonWithEffects {
-    position: relative; /* ::before와 ::after가상 요소의 위치 기준 설정 */
+    position: relative;
 }
 
 .buttonWithEffects::before {
@@ -517,9 +524,8 @@ button{
     height: 1.3125rem; 
     display: flex;
     align-items: center;
-    
+    cursor: pointer;
 }
-
 
 [type="checkbox"] {
     appearance: none;
@@ -543,19 +549,17 @@ button{
     transition: left 250ms linear;
 }
 
-[type="checkbox"]:checked::before { /*둥근 버튼*/
+[type="checkbox"]:checked::before {
     background-color: var(--white);
     left: 1em;
 }
 
-[type="checkbox"]:checked { /*켜졌을 때  배경색과 테두리 색*/
+[type="checkbox"]:checked { 
     background-color: var(--brand-red-1);
     border-color: var(--brand-red-1);
 }
-/* 글자색까지 바뀌는 건 리액트로 구현 */
 
 .seasonThumbnailWrap, .seasonThumbnailWrap1, .relatedVideoWrap, .recommendationWrap{
-    margin-right: 0.625rem;
     position: relative; 
     cursor: pointer;
     transition: transform 0.3s ease-out,
@@ -565,52 +569,21 @@ button{
 
 .videoPlayerInformation{
     display: flex;
-
-    /* justify-content: space-between;  */
     padding-bottom: 3.75rem;
-    /* overflow-x: scroll;  */
-    /*width: 1800px; */
-
 }
 
 :global(.swiper-horizontal){
-    height: 400px;
-    margin-top: 80px;
+    height: 25rem;
+    margin-top: 5rem;
 }
 
 :global(.swiper-scrollbar){
-   margin-top: 300px;
+    margin-top: 13.75rem;
 }
 
 :global(.swiper-scrollbar-drag) {
     background-color: #6b6b6b;
 }
-/* .swiperScrollbar {
-    left: 0;
-    bottom: -3rem!important;
-    width: 100%;
-    height: .25rem;
-  }
-  
-  .swiperScrollbarDrag {
-     background-color: hsla(0,0%,100%,.1);
-  } */
-   
-
-/* .videoPlayerInformation::-webkit-scrollbar {
-    width: 5px;
-} */
-
-/* .videoPlayerInformation::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(238, 233, 233, 0.3);
-} */
-
-/* .videoPlayerInformation::-webkit-scrollbar-thumb {
-    background-color: rgb(244, 234, 234);
-    outline: 1px solid rgb(8, 110, 213);
-} */
-
-
 
 .thumbnailPlayButton {
     position: absolute;
@@ -629,11 +602,6 @@ button{
     transform: translateY(-0.625rem); 
 }
 
-.seasonThumbnailWrap1 img{
-    filter: brightness(40%);
-    z-index: 1;
-}
- 
 .seasonThumbnailWrap:hover .itemDescription,
 .seasonThumbnailWrap:hover .itemTitle,
 .seasonThumbnailWrap1:hover .itemDescription,
@@ -650,26 +618,27 @@ button{
 
 .seasonThumbnailWrap1,
 .seasonThumbnailWrap{
-    width: 21.875rem;
+    width: 20rem;
     height: 19.25rem;
-    margin-right: 1.25rem;
-    position:relative; /* 추가 */
+    position:relative; 
     z-index: 1;
 }
 
-.seasonThumbnail, .itemThumbnail{
-    width: 21.875rem;
-    height: 12.375rem;
+.seasonThumbnail1 {
+    filter: brightness(40%)
+}
 
-    border-radius: 1%;
+.seasonThumbnail, .itemThumbnail{
+    width: 17.125rem;
+    height: 9.625rem;
+
+    border-radius: 3%;
 }
 
 .itemInformation{
-    width: 20.875rem;
-    height: 128px;
-    padding: 0.625rem 1rem 0 0;
-    /* padding-bottom: 20px; */
-    
+    width: 16.25rem;
+    height: 8rem;
+    padding: 0.625rem 1rem 0 0;    
 } 
 
 .itemTitle{
@@ -712,8 +681,6 @@ button{
 }
 
 .recommendation{
-    /* display: flex; */
-    /* flex-direction: row; */
     padding: 1.875rem 2.8125rem 0rem 2.8125rem;
     
 }
@@ -723,13 +690,13 @@ button{
 }
 
 :global(.swiper-pagination-bullet) {
-    width: 6px;
-    height: 6px;
-    background-color: var(--gray-100); /* Cglobalscrollbarhange the bullet color to black */
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: var(--gray-100); 
 }
 
 :global(.swiper-pagination-bullet-active) {
-    background-color:var(--white); /* Change the active bullet color to red */
+    background-color:var(--white); 
 }
 
 :global(.swiper-pagination) {
@@ -738,49 +705,16 @@ button{
 }
 
 :global(.swiper-pagination-bullets){
-    width: 100px !important;
+    width: 6.25rem !important;
 }
 
 :global(.swiper-pagination-horizontal){
-    width: 100px !important;
+    width: 6.25rem !important;
 }
 
-
-  /* :global(.swiper-pagination) { */
-    /* justify-content: flex-end; */
-    /* text-align: right; */
-    /* position: absolute;  */
-    /* bottom: auto !important; */
-    /* top: 0; */
-    /* left: auto !important; */
-    /* right: 0; */
-    /* width: auto !important; */
-    /* width: 200px; */
-  /* }  */
-
-/* :global(.swiper-pagination) { */
-    /* position: absolute; 
-    bottom: auto;
-    top: 0;
-    /* left: auto !important; */
-    /* right: 0;*/
-    /* margin-right: 20px;
-    width: auto; */ 
-    /* width: 100%;
-    justify-content: flex-end; */
-  
-
-  /* :global(.custom-pagination){
-    position: absolute;
-    top: 0;
-    right: 0 !important; 
-  } */
-
-  /* :global(.swiper-pagination) {
-    position: absolute;
-    top: 0px;
-  } */
-
+:global(.swiper-slide){
+    width: 17.8125rem !important;
+}
 
 .swiperWrapp{
     margin-left: 0.625rem;
@@ -789,10 +723,7 @@ button{
 .recommendationVideoHeader{
     display: flex;
     justify-content: space-between;
-    /* align-items: flex-end; */
     padding-bottom: 0.9375rem;
-    /* width:2000px; */
-    /* background-color: aliceblue;*/
 } 
 
 

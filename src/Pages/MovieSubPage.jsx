@@ -1,18 +1,13 @@
-import 'swiper/css';
 import 'swiper/css/navigation';
-import pb from '@/api/pocketbase';
-import Recommendation from '@/components/Recommendation';
-import RelatedVideo from '@/components/RelatedVideo';
-import VideoPlayer from '@/components/VideoPlayer';
-import { useEffect, useState } from 'react';
 import SubPageTitle from '../components/SubPageTitle';
+import Recommendation from '../components/Recommendation';
 import sub from "../styles/subpage.module.css";
-import { useNavigate, useParams } from 'react-router-dom';
 import MovieSubPageTitle from '@/components/MovieSubPageTitle';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import pb from '@/api/pocketbase';
 
-
-
-function SubPage() {
+function MovieSubPage(){
     const [record, setRecord] = useState(null);
     const [isTvCollection, setIsTvCollection] = useState(true);
     const { id } = useParams();
@@ -30,7 +25,7 @@ function SubPage() {
                     navigate(`/movie/${id}`);
                 } catch (movieError) {
                     console.error("Error fetching data:", movieError);
-                    return;
+                    return;  
                 }
             }
             setRecord(fetchedRecord);
@@ -38,16 +33,14 @@ function SubPage() {
         getTv()
     },[id]);
 
-    return (
-        <div className={sub.contentWrap}>
-
-                <SubPageTitle record={record}/>
-                <VideoPlayer record={record}/>
-                <RelatedVideo/>
-                <Recommendation/>
-
-        </div>   
-    );
+    return(
+        <div>
+        
+            <MovieSubPageTitle record={record}/>
+            <Recommendation/>
+        
+        </div>
+    )
 }
 
-export default SubPage;
+export default MovieSubPage;

@@ -1,13 +1,8 @@
-// eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Navigation, Pagination} from 'swiper/modules';
-// eslint-disable-next-line import/no-unresolved
 import 'swiper/css';
-// eslint-disable-next-line import/no-unresolved
 import 'swiper/css/navigation';
-// eslint-disable-next-line import/no-unresolved
 import 'swiper/css/pagination';
-// eslint-disable-next-line import/no-unresolved
 import 'swiper/css/scrollbar';
 import sub from "../styles/subpage.module.css";
 import poster from '../assets/Subpage/subpage_poster.png';
