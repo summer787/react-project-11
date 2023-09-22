@@ -16,7 +16,7 @@ function ResultFindId() {
 
   function convertSting(initial = '') {
     if (!initial) {
-      return;
+      return false;
     }
 
     let result;
@@ -29,9 +29,9 @@ function ResultFindId() {
       const halfLength = Math.floor(length / 2);
       const middlePart = initial.slice(4, -halfLength);
       result = `${frontPart}${middlePart}***`;
+      return result;
     }
 
-    // eslint-disable-next-line consistent-return
     return result;
   }
 

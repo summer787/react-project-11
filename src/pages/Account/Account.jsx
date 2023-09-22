@@ -5,9 +5,9 @@ import style from './Account.module.css';
 
 function Account() {
   return (
-    <div className={`${style.Account} ${style.background}`}>
+    <div className={style.account__wrapper}>
       <UserTitle title='로그인 계정 선택' a11yHidden />
-      <div className={`${style.description}`}>
+      <div className={style.accout__description}>
         <span>반가워요!</span>
         <span>계정을 선택해주세요.</span>
       </div>

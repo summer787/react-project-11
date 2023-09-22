@@ -6,8 +6,9 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  font-size: 1.333rem;
-  font-weight: 400;
+  font:
+    400 1.333rem 'Noto Sans KR',
+    sans-serif;
   box-sizing: border-box;
   width: 100%;
   height: auto;
@@ -21,7 +22,7 @@
   margin-top: 1rem;
 
   &:hover {
-    border-color: var(--white); 
+    border-color: var(--white);
     color: var(--white);
   }
 }

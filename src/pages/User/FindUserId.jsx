@@ -1,4 +1,3 @@
-// /* eslint-disable no-alert */
 import { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import debounce from '@/utils/debounce';

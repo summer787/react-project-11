@@ -80,7 +80,6 @@ function TvingLogin() {
 
     const { id, password } = formState;
 
-    // eslint-disable-next-line no-alert
     const errorAlert = (message) => alert(message);
 
     if (id === '') {

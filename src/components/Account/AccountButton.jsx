@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import AccountImage from '@/assets/Account/account_icons';
-import PropTypes from 'prop-types';
+import { bool, number, string } from 'prop-types';
 import styles from './AccountButton.module.css';
 
 const buttons = [
@@ -90,12 +90,16 @@ function AccountButtonLIst() {
   );
 }
 
+AccountButton.defaultProps = {
+  isService: true,
+};
+
 AccountButton.propTypes = {
-  id: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  isService: PropTypes.bool.isRequired,
+  id: number.isRequired,
+  text: string.isRequired,
+  image: string.isRequired,
+  link: string.isRequired,
+  isService: bool,
 };
 
 export default AccountButtonLIst;

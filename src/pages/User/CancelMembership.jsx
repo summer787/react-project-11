@@ -1,5 +1,4 @@
-/* eslint-disable no-alert */
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-restricted-globals */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserTitle from '@/components/User/UserTitle';
@@ -35,7 +34,6 @@ function CancelMembership() {
     const cancelConfirmMessage =
       '확인을 누르시면 회원 탈퇴가 완료됩니다. \n 정말로 탈퇴하실 건가요?';
 
-    // eslint-disable-next-line no-restricted-globals
     if (confirm(cancelConfirmMessage)) {
       if (pb.authStore.model) {
         try {
