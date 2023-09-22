@@ -14,9 +14,11 @@ function App() {
       <AuthProvider>
         <Toaster />
         <FindUserProvider>
-          <SearchProvider>
-            <RouterProvider router={router} />
-          </SearchProvider>
+          <Suspense fallback={<div>Loading</div>}>
+            <SearchProvider>
+              <RouterProvider router={router} />
+            </SearchProvider>
+          </Suspense>
         </FindUserProvider>
       </AuthProvider>
     </HelmetProvider>
