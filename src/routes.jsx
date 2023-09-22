@@ -18,7 +18,7 @@ const SearchResult = lazy(() => import("./pages/SearchResult"));
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Rootlayout />}>
-      <Route path="/" element={<Home />} />
+      <Route index path="home" element={<Home />} />
       <Route path="live" element={<Live />} />
       <Route path="tv" element={<Tv />} />
       <Route path="movie" element={<Movie />} />
