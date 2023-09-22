@@ -30,6 +30,7 @@ const FindUserId = lazy(() => import('./pages/User/FindUserId'));
 const FindUserPassword = lazy(() => import('./pages/User/FindUserPassword'));
 const ResultFindId = lazy(() => import('./pages/User/ResultFindId'));
 const CancelMembership = lazy(() => import('./pages/User/CancelMembership'));
+const RegistComplete = lazy(() => import('./pages/User/RegistComplete'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -69,6 +70,7 @@ const router = createBrowserRouter(
             />
           </Route>
         </Route>
+        <Route path='user/RegistComplete' element={<RegistComplete/>} />
       </Route>
     </>
   )

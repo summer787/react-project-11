@@ -1,9 +1,8 @@
-
 .input__wrapper {
-  position:relative;
-display: flex;
-flex-direction: column;
-margin-bottom: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .input {
@@ -12,19 +11,17 @@ margin-bottom: 1rem;
   box-sizing: border-box;
   border-style: solid;
   border-width: 0.0625rem;
-  background-color:var(--brand-dark-bg-2);
+  background-color: var(--brand-dark-bg-2);
   border-radius: 0.1875rem;
-  border-color:var(--brand-dark-bg-2);
+  border-color: var(--brand-dark-bg-2);
   font-weight: 300;
   font-size: 1.5rem;
   text-indent: 1.333rem;
-  color:var(--white);
-  
+  color: var(--white);
+
   &::placeholder {
-    color:var(--gray-600);
-}
-
-
+    color: var(--gray-600);
+  }
 }
 
 .user__input__buttons {

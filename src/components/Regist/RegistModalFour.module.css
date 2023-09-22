@@ -1,0 +1,13 @@
+.modalFour__text {
+  font: var(--paragraph-large);
+  color: var(--gray-400);
+  font-weight: 500;
+  word-break: keep-all;
+  margin-top: 2.5rem;
+}
+
+.modalFout__title {
+  font-size: 1rem;
+  color: var(--gray-400);
+  font-weight: 700;
+}

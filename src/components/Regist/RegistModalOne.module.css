@@ -1,0 +1,10 @@
+.modalone__text {
+  font: var(--paragraph-large);
+  color: var(--gray-400);
+  font-weight: 500;
+  word-break: keep-all;
+}
+
+.modal__subtitle {
+  margin-top: 2rem;
+}

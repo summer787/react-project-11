@@ -1,0 +1,29 @@
+.modal__header {
+  position: relative;
+}
+
+.modal__title {
+  font: var(--paragraph-xl);
+  font-weight: 600;
+  color: var(--white);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.modal__close__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  margin-right: 1rem;
+  color: var(--gray-400);
+}
+
+.modal__content {
+  overflow-y: auto;
+}
