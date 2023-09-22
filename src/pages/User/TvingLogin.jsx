@@ -11,6 +11,7 @@ import UserButton from '@/components/User/UserButton';
 import FindUser from '@/components/Login/FindUser';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserInfo from '@/components/User/UserInfo';
+import Spinner from '@/components/Spinner';
 import style from './TvingLogin.module.css';
 
 function TvingLogin() {
@@ -24,6 +25,7 @@ function TvingLogin() {
   const [activeIdClear, setActiveIdClear] = useState(false);
   const [activePasswordClear, setActivePasswordClear] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const idInputRef = useRef(null);
   const passwordInputRef = useRef(null);
@@ -89,13 +91,15 @@ function TvingLogin() {
     }
 
     try {
+      setModal(true);
       await signIn(id, password);
-
+      setModal(false);
       navigate('/home');
     } catch (error) {
       const errorMessage =
         '일치하는 회원정보가 없습니다.\n이용하시는 계정 유형(TVING ID/CJ ONE/SNS)과\n아이디, 비밀번호를 다시 확인해주세요.';
       alert(errorMessage);
+      setModal(false);
     }
   };
 
@@ -163,6 +167,7 @@ function TvingLogin() {
         linktext='회원가입 하기'
         styleClass='text__large'
       />
+      <Spinner message='로그인 중입니다.' isOpen={modal} />
     </>
   );
 }

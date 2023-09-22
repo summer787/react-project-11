@@ -13,6 +13,7 @@ import InputClearButton from '@/components/User/InputClearButton';
 import UserButton from '@/components/User/UserButton';
 import DivisionLine from '@/components/User/DivisionLine';
 import Unavailable from '@/components/User/Unavailable';
+import Spinner from '@/components/Spinner';
 import { FindUserContext } from '@/components/contexts/FindUserContext';
 
 import style from './FindUserId.module.css';
@@ -20,9 +21,10 @@ import style from './FindUserId.module.css';
 function FindUserId() {
   const [userEmailInput, setUserEmailInput] = useState('');
   const [activeEmailClear, setActiveEmailClear] = useState(false);
-  const emailInputRef = useRef(null);
-  const { updateFindUserState } = useContext(FindUserContext);
   const navigate = useNavigate();
+  const { updateFindUserState } = useContext(FindUserContext);
+  const emailInputRef = useRef(null);
+  const [modal, setModal] = useState(false);
 
   // input 값 -> state(userEmail) 값
   const handleDebounceInput = debounce((e) => {
@@ -50,15 +52,18 @@ function FindUserId() {
       return;
     }
     try {
+      setModal(true);
       const records = await pb
         .collection('users')
         .getFirstListItem(`email='${emailInput}'`);
       updateFindUserState(records);
+      setModal(false);
       navigate('/user/resultFindId');
     } catch (error) {
       alert(
         '일치하는 이메일 정보가 없습니다. \n입력 내용을 다시 한 번 확인해주세요.'
       );
+      setModal(false);
     }
   };
 
@@ -106,6 +111,7 @@ function FindUserId() {
         <UserButton type='button' text='본인인증하기' isActive />
       </section>
       <Unavailable service='본인인증으로 찾기' />
+      <Spinner message='아이디를 찾는 중입니다.' isOpen={modal} />
     </>
   );
 }
