@@ -12,12 +12,18 @@ import styles from "./Tv.module.css";
 function Tv() {
   const [selectedTag, setSelectedTag] = useState();
   const [data, setData] = useState();
+  const [sort, setSort] = useState(true);
+
+  const sortHandler = (bool) => () => {
+    setSort(bool);
+  };
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await pb.collection("tv").getList(1, 50, {
           filter: `tag.tag='${selectedTag}'`,
+          sort: `${sort ? "release" : "likes"}`,
         });
 
         setData(response);
@@ -29,7 +35,7 @@ function Tv() {
     if (selectedTag) {
       fetchData();
     }
-  }, [selectedTag]);
+  }, [selectedTag, sort]);
 
   return (
     <div
@@ -42,7 +48,27 @@ function Tv() {
       <TagList tag="tvtag" setSelectedTag={setSelectedTag} />
       {data ? (
         <section className={styles.tag}>
-          <h2>{selectedTag}</h2>
+          <div className={styles.sortbox}>
+            <h2>{selectedTag}</h2>
+            <div className={styles.buttonGroup}>
+              <button
+                type="button"
+                aria-label="인기순 정렬"
+                onClick={sortHandler(true)}
+                className={sort ? styles.active : ""}
+              >
+                인기순
+              </button>
+              <button
+                type="button"
+                aria-label="최신순 정렬"
+                onClick={sortHandler(false)}
+                className={sort ? "" : styles.active}
+              >
+                최신순
+              </button>
+            </div>
+          </div>
           <div className={styles.contents}>
             {data.items.map((item) => (
               <Link to={`/sub/${item.id}`} key={item.id}>
