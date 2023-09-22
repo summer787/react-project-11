@@ -119,7 +119,7 @@ if(data) {
                                 </button>
                                 {showPostPopup && ReactDOM.createPortal(
                                 <div className={sub.postPopup}>
-                                    포스트가 찜되었습니다.
+                                    포스트가 찜 되었습니다.
                                 </div>,
                                 document.body 
                                 )}

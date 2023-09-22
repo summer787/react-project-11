@@ -81,7 +81,7 @@ const handleModalToggle = (event) => {
 
     
 if(data) {
-    const {title, audiencerating, release, runningtime, isParmount, creator, actor, description, expand} = data;
+    const {title, audiencerating, release, runningtime, isParamount, creator, actor, description, expand} = data;
     const {tag: tagArray} = expand;
     const {tag}=tagArray[0];
     console.log(data)
@@ -102,11 +102,11 @@ if(data) {
                             </h2>                          
                             <div/>
                             <ul className={sub.tagWrap}>
-                                <li className={sub.tag}>{audiencerating}</li>
-                                <li className={sub.tag}>{release.slice(0,4)}</li>
+                                <li className={sub.tag}>{`${audiencerating}+`}</li>
+                                {release ? <li className={sub.tag}>{release.slice(0,4)}</li> : null}
                                 <li className={sub.tag}>{tag}</li>
                                 <li className={sub.tag}>{`${runningtime}분`}</li>
-                                <li className={sub.tag}>{isParmount}</li>
+                                {isParamount ? <li className={sub.tag}>Paramount+</li> : null}
                             </ul>
                             <nav className={sub.Buttons}>
                                 <button type='button' className={sub.playButton}>
@@ -119,7 +119,7 @@ if(data) {
                                 </button>
                                 {showPostPopup && ReactDOM.createPortal(
                                 <div className={sub.postPopup}>
-                                    포스트가 찜되었습니다.
+                                    포스트가 찜 되었습니다.
                                 </div>,
                                 document.body 
                                 )}

@@ -36,7 +36,7 @@
     bottom: -15rem;
     left: -5rem;
     right: -5rem; 
-    backdrop-filter :blur(1.25rem);
+    backdrop-filter :blur(1.1rem);
     background-color: rgba(255, 255, 255, 0.614);
     background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0)),
@@ -53,6 +53,7 @@
     padding: 1.25rem;
     padding-bottom: 3.125rem;
     border-bottom: 1px solid var(--gray-300);
+    
 }
 
 .contentMain{
@@ -362,9 +363,13 @@
     height: 30.875rem;
 }
 
+.borderBottom{
+    margin-bottom: 20px;
+}
+
 .videoPlayer{
     position: relative;
-    padding: 0rem 1.75rem 3.75rem 3.75rem;
+    padding: 0px 28px 0px 60px;
     z-index: 5;
     padding-top: 1.875rem;
     z-index: 999; 
@@ -565,6 +570,7 @@ button{
     transition: transform 0.3s ease-out,
                 opacity 1s linear;
     z-index: 1; 
+    margin-top: 0.8375rem;
 }
 
 .videoPlayerInformation{
@@ -574,7 +580,6 @@ button{
 
 :global(.swiper-horizontal){
     height: 25rem;
-    margin-top: 5rem;
 }
 
 :global(.swiper-scrollbar){
@@ -665,7 +670,7 @@ button{
 }
 
 .relatedVideo{
-    padding: 1.875rem 2.8125rem 3.75rem 2.8125rem;
+    padding: 1.875rem 2.8125rem;
 }
 
 
@@ -680,14 +685,19 @@ button{
     display: flex;
 }
 
-.recommendation{
-    padding: 1.875rem 2.8125rem 0rem 2.8125rem;
+ .recommendation{
+    padding: 0 2.8125rem 0rem 2.8125rem;
     
+} 
+
+.relatedVideoWrap{
+    padding: 5px;
 }
 
 .recommendationAll {
     display: flex;
 }
+
 
 :global(.swiper-pagination-bullet) {
     width: 0.375rem;
@@ -713,23 +723,32 @@ button{
 }
 
 :global(.swiper-slide){
-    width: 17.8125rem !important;
+    width: 285px !important;
 }
 
-.swiperWrapp{
-    margin-left: 0.625rem;
+:global(.subpage-module_recommendationAll__sWhaQ .swiper-slide){
+    width: 205px !important;
+}
+
+
+
+.recommendation{
+    position: relative;  
+    z-index: 9999;
 }
 
 .recommendationVideoHeader{
+    /* position: absolute; */
     display: flex;
     justify-content: space-between;
     padding-bottom: 0.9375rem;
+    margin-top: 50px;
 } 
 
 
 .recommendationThumbnail{
-    width: 15.5rem;
-    height: 22.3125rem;
+    width: 12.0625rem;
+    height: 17.375rem;
     border-radius: 1%;
 }
 
@@ -742,6 +761,4 @@ button{
     text-overflow: ellipsis;
     color: var(--gray-200);
 }
-
-
 

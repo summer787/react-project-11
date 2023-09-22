@@ -37,7 +37,7 @@ function MovieSubPage(){
         <div>
         
             <MovieSubPageTitle record={record}/>
-            <Recommendation/>
+            <Recommendation record={record}/>
         
         </div>
     )
