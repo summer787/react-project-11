@@ -1,4 +1,4 @@
-/* eslint-disable no-alert */
+// /* eslint-disable no-alert */
 import { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import debounce from '@/utils/debounce';
@@ -11,6 +11,7 @@ import UserDescription from '@/components/User/UserDescription';
 import UserInput from '@/components/User/UserInput';
 import InputClearButton from '@/components/User/InputClearButton';
 import UserButton from '@/components/User/UserButton';
+import DivisionLine from '@/components/User/DivisionLine';
 import Unavailable from '@/components/User/Unavailable';
 import Spinner from '@/components/Spinner';
 import { FindUserContext } from '@/components/contexts/FindUserContext';
@@ -98,11 +99,7 @@ function FindUserId() {
           </div>
         </form>
       </section>
-      <div className={style.division__wrapper}>
-        <hr className={style.division__line} />
-        <span className={style.division__text}>또는</span>
-        <hr className={style.division__line} />
-      </div>
+      <DivisionLine text='또는' />
       <section className={style.find__id__auth}>
         <div>
           <UserSubTitle text='본인인증으로 찾기' />

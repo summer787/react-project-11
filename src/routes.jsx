@@ -23,7 +23,6 @@ const Movie = lazy(() => import('./pages/Movie'));
 const Paramount = lazy(() => import('./pages/Paramount'));
 
 const UserLayout = lazy(() => import('./layout/User/UserLayout'));
-const UserWideMain = lazy(() => import('./layout/User/UserWideMain'));
 const UserMain = lazy(() => import('./layout/User/UserMain'));
 const TvingLogin = lazy(() => import('./pages/User/TvingLogin'));
 const TvingRegist = lazy(() => import('./pages/User/TvingRegist'));
@@ -48,9 +47,9 @@ const router = createBrowserRouter(
         </Route>
       </Route>
 
-      <Route path='account' element={<Account />} />
       <Route element={<UserLayout />}>
         <Route element={<UserMain />}>
+          <Route path='account' element={<Account />} />
           <Route path='user/tvingLogin' element={<TvingLogin />} />
           <Route path='user/tvingRegist' element={<TvingRegist />} />
           <Route path='user/findId' element={<FindUserId />} />
@@ -63,10 +62,7 @@ const router = createBrowserRouter(
               </ResultFindUserRoute>
             }
           />
-        </Route>
-
-        <Route element={<PrivateRoute />}>
-          <Route element={<UserWideMain />}>
+          <Route element={<PrivateRoute />}>
             <Route
               path='user/cancelMembership'
               element={<CancelMembership />}

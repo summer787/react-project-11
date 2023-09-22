@@ -1,24 +1,26 @@
 .Account {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
   font-size: 1rem;
-}
 
-.background {
-  background-image: linear-gradient(
-      0deg,
-      rgb(0, 0, 0) 0%,
-      rgb(0, 0, 0) 65%,
-      rgba(0, 0, 0, 0.75) 90%
-    ),
-    url(../../assets/Account/Account_bg_pc.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  animation: 5s size-down;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+        0deg,
+        rgb(0, 0, 0) 0%,
+        rgb(0, 0, 0) 65%,
+        rgba(0, 0, 0, 0.75) 90%
+      ),
+      url(../../assets/Account/Account_bg_pc.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: 5s size-down;
+    z-index: -99999;
+  }
 }
-
 @keyframes size-down {
   from {
     background-size: 110%;

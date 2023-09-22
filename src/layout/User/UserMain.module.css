@@ -9,3 +9,13 @@
     height: 100%;
   }
 }
+
+.user__wide__main {
+  margin: 0 auto;
+  width: calc(100% - 7.776rem);
+  color: var(--white);
+
+  & .user__wide__main__section {
+    margin-bottom: 17.75rem;
+  }
+}

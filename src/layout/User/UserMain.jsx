@@ -1,24 +1,22 @@
+// UserMain.jsx
 import React from 'react';
-import { node } from 'prop-types';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import style from './UserMain.module.css';
 
-function UserMain({ children }) {
+function UserMain() {
+  const location = useLocation();
+  const [mainClassName, sectionClassName] =
+    location.pathname === '/user/cancelMembership'
+      ? ['user__wide__main', 'user__wide__main__section']
+      : ['user__main', 'user__main__section'];
+
   return (
-    <main className={style.user__main}>
-      <section className={style.user__main__section}>
-        {children || <Outlet />}
+    <main className={style[mainClassName]}>
+      <section className={style[sectionClassName]}>
+        <Outlet />
       </section>
     </main>
   );
 }
-
-UserMain.defaultProps = {
-  children: null,
-};
-
-UserMain.propTypes = {
-  children: node,
-};
 
 export default UserMain;
