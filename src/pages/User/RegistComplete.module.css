@@ -3,32 +3,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
-  margin-left: -5rem;
-  width: 50rem;
+  margin-top: 12rem;
 }
 
 .check__img {
   width: 7.5rem;
   height: 7.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .complete__title {
   margin-bottom: 1rem;
+  margin-top: 1rem;
   font-size: 2.5rem;
   font-weight: 700;
+  color: var(--white);
 }
 
 .complete__text {
   padding: 0 2rem;
   margin-top: 1rem;
-  color: #a3a3a3;
+  color: var(--gray-400);
   font-size: 1.677rem;
-  font-weight: normal;
+  font-weight: 700;
   word-break: keep-all;
 }
 
 .complete__text__bottom {
   margin-bottom: 2rem;
+}
+
+.button__container {
+  width: 48rem;
 }
