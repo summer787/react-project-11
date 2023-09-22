@@ -1,6 +1,4 @@
-* {
-  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Roboto", Segoe UI, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif
-}
+
 
 .regist__Form {
   margin-top: 3rem;
@@ -30,16 +28,16 @@
 }
 
 .agree__title {
-display: flex;
-flex-direction: wrap;
-align-items: center;
-font-size: 1.25rem;
-color: #a3a3a3;
-cursor: pointer;
-font-weight: 500;;
+  display: flex;
+  flex-direction: wrap;
+  align-items: center;
+  font-size: 1.25rem;
+  color: #a3a3a3;
+  cursor: pointer;
+  font-weight: 500;
 }
 
-.agree__list{
+.agree__list {
   margin-top: -0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -48,9 +46,30 @@ font-weight: 500;;
   position: relative;
 }
 
-.agree__link{
+.agree__link {
   position: absolute;
   top: 0;
   right: 0;
   width: 1.1rem;
+}
+
+.agree__marketinglist {
+  display: flex;
+  margin: -0.9375rem 0 1.25rem 1.5625rem;
+}
+
+.marketinglist__item {
+  margin-left: 0.9375rem;
+}
+
+.modal__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.1rem;
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
 }

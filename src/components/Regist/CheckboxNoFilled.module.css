@@ -1,7 +1,6 @@
 .nofilled__checkbox__wrapper {
   position: relative;
   margin-top: 0.67rem;
-
 }
 
 .nofilled__checkbox {
@@ -11,11 +10,9 @@
   height: 1.5rem;
   left: -0.25rem;
   bottom: 0.02rem;
-  
 }
 
 .nofilled__checkbox__label {
-
   min-height: 1.167rem;
   font-size: 1.167rem;
   font-weight: 500;
@@ -28,10 +25,10 @@
   }
 
   &::before {
-    content: '';
+    content: "";
     display: inline-block;
     vertical-align: middle;
-    background-image: url('../../assets/User/user_icon_check_default_NoFilled.svg');
+    background-image: url("../../assets/User/user_icon_check_default_NoFilled.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
@@ -41,6 +38,6 @@
   }
 
   &.checked::before {
-    background-image: url('../../assets/User/user_icon_check_active_NoFilled.svg');
+    background-image: url("../../assets/User/user_icon_check_active_NoFilled.svg");
   }
 }
