@@ -10,7 +10,7 @@ function Home() {
   return (
     <div>
       <Helmet>
-        <title>홈 | TVING</title>
+        <title>홈 | TVING</title>s
       </Helmet>
 
       <MainHeader />
