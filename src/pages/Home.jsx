@@ -1,4 +1,5 @@
 // /src/pages/Home.jsx
+import { Helmet } from "react-helmet";
 import MainHeader from "@/layout/MainHeader/MainHeader";
 import MainCarousel from "@/components/MainCarousel/MainCarousel";
 import Program from "@/components/Program/Program";
@@ -8,6 +9,10 @@ import Footer from "@/layout/Footer/Footer";
 function Home() {
   return (
     <div>
+      <Helmet>
+        <title>홈 | TVING</title>
+      </Helmet>
+
       <MainHeader />
       <MainCarousel />
       <section>

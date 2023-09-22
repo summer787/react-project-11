@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import MainHeader from "@/layout/MainHeader/MainHeader";
 import TagList from "@/components/TagList/TagList";
@@ -44,6 +45,9 @@ function Movie() {
         marginTop: "10rem",
       }}
     >
+      <Helmet>
+        <title>영화 | TVING</title>
+      </Helmet>
       <MainHeader />
       <TagList tag="movietag" setSelectedTag={setSelectedTag} />
       {data ? (
@@ -71,7 +75,7 @@ function Movie() {
           </div>
           <div className={styles.contents}>
             {data.items.map((item) => (
-              <Link to={`/sub/${item.id}`} key={item.id}>
+              <Link to={`/movie/${item.id}`} key={item.id}>
                 <div>
                   <img src={getImageURL(item)} alt={item.title} />
                   <p>{item.title}</p>

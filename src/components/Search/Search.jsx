@@ -11,7 +11,6 @@ import SearchContext from "@/context/SearchContext";
 
 import nowDate from "../../utils/getNowDate";
 import styles from "./Search.module.css";
-import Movie from "../../pages/Movie";
 
 function Search({ isOpen, onRequestClose }) {
   const inputRef = useRef(null);
@@ -140,15 +139,15 @@ function Search({ isOpen, onRequestClose }) {
             <div className={styles.searchPoster}>
               {data &&
                 data.items.slice(0, 3).map((item) => (
-                  <Link key={item.id} href={item.id}>
-                    <img src={getImageURL(item, "poster")} alt="" />
+                  <Link key={item.id} href={`tv/${item.id}`}>
+                    <img src={getImageURL(item, "poster")} alt={item.title} />
                     <span>{item.title}</span>
                   </Link>
                 ))}
               {movieData &&
                 movieData.items.slice(0, 3).map((item) => (
-                  <Link key={item.id} href={item.id}>
-                    <img src={getImageURL(item, "poster")} alt="" />
+                  <Link key={item.id} href={`movie/${item.id}`}>
+                    <img src={getImageURL(item, "poster")} alt={item.title} />
                     <span>{item.title}</span>
                   </Link>
                 ))}
@@ -168,7 +167,7 @@ function Search({ isOpen, onRequestClose }) {
                   movieData.items.length > 7 &&
                   movieData.items.slice(7, 9).map((item) => (
                     <li key={item.id}>
-                      <Link to={`/Movie/${item.id}`}>
+                      <Link to={`/movie/${item.id}`}>
                         <span>{item.title}</span>
                       </Link>
                     </li>
@@ -212,34 +211,34 @@ function Search({ isOpen, onRequestClose }) {
               <h3>실시간 인기 검색어</h3>
               <ul>
                 <li>
-                  <Link to="/01p0cbd3klqayud">신병</Link>
+                  <Link to="/tv/01p0cbd3klqayud">신병</Link>
                 </li>
                 <li>
-                  <Link to="/029xbvsrk5be1ng">스트릿 우먼 파이터 시즌2</Link>
+                  <Link to="/tv/029xbvsrk5be1ng">스트릿 우먼 파이터 시즌2</Link>
                 </li>
                 <li>
-                  <Link to="/00iqeegqywou8m4">경이로운 소문</Link>
+                  <Link to="/tv/00iqeegqywou8m4">경이로운 소문</Link>
                 </li>
                 <li>
-                  <Link to="/u3h3tc1xw3bsq33">마녀사냥 2023</Link>
+                  <Link to="/tv/u3h3tc1xw3bsq33">마녀사냥 2023</Link>
                 </li>
                 <li>
-                  <Link to="/5cjkrpudv37hkqi">나는 지금 화가 나있어</Link>
+                  <Link to="/tv/5cjkrpudv37hkqi">나는 지금 화가 나있어</Link>
                 </li>
                 <li>
-                  <Link to="/9fwlipzvz11vwn1">알쓸인잡</Link>
+                  <Link to="/tv/9fwlipzvz11vwn1">알쓸인잡</Link>
                 </li>
                 <li>
-                  <Link to="/rn0iuqct243iwo7">신서유기5</Link>
+                  <Link to="/tv/rn0iuqct243iwo7">신서유기5</Link>
                 </li>
                 <li>
-                  <Link to="/5as2h3oozdxmoix">오은영의 금쪽상담소</Link>
+                  <Link to="/tv/5as2h3oozdxmoix">오은영의 금쪽상담소</Link>
                 </li>
                 <li>
-                  <Link to="/1harhvi80da3wup">뿅뿅 지구오락실2</Link>
+                  <Link to="/tv/1harhvi80da3wup">뿅뿅 지구오락실2</Link>
                 </li>
                 <li>
-                  <Link to="/hksainlo69jjanq">유 퀴즈 온 더 블럭</Link>
+                  <Link to="/tv/hksainlo69jjanq">유 퀴즈 온 더 블럭</Link>
                 </li>
               </ul>
               <p>

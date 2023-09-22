@@ -110,7 +110,7 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
             <SwiperSlide key={item.id}>
               <Link
                 className={styles.programLink}
-                to={`/sub/${item.id}`}
+                to={`/${isMovie ? "movie" : "tv"}/${item.id}`}
                 onFocus={() => handleFocus(index)}
               >
                 <div className={styles.tagItem}>

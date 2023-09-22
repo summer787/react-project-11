@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Pagination, Navigation, Mousewheel } from "swiper/modules";
@@ -10,8 +11,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import styles from "./SearchResult.module.css";
 import Footer from "@/layout/Footer/Footer";
+import styles from "./SearchResult.module.css";
 
 function SearchResult() {
   const { searchResult } = useParams();
@@ -65,6 +66,9 @@ function SearchResult() {
 
   return (
     <>
+      <Helmet>
+        <title>검색 | TVING</title>
+      </Helmet>
       <MainHeader />
       <section className={styles.container}>
         <h2>검색어: {searchResult}</h2>
