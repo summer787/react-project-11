@@ -7,7 +7,6 @@ import UserCancelDescriptionList from '@/components/User/UserCancelDescriptionLi
 import UserUsingProductTable from '@/components/User/UserUsingProductTable';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserButtonShort from '@/components/User/UserButtonShort';
-import Spinner from '@/components/Spinner';
 
 import pb from '@/api/pocketbase';
 import style from './CancelMembership.module.css';
@@ -20,7 +19,6 @@ const description = {
 
 function CancelMembership() {
   const [isChecked, setIsChecked] = useState(false);
-  const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // 이용중 상품 포기 동의 체크
@@ -37,10 +35,8 @@ function CancelMembership() {
     if (confirm(cancelConfirmMessage)) {
       if (pb.authStore.model) {
         try {
-          setLoading(true);
           await pb.collection('users').delete(pb.authStore.model.id);
           alert('회원 탈퇴에 성공하였습니다. 시작 화면으로 이동합니다.');
-          setLoading(false);
           navigate('/Account');
         } catch (error) {
           console.log(error);
@@ -74,7 +70,6 @@ function CancelMembership() {
           <UserButtonShort text='취소' color='black' onChange={handleCancel} />
         </div>
       </section>
-      {isLoading && <Spinner message='탈퇴 중입니다.' isOpen={isLoading} />}
     </>
   );
 }

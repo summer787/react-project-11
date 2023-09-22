@@ -7,7 +7,6 @@ import UserInput from '@/components/User/UserInput';
 import InputClearButton from '@/components/User/InputClearButton';
 import PasswordVisibleButton from '@/components/User/PasswordVisibleButton';
 import UserButton from '@/components/User/UserButton';
-import Spinner from '@/components/Spinner';
 import FindUser from '@/components/Login/FindUser';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserInfo from '@/components/User/UserInfo';
@@ -20,7 +19,6 @@ function TvingLogin() {
     id: '',
     password: '',
   });
-  const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [activeIdClear, setActiveIdClear] = useState(false);
   const [activePasswordClear, setActivePasswordClear] = useState(false);
@@ -80,28 +78,23 @@ function TvingLogin() {
 
     const { id, password } = formState;
 
-    const errorAlert = (message) => alert(message);
-
     if (id === '') {
-      errorAlert('아이디를 입력해주세요.');
+      alert('아이디를 입력해주세요.');
       return;
     }
     if (password === '') {
-      errorAlert('비밀번호를 입력해주세요.');
+      alert('비밀번호를 입력해주세요.');
       return;
     }
 
     try {
-      setIsLoading(true);
       await signIn(id, password);
-      setIsLoading(false);
 
       navigate('/home');
     } catch (error) {
-      setIsLoading(false);
       const errorMessage =
         '일치하는 회원정보가 없습니다.\n이용하시는 계정 유형(TVING ID/CJ ONE/SNS)과\n아이디, 비밀번호를 다시 확인해주세요.';
-      errorAlert(errorMessage);
+      alert(errorMessage);
     }
   };
 
@@ -166,7 +159,6 @@ function TvingLogin() {
         linktext='회원가입 하기'
         styleClass='text__large'
       />
-      {isLoading && <Spinner message='로그인 중 입니다.' isOpen={isLoading} />}
     </>
   );
 }
