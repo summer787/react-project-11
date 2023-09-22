@@ -1,0 +1,15 @@
+.input__clear__button {
+  all: unset;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+
+  background: url(../../assets/User/user_icon_input_clear.svg) no-repeat;
+  background-position: center center;
+  background-size: 120% auto;
+
+  &:focus {
+    outline: 2px solid white;
+    border-radius: 3px;
+  }
+}

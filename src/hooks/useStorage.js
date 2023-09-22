@@ -1,31 +1,29 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from 'react';
 
 const {
   localStorage: storage,
-  JSON: { stringify: serialize, parse: deserialize }, // serialize => JSON.stringify() | deserialization => JSON.parse()
+  JSON: { stringify: serialize, parse: deserialize },
 } = globalThis;
 
 const setData = (key, nextData) => {
   storage.setItem(key, serialize(nextData));
 };
 
-const getData = (key) => deserialize(storage.getItem(key));
+export const getData = (key) => {
+  const result = deserialize(storage.getItem(key));
+  return result;
+};
 
 const deleteData = (key) => {
   storage.removeItem(key);
 };
 
-function useStorage(key, defautValue) {
-  // useEffect(() => {
-  //   const data = getData(key);
-  //   setStorageData(data);
-  // }, [key]);
+function useStorage(key, defaultValue) {
   const [storageData, setStorageData] = useState(() => {
     try {
-      const data = getData(key);
-      return Array.isArray(data) ? data : defautValue;
+      return getData(key);
     } catch (error) {
-      return defautValue;
+      return defaultValue;
     }
   });
 
@@ -36,32 +34,19 @@ function useStorage(key, defautValue) {
     },
     [key]
   );
-  const remove = useCallback(() => {
-    try {
-      window.localStorage.removeItem(key);
-      setStorageData([]); // reset the state to an empty array
-    } catch (error) {
-      throw new Error(error);
-    }
-  }, [key]);
 
-  const removeItem = useCallback(
-    (itemToRemove) => {
-      const nextData = storageData.filter((item) => item !== itemToRemove);
-      setData(key, nextData);
-      setStorageData(nextData);
-    },
-    [key, storageData]
-  );
+  const remove = useCallback(() => {
+    deleteData(key);
+    setStorageData();
+  }, [key]);
 
   return useMemo(
     () => ({
       storageData,
       update,
       remove,
-      removeItem,
     }),
-    [remove, storageData, update, removeItem]
+    [remove, storageData, update]
   );
 }
 

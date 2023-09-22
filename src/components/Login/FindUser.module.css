@@ -1,0 +1,39 @@
+.find__user__list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.find__user__item {
+  font: var(--paragraph-large);
+  font-size: 1.6rem;
+  color: var(--gray-300);
+  vertical-align: middle;
+  display: flex;
+
+  & .find__user__link {
+    text-decoration: none;
+    color: var(--gray-300);
+
+    &:hover,
+    &:focus {
+      color: var(--white);
+    }
+
+    &:focus {
+      outline: 1px solid #6b6b6b;
+      border-radius: 3px;
+    }
+  }
+
+  &:first-child::after {
+    all: unset;
+    content: '|';
+    color: var(--gray-700);
+    font-size: 1.4rem;
+    font-weight: 100;
+    margin-left: 2rem;
+    text-justify: distribute;
+  }
+}

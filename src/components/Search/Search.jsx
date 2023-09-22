@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import ReactModal from "react-modal";
-import useStorage from "@/hooks/useStorage";
+import useStorage from "@/hooks/useStorageSearch";
 import MainheaderImage from "@/assets/MainHeader/MainHeader_image";
 import pb from "@/api/pocketbase";
 import getImageURL from "@/utils/getImageURL";
