@@ -75,6 +75,38 @@ OTT 사이트 TVING을 구현하였습니다.
 ![무제](https://github.com/FRONTENDSCHOOL6/react-project-11/assets/105577805/904545a0-d92a-46d7-b564-191e3e616ab4)
 
 ### ▪️ Directory
+```
+react-project-11
+├─ public
+├─ src
+│  ├─ api
+│  ├─ assets
+│  │  ├─ Account
+│  │  ├─ MainHeader
+│  │  ├─ Regist
+│  │  └─ User
+│  ├─ components
+│  │  ├─ Account
+│  │  ├─ Login
+│  │  ├─ Nav
+│  │  ├─ Regist
+│  │  ├─ Routes
+│  │  ├─ Search
+│  │  ├─ User
+│  │  └─ contexts
+│  ├─ hooks
+│  ├─ layout
+│  │  ├─ Footer
+│  │  ├─ MainHeader
+│  │  ├─ User
+│  │  └─ UserHeader
+│  ├─ pages
+│  │  ├─ Account
+│  │  └─ User
+│  ├─ styles
+└─ └─ utils
+
+```
 
 <br>
 
