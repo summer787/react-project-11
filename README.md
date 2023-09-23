@@ -10,7 +10,7 @@
 
 OTT 사이트 TVING을 구현하였습니다.
 
-> #### 배포 주소 : https://taingeleven.netlify.app/
+> #### 🔗 배포 주소 : https://taingeleven.netlify.app/
 
 <br>
 <br>
@@ -66,16 +66,16 @@ OTT 사이트 TVING을 구현하였습니다.
 
 
 ## 📐 설계
-### ERD
+### ▪️ ERD
 ![TAING drawio](https://github.com/FRONTENDSCHOOL6/react-project-11/assets/105577805/f470119c-5b3b-4ffe-897e-8cea30efa10b)
 
 <br>
 
-### Directory
+### ▪️ Directory
 
 <br>
 
-### Convention
+### ▪️ Convention
 * [코딩 컨벤션 Cording Convention](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%F0%9F%A7%A9-Coding-convention)
 * [커밋 컨벤션 Commit Convention](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%F0%9F%A7%A9-Commit-convention)
 
