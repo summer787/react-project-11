@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from "react";
 
 const {
   localStorage: storage,
@@ -14,7 +14,7 @@ export const getData = (key) => {
   return result;
 };
 
-const deleteData = (key) => {
+export const deleteData = (key) => {
   storage.removeItem(key);
 };
 

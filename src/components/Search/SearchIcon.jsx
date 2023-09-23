@@ -4,6 +4,8 @@ import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
 import { Link } from "react-router-dom";
 import styles from "./SearchIcon.module.css";
 
+import { deleteData } from "@/hooks/useStorage";
+
 function Search({ searchClicked, setSearchClicked }) {
   function onClick() {
     setSearchClicked(!searchClicked);
@@ -14,6 +16,11 @@ function Search({ searchClicked, setSearchClicked }) {
       window.innerWidth - document.documentElement.clientWidth;
     return scrollbarWidth;
   }
+
+  function logout(e) {
+    deleteData("pocketbase_auth");
+  }
+
   useEffect(() => {
     if (searchClicked) {
       const scrollbarWidth = getScrollbarWidth();
@@ -60,7 +67,7 @@ function Search({ searchClicked, setSearchClicked }) {
               </div>
             </div>
             <ul className={styles.user}>
-              <li>
+              {/* <li>
                 <Link to="/home">MY</Link>
               </li>
               <li>
@@ -71,9 +78,14 @@ function Search({ searchClicked, setSearchClicked }) {
               </li>
               <li>
                 <Link to="/home">고객센터</Link>
+              </li> */}
+              <li>
+                <a href="/" onClick={logout}>
+                  로그아웃
+                </a>
               </li>
               <li>
-                <Link to="/home">로그아웃</Link>
+                <Link to="/user/cancelMembership">회원탈퇴</Link>
               </li>
             </ul>
           </div>
