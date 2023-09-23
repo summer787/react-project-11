@@ -6,12 +6,13 @@ import style from "./RegistModal.module.css";
 
 function RegistModal({ isOpen = false, onClose = false, title, children }) {
   useEffect(() => {
+    if (isOpen) {
     document.body.style.overflow = "hidden";
-
+    }
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [isOpen]);
   return (
     <ReactModal
       isOpen={isOpen}
