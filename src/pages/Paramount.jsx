@@ -1,5 +1,6 @@
 import React from "react";
 import MainHeader from "@/layout/MainHeader/MainHeader";
+import { Helmet } from "react-helmet";
 
 function Paramount() {
   return (
@@ -13,6 +14,9 @@ function Paramount() {
         fontSize: "3rem",
       }}
     >
+      <Helmet>
+        <title>파라마운트 | TVING</title>
+      </Helmet>
       <MainHeader />
       Paramount
     </div>

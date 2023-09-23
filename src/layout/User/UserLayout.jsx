@@ -1,5 +1,6 @@
-import { Outlet } from 'react-router-dom';
-import UserHeader from '../UserHeader/UserHeader';
+import { Outlet } from "react-router-dom";
+import UserHeader from "../UserHeader/UserHeader";
+import Footer from "../Footer/Footer";
 
 function UserLayout() {
   return (
@@ -8,6 +9,7 @@ function UserLayout() {
       <UserHeader />
       {/* 메인 */}
       <Outlet />
+      <Footer />
     </>
   );
 }

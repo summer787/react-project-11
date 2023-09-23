@@ -21,6 +21,9 @@ const Live = lazy(() => import('./pages/Live'));
 const Tv = lazy(() => import('./pages/Tv'));
 const Movie = lazy(() => import('./pages/Movie'));
 const Paramount = lazy(() => import('./pages/Paramount'));
+const SearchResult = lazy(() => import("./pages/SearchResult"));
+const SubPage = lazy(() => import("./pages/SubPage"))
+const MovieSubPage = lazy(() => import("./pages/MovieSubPage"))
 
 const UserLayout = lazy(() => import('./layout/User/UserLayout'));
 const UserMain = lazy(() => import('./layout/User/UserMain'));
@@ -44,7 +47,9 @@ const router = createBrowserRouter(
           <Route path='tv' element={<Tv />} />
           <Route path='movie' element={<Movie />} />
           <Route path='paramount' element={<Paramount />} />
-          {/* <Route path='search/:searchResult' element={<SearchResult />} /> */}
+          <Route path="search/:searchResult" element={<SearchResult />} />
+          <Route path="/tv/:id" element={<SubPage />} />
+          <Route path="/movie/:id" element={<MovieSubPage />} /> 
         </Route>
       </Route>
 

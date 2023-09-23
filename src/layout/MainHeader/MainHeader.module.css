@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
-  width: calc(100% - 1.875rem - 5rem);
+  z-index: 99999;
+  width: calc(100% - 1.8rem - 7rem);
   display: flex;
-  padding: 1.875rem 4.375rem;
+  padding: 1.875rem 4.375rem 1.875rem 4.375rem;
   font: var(--paragraph-large);
   color: var(--gray-200);
   background: linear-gradient(
@@ -13,6 +13,17 @@
     rgba(0, 0, 0, 0.7) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+
+  &.headerScrolled {
+    transition: background 0.7s ease-in-out;
+    background: black;
+    opacity: 0.85;
+  }
+
+  &.headerSearchClicked {
+    background: var(--gray-900);
+    opacity: 1;
+  }
 
   & h1 {
     display: flex;

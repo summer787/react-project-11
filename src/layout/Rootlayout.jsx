@@ -1,13 +1,13 @@
 // /src/layout/Rootlayout.jsx
-import { Outlet } from 'react-router-dom';
-import Footer from './Footer/Footer';
+import { Outlet } from "react-router-dom";
 
 function Rootlayout() {
   return (
-    <>
-      <Outlet />
-      <Footer />
-    </>
+    <div>
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 

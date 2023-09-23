@@ -1,0 +1,32 @@
+.tag {
+  padding: 0 0 0 4.375rem;
+  margin-bottom: 1.5rem;
+
+  & h2 {
+    font: var(--heading-xl);
+    margin-bottom: 1.5rem;
+  }
+
+  & .tagBtb {
+    display: flex;
+    justify-content: center;
+    font: var(--paragraph-large);
+    background-color: rgb(33, 33, 33);
+    border: 0;
+    color: rgb(255, 220, 62);
+    padding: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: rgb(38, 38, 38);
+    }
+  }
+
+  & :global(.swiper) {
+    z-index: 0;
+  }
+}

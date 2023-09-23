@@ -8,6 +8,7 @@ import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminPngQuant from "imagemin-pngquant";
 import imageminSvgo from "imagemin-svgo";
 import imageminWebp from "imagemin-webp";
+import svgr from "vite-plugin-svgr"; 
 
 const isDev = env.NODE_ENV === "development";
 
@@ -15,6 +16,7 @@ const isDev = env.NODE_ENV === "development";
 export default defineConfig({
   plugins: [
     react(),
+    svgr(),
     viteImagemin({
       plugins: {
         jpg: imageminMozjpeg(),
@@ -56,4 +58,7 @@ export default defineConfig({
       },
     },
   },
+  optimizeDeps: {
+    exclude: ['fsevents']
+  }
 });

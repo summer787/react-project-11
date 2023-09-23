@@ -1,0 +1,88 @@
+.footer {
+  color: white;
+  font: var(--paragraph-large);
+  color: var(--gray-500);
+  padding: 8.75rem 4.375rem 10.625rem;
+
+  & .accent {
+    color: var(--gray-300);
+    transition: color 0.2s ease-in-out;
+  }
+  & .accent:hover {
+    color: var(--gray-100);
+  }
+}
+
+.notice {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--gray-800);
+
+  .margin {
+    margin-right: 1.25rem;
+  }
+
+  & button {
+    font: var(--paragraph-large);
+    background: 0;
+    border: 0;
+    cursor: pointer;
+  }
+}
+
+.util {
+  padding: 1.5rem 0;
+
+  & .utilnav {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  & .slash {
+    position: relative;
+    padding-right: 0.75rem;
+    margin-right: 0.75rem;
+  }
+  & .slash::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 1.2rem;
+    background: var(--gray-600);
+  }
+
+  & .underline {
+    text-decoration: underline;
+    transition: color 0.2s ease-in-out;
+  }
+  & .underline:hover {
+    color: var(--gray-400);
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 1.25rem;
+
+  & svg {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  & svg rect,
+  & svg path,
+  & svg circle {
+    transition: fill-opacity 0.2s ease-in-out;
+  }
+
+  & svg:hover rect,
+  & svg:hover path,
+  & svg:hover circle {
+    fill-opacity: 0.5;
+  }
+}
