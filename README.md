@@ -71,6 +71,9 @@ OTT 사이트 TVING을 구현하였습니다.
 
 <br>
 
+### ▪️ Git Flow
+![무제](https://github.com/FRONTENDSCHOOL6/react-project-11/assets/105577805/904545a0-d92a-46d7-b564-191e3e616ab4)
+
 ### ▪️ Directory
 
 <br>
