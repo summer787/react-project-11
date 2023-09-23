@@ -1,0 +1,63 @@
+.tagContainer {
+  color: var(--white);
+  /* padding: 1.5rem 3.5rem 3.5rem 3.5rem; */
+  position: relative;
+  z-index: 0;
+
+  & .title {
+    font: var(--heading-xl);
+    padding-left: 3.5rem;
+  }
+
+  & .tagItem {
+    margin-top: 1.5rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+
+    color: var(--gray-300);
+    font: var(--label-medium);
+    transition:
+      transform 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3%);
+      color: var(--gray-100);
+    }
+
+    & .ranking svg {
+      width: 4.125rem;
+      height: 6rem;
+    }
+
+    & .tagImage {
+      position: relative;
+      & img {
+        width: 100%;
+
+        border-radius: 0.25rem;
+      }
+
+      & .tvingOriginal {
+        position: absolute;
+        width: 6.25rem;
+        height: 2.1875rem;
+        bottom: 7.5%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        & svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      & .tagItemTitle {
+        width: 13rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

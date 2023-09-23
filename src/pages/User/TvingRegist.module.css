@@ -1,0 +1,75 @@
+
+
+.regist__Form {
+  margin-top: 3rem;
+}
+
+.regist__subtitle {
+  display: flex;
+  justify-content: center;
+  font: var(--heading-xl);
+  font-weight: normal;
+  color: var(--gray-300);
+  padding: 0 2rem;
+  word-break: keep-all;
+}
+
+.regist__info {
+  color: var(--gray-300);
+  margin-bottom: 1.4rem;
+  color: #6e6e6e;
+  word-break: keep-all;
+  font-size: 1.167rem;
+  text-align: left;
+
+  &.isred {
+    color: var(--brand-red-1);
+  }
+}
+
+.agree__title {
+  display: flex;
+  flex-direction: wrap;
+  align-items: center;
+  font-size: 1.25rem;
+  color: #a3a3a3;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.agree__list {
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.agree__item {
+  position: relative;
+}
+
+.agree__link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.1rem;
+}
+
+.agree__marketinglist {
+  display: flex;
+  margin: -0.9375rem 0 1.25rem 1.5625rem;
+}
+
+.marketinglist__item {
+  margin-left: 0.9375rem;
+}
+
+.modal__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.1rem;
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}

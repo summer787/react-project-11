@@ -1,0 +1,45 @@
+.rounded__checkbox__wrapper {
+  margin: 1rem 0;
+  &.rounded__checkbox__center {
+    text-align: center;
+  }
+}
+
+.rounded__checkbox__label {
+  font: var(--heading-large);
+  color: var(--gray-500);
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  &.checked {
+    color: var(--white);
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url('../../assets/User/user_icon_check_default_Filled.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-right: 0.8rem;
+  }
+
+  &.checked::before {
+    background-image: url('../../assets/User/user_icon_check_active_Filled.svg');
+  }
+}
+
+.rounded__checkbox {
+  appearance: none;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  left: -0.25rem;
+  cursor: pointer;
+}

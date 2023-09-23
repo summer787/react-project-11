@@ -1,0 +1,46 @@
+.nav {
+  font: var(--paragraph-large);
+  color: var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & ul {
+    display: flex;
+    gap: 3.25rem;
+  }
+
+  & li {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease-in-out;
+
+    & svg {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--gray-100);
+
+      & svg {
+        opacity: 1;
+      }
+    }
+  }
+
+  & .live a {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  & .live a img {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+
+  & .accent {
+    color: var(--white);
+    font-weight: bold;
+  }
+}

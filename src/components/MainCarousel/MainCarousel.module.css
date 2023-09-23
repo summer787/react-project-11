@@ -1,0 +1,56 @@
+.mySwiper {
+  position: relative;
+  z-index: 0;
+  & .bannerImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  & .playWrapper {
+    position: absolute;
+    z-index: 1002;
+    left: 3rem;
+    bottom: 20%;
+    display: flex;
+    align-items: center;
+  }
+
+  & .bannerInformation {
+    position: absolute;
+    z-index: 1002;
+    color: white;
+    bottom: 25%;
+    left: 3rem;
+    font: var(--paragraph-large);
+  }
+
+  & .moreLink {
+    position: absolute;
+    z-index: 1002;
+    color: white;
+    bottom: 20%;
+    right: 3rem;
+    font: var(--paragraph-large);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 1em 2.5em;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+  }
+  & .moreLink:hover {
+    opacity: 1;
+  }
+
+  & .backgroundGradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+  }
+}

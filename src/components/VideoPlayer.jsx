@@ -160,7 +160,7 @@ if(data) {
                 }}
                 >    
                 {data &&
-                 data[selectedSeasonKey]  &&
+                  data[selectedSeasonKey]  &&
                 episodeIndices.map((index) => (
                 <SwiperSlide key={index}>
                     <div className={selectedEpisode === index ? sub.seasonThumbnailWrap1 : sub.seasonThumbnailWrap }

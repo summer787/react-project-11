@@ -1,0 +1,6 @@
+.find__id__rapper,
+.find__id__auth {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}

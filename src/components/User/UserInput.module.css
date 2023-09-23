@@ -1,0 +1,40 @@
+.user__input__wrapper {
+  position: relative;
+}
+
+.form__input__label {
+  background-color: aqua;
+  display: block;
+  width: 100%;
+  height: 6rem;
+  background-color: var(--brand-dark-bg-2);
+  border-style: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-top: 1rem;
+
+  & .form__input {
+    width: 100%;
+    height: 100%;
+
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    background-color: var(--brand-dark-bg-2);
+    border-style: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 0;
+    text-indent: 2rem;
+  }
+
+  & .form__input:focus {
+    outline: 1px solid #6b6b6b;
+  }
+}
+
+.user__input__buttons {
+  position: absolute;
+  top: 42%;
+  right: 5%;
+}

@@ -1,0 +1,18 @@
+.spinner__wrapper {
+  border: yellow 1px solid;
+  background: black;
+  width: 40rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: var(--text-box-shadow);
+}
+
+.spinner__message {
+  font: var(--paragraph-xl);
+  margin-top: 1.5rem;
+  color: var(--white);
+}
