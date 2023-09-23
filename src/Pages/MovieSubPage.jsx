@@ -34,12 +34,12 @@ function MovieSubPage(){
     },[id]);
 
     return(
-        <div>
-        
-            <MovieSubPageTitle record={record}/>
-            <Recommendation record={record}/>
-        
-        </div>
+        <main>
+            <div className={sub.contentWrap}>
+                <MovieSubPageTitle record={record}/>
+                <Recommendation record={record}/>
+            </div>
+        </main>
     )
 }
 

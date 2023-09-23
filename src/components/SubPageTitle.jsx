@@ -1,9 +1,7 @@
-import pb from "@/api/pocketbase";
-import getImageURL from "@/utils/getImageURL";
 import ReactDOM from 'react-dom';
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import getImageURL from "@/utils/getImageURL";
 import playIcon from '../assets/Subpage/triangle_icon.png';
 import likeIcon from '../assets/Subpage/like_icon.svg';
 import likedIcon from '../assets/Subpage/liked_icon.svg';
@@ -15,7 +13,6 @@ import link from '../assets/Subpage/link_icon.svg';
 import sub from "../styles/subpage.module.css";
 
 function SubPageTitle ({record}){
-    const {id} = useParams()
     const [data, setData] = useState()
     const [showSharePopup, setShowSharePopup] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -34,8 +31,8 @@ function SubPageTitle ({record}){
     const [showPostPopup, setShowPostPopup] = useState(false);
     const handleLikeIconClick = () => {
         setIsLiked(!isLiked); 
-   };
-   const handleShowPostPopup = () => { 
+    };
+    const handleShowPostPopup = () => { 
     setShowPostPopup(true);
     setTimeout(() => {
         setShowPostPopup(false);
@@ -52,34 +49,29 @@ function SubPageTitle ({record}){
         console.log(record);
         setData(record);
     },[record]);
-    
-useEffect(() => {
-    const handleOutsideClick = (event) => {
-        if (showSharePopup && !event.target.closest('.sharePopup')) {
-            setShowSharePopup(false);
+        
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (showSharePopup && !event.target.closest('.sharePopup')) {
+                setShowSharePopup(false);
+            }
+        };
+
+        window.addEventListener('click', handleOutsideClick);
+
+        return () => window.removeEventListener('click', handleOutsideClick);
+    }, [showSharePopup]);
+
+    if(!data) {
+        return null; 
+    }
+
+    const handleModalToggle = (event) => {
+        if (!event.target.closest('.sharePopup')) {
+            setShowModal(!showModal);
         }
     };
 
-    window.addEventListener('click', handleOutsideClick);
-
-    return () => window.removeEventListener('click', handleOutsideClick);
-}, [showSharePopup]);
-
-if(!data) {
-    return null; 
-}
-
-const handleModalToggle = (event) => {
-    if (!event.target.closest('.sharePopup')) {
-        setShowModal(!showModal);
-    }
-};
-
-
-
-
-
-    
 if(data) {
     const {title, audiencerating, release, broadcasting, season, creator, actor, description, expand} = data;
     const {tag: tagArray} = expand;
@@ -91,16 +83,15 @@ if(data) {
             <title>{title}</title>
         </Helmet>
         <div>
-            <section className={`${sub.contentInformation} ${isExpanded ? sub.PageTitleExpanded : ''}`}>
-                <div className={sub.backgroundImage} style={{ backgroundImage: `url(${getImageURL(data, 'poster')})` }}/>               
+            <section className={`${sub.contentInformation} ${isExpanded ? sub.PageTitleExpanded : ''}`} aria-label="콘텐츠 설명란">
+                <div className={sub.backgroundImage} style={{ backgroundImage: `url(${getImageURL(data, 'poster')})`}} role="img" aria-label={`${title} 포스터 이미지`}/>               
                 <div className={sub.blurOverlay}/>
                 <div className={sub.content}>
                         <article className={sub.contentMain}>
-                            <h2 className={sub.titleImg}>
+                            <h1 className={sub.titleImg}>
                                 <img src={getImageURL(data, 'titleImage')} alt={title} />
-                                
-                            </h2>                          
-                            <div/>
+                            </h1>                          
+                            <div></div>
                             <ul className={sub.tagWrap}>
                                 <li className={sub.tag}>{audiencerating}</li>
                                 <li className={sub.tag}>{release.slice(0,4)}</li>
@@ -110,7 +101,7 @@ if(data) {
                             </ul>
                             <nav className={sub.Buttons}>
                                 <button type='button' className={sub.playButton}>
-                                    <img className={sub.playIcon} src={playIcon} alt="triangleIcon"/>
+                                    <img className={sub.playIcon} src={playIcon} alt="Play"/>
                                     <p>시즌 1: Episode 시청하기</p>
                                 </button>
                                 <button type='button' className={sub.likeButton} onClick={handleClick}>
@@ -118,12 +109,18 @@ if(data) {
                                     <span>찜</span>
                                 </button>
                                 {showPostPopup && ReactDOM.createPortal(
-                                <div className={sub.postPopup}>
+                                <div className={sub.postPopup} role="alert" aria-live="assertive">
                                     포스트가 찜 되었습니다.
                                 </div>,
                                 document.body 
                                 )}
-                            <div className={sub.shareWrapper} onClick={handleModalToggle}>
+                            <div 
+                                className={sub.shareWrapper} 
+                                onClick={handleModalToggle}
+                                onKeyDown={handleModalToggle} 
+                                tabIndex="0" 
+                                role="button" 
+                                >
                                 <button type='button' className={sub.shareButton} onClick={(e) => { e.stopPropagation(); if (!showSharePopup) setShowSharePopup(true); else setShowSharePopup(false); }} >
                                     <img className={sub.shareIcon} src={shareIcon} alt="Share" />
                                         <span >공유</span>
@@ -131,15 +128,49 @@ if(data) {
                                 <div 
                                 className={`${sub.sharePopupWrapper} ${showSharePopup ? sub.visible : ''}`} 
                                 onClick={(e) => e.stopPropagation()}
+                                onKeyDown={handleModalToggle} 
+                                tabIndex="0" 
+                                role="button"
                                 >
                                     {showSharePopup && (
                                         <div className={`${sub.sharePopup} sharePopup`} 
                                         onClick={(e) => e.stopPropagation()} 
+                                        onKeyDown={handleModalToggle} 
+                                        tabIndex="0" 
+                                        role="button"
                                         >
-                                            <button type="button" onClick={(e) => { e.stopPropagation(); }}><img src={facebook} alt="Facebook Share" /></button>
-                                            <button type="button" onClick={(e) => { e.stopPropagation(); }}><img src={twitter} alt="Twitter Share" /></button>
-                                            <button type="button" onClick={(e) => { e.stopPropagation(); }}><img src={kakaotalk} alt="Kakao Share" /></button>
-                                            <button type="button"  onClick={(e) => { e.stopPropagation(); handleLinkClick()}}><img src={link} alt="Link Share" /></button>
+                                            <button type="button" onClick={(e) => { e.stopPropagation();
+                                            const url = `https://www.facebook.com/dialog/share?app_id=1025574138578771&display=popup&href=${encodeURIComponent(window.location.href)}&redirect_uri=${encodeURIComponent(window.location.href)}`;
+                                            const facebookWindow = window.open(url, 'facebook-share', 'width=580,height=435');
+                                            if (facebookWindow.focus) {
+                                                facebookWindow.focus();}
+                                            }}>
+                                            <img src={facebook} alt="Facebook 공유 버튼" />
+                                            </button>
+                                            <button type="button" onClick={(e) => { e.stopPropagation(); 
+                                                const text = `${title}\n`;
+                                                const url = window.location.href;
+                                                const twitterWindow = window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, 'twitter-share', 'width=580,height=435');
+                                                    if (twitterWindow.focus) {
+                                                        twitterWindow.focus();}
+                                            }}><img src={twitter} alt="Twitter 공유 버튼" /></button>
+                                            <button type="button" onClick={(e) => {
+                                                e.stopPropagation();
+                                                navigator.clipboard.writeText(window.location.href);
+                                                alert("링크가 복사되었습니다. 카카오톡에 붙여넣기 해주세요."); 
+                                            }}
+                                            onKeyDown={(e) => {
+                                                if (e.keyCode === 9) {
+                                                    e.preventDefault(); 
+                                                    e.stopPropagation(); 
+                                                    navigator.clipboard.writeText(window.location.href);
+                                                    alert("링크가 복사되었습니다. 카카오톡에 붙여넣기 해주세요.");
+                                                }
+                                            }}
+                                            >
+                                                <img src={kakaotalk} alt="KakaoTalk 공유 버튼" />
+                                            </button>
+                                            <button type="button"  onClick={(e) => { e.stopPropagation(); handleLinkClick()}}><img src={link} alt="링크 공유 버튼" /></button>
                                             {showLinkCopiedPopup && ReactDOM.createPortal(
                                                 <div className={sub.linkCopiedPopup}>콘텐츠의 주소가 복사되었습니다.</div>,
                                                 document.body 

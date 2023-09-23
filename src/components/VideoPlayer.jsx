@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import getImageURLThumbnail from '@/utils/getImgURLThumbmail';
-import pb from '@/api/pocketbase';
 import arrowIcon from '../assets/Subpage/arrow_icon.svg'
 import playButton from '../assets/Subpage/play_button.svg'
 import sub from "../styles/subpage.module.css";
@@ -90,7 +89,7 @@ function VideoPlayer({record}){
 if(data) {
     const  {title, thumbnailSeason1} =data;
     return(
-        <section className={sub.videoPlayer}>
+        <section className={sub.videoPlayer} aria-label="콘텐츠 플에이어">
             <article className={sub.videoPlayerHeader}>
                 <div className={sub.videoPlayerTitle}  onClick={(e) => { e.stopPropagation(); handleModalToggle(); }}>
                     <h2 className={sub.title}>

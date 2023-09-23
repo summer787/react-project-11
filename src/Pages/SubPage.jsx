@@ -39,14 +39,14 @@ function SubPage() {
     },[id]);
 
     return (
-        <div className={sub.contentWrap}>
-
-                <SubPageTitle record={record}/>
-                <VideoPlayer record={record}/>
-                <RelatedVideo/>
-                <Recommendation/>
-
-        </div>   
+        <main>
+            <div className={sub.contentWrap}>
+                    <SubPageTitle record={record}/>
+                    <VideoPlayer record={record}/>
+                    <RelatedVideo/>
+                    <Recommendation />
+            </div>   
+        </main>
     );
 }
 
