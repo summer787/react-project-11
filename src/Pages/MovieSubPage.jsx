@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import pb from "@/api/pocketbase";
 import MainHeader from "@/layout/MainHeader/MainHeader";
 import Footer from "@/layout/Footer/Footer";
+import Program from "@/components/Program/Program";
 
 function MovieSubPage() {
   const [record, setRecord] = useState(null);
@@ -43,7 +44,13 @@ function MovieSubPage() {
     <div>
       <MainHeader />
       <MovieSubPageTitle record={record} />
-      <Recommendation record={record} />
+      {/* <Recommendation record={record} /> */}
+      {record && (
+        <Program
+          tagTitle="비슷한 프로그램"
+          filter={`tag.tag='${record.expand.tag[0].tag}'`}
+        />
+      )}
       <Footer />
     </div>
   );
