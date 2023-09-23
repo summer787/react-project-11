@@ -118,13 +118,13 @@ function Search({ isOpen, onRequestClose }) {
               ) : (
                 <>
                   {tvQuery.data?.items.slice(0, 3).map((item) => (
-                    <Link key={item.id} href={`tv/${item.id}`}>
+                    <Link key={item.id} to={`/tv/${item.id}`}>
                       <img src={getImageURL(item, "poster")} alt={item.title} />
                       <span>{item.title}</span>
                     </Link>
                   ))}
                   {movieQuery.data?.items.slice(0, 3).map((item) => (
-                    <Link key={item.id} href={`movie/${item.id}`}>
+                    <Link key={item.id} to={`/movie/${item.id}`}>
                       <img src={getImageURL(item, "poster")} alt={item.title} />
                       <span>{item.title}</span>
                     </Link>
