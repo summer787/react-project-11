@@ -1,5 +1,5 @@
 import { bool, string, func } from "prop-types";
-import ReactModal from "./RegistModal";
+import ReactModal from "./RegistModalBase";
 import styles from "./RegistModalFour.module.css";
 
 function RegistModalThree({ isOpen = false, onClose = false, title }) {

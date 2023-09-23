@@ -387,7 +387,6 @@ function TvingRegist() {
     });
 
     activeClearButton(name, value);
-
     handleValidate(name, value);
   });
 
