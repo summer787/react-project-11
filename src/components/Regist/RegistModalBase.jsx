@@ -2,16 +2,17 @@ import ReactModal from "react-modal";
 import { bool, string, node, func } from "prop-types";
 import { useEffect } from "react";
 import closebutton from "@/assets/Regist/close_button_icon.svg";
-import style from "./RegistModal.module.css";
+import style from "./RegistModalBase.module.css";
 
-function RegistModal({ isOpen = false, onClose = false, title, children }) {
+function RegistModalBase({ isOpen = false, onClose = false, title, children }) {
   useEffect(() => {
+    if (isOpen) {
     document.body.style.overflow = "hidden";
-
+    }
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [isOpen]);
   return (
     <ReactModal
       isOpen={isOpen}
@@ -52,18 +53,18 @@ function RegistModal({ isOpen = false, onClose = false, title, children }) {
   );
 }
 
-RegistModal.defaultProps = {
+RegistModalBase.defaultProps = {
   isOpen: false,
   onClose: () => {},
   children: node,
   title: "",
 };
 
-RegistModal.propTypes = {
+RegistModalBase.propTypes = {
   isOpen: bool,
   onClose: func,
   children: node,
   title: string,
 };
 
-export default RegistModal;
+export default RegistModalBase;
