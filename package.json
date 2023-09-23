@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^4.35.3",
+    "@tanstack/react-query-devtools": "^4.35.3",
     "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
     "immer": "^10.0.2",
