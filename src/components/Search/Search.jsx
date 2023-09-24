@@ -24,10 +24,6 @@ function Search({ isOpen, onRequestClose }) {
     removeItem,
     remove,
   } = useStorage("recentSearches", []);
-  const [currentTime, setCurrentTime] = useState(() => nowDate());
-  const { setSearchResults } = useContext(SearchContext);
-  const navigate = useNavigate();
-  const { searchResult } = useParams();
 
   const handleSearch = (event) => {
     event.preventDefault();

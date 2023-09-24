@@ -1,7 +1,7 @@
 .footer {
   color: white;
   font: var(--paragraph-large);
-  color: var(--gray-500);
+  color: var(--gray-400);
   padding: 8.75rem 4.375rem 10.625rem;
 
   & .accent {

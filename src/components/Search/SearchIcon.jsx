@@ -4,7 +4,7 @@ import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
 import { Link } from "react-router-dom";
 import styles from "./SearchIcon.module.css";
 
-import { deleteData } from "@/hooks/useStorage";
+import { deleteData, getData } from "@/hooks/useStorage";
 
 function Search({ searchClicked, setSearchClicked }) {
   function onClick() {
@@ -62,7 +62,7 @@ function Search({ searchClicked, setSearchClicked }) {
                 <img src={MainHeaderImage.profile} alt="프로필" />
               </div>
               <div>
-                <p>유동균</p>
+                <p>{getData("pocketbase_auth").model.username}</p>
                 <Link to="/home">프로필전환 &gt;</Link>
               </div>
             </div>
