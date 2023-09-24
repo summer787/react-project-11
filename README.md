@@ -7,7 +7,7 @@
 
 <br>
 
-> #### 🔗 배포 주소 : https://taingeleven.netlify.app/
+> #### 🔗 배포 사이트 : https://taingeleven.netlify.app/
 
 <br>
 
