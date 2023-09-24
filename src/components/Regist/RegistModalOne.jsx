@@ -10,7 +10,7 @@ function RegistModalOne({ isOpen = false, onClose = false, title }) {
           <h2>제1장 총칙</h2>
           <h2>제1조 (목적)</h2>
           <p>
-            이 약관은 주식회사 티빙(이하 “회사”)이 티빙
+            이 약관은 주식회사 타잉(이하 “회사”)이 타잉
             웹사이트(http://www.tving.com / m.tving.com)와 모바일, 태블릿,
             스마트TV 앱 서비스 및 프로그램을 이용하여 온라인으로 제공하는
             디지털콘텐츠(이하 &quot;콘텐츠&quot;) 및 제반 서비스를 이용함에 있어
@@ -25,11 +25,11 @@ function RegistModalOne({ isOpen = false, onClose = false, title }) {
             <li>
               1.&quot;회사&quot;라 함은 &quot;콘텐츠&quot; 산업과 관련된
               경제활동을 영위하는 자로서 “콘텐츠” 제반 서비스를 제공하는 자이며,
-              이 약관에서는 주식회사 티빙을 말합니다.
+              이 약관에서는 주식회사 타잉을 말합니다.
             </li>
             <li>
               2.&quot;이용자&quot;라 함은 &quot;회사&quot;의
-              티빙(http://www.tving.com / m.tving.com) 웹사이트와 모바일,
+              타잉(http://www.tving.com / m.tving.com) 웹사이트와 모바일,
               태블릿, 스마트TV 앱 서비스에 접속하여 이 약관에 따라
               &quot;회사&quot;가 제공하는 &quot;콘텐츠&quot; 제반 서비스를
               이용하는 회원 및 비회원을 말합니다.{" "}
