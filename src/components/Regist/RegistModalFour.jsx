@@ -8,7 +8,7 @@ function RegistModalThree({ isOpen = false, onClose = false, title }) {
       <section>
         <h4 className={styles.modalFout__title}>[선택] 마케팅정보 수신 동의</h4>
         <p className={styles.modalFour__text}>
-          티빙은 회원님이 동의하신 개인정보를 이용하여 푸시알림, SMS(MMS),
+          타잉은 회원님이 동의하신 개인정보를 이용하여 푸시알림, SMS(MMS),
           이메일를 통해서비스 이벤트 및 업데이트, 마케팅 정보, 고객 맞춤 서비스
           정보를 전송할 수 있습니다.
         </p>

@@ -36,8 +36,8 @@ RegistInput.defaultProps = {
   name: "",
   placeholder: "",
   defaultValue: "",
-  onChange: null,
-  onBlur: null,
+  onChange: () => {},
+  onBlur: () => {},
   children: null,
 };
 

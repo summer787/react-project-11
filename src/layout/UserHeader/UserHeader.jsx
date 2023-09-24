@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import styles from './UserHeader.module.css';
+import HeaderImage from "@/assets/MainHeader/mainheader_logo.png"
 
 function UserHeader() {
   return (
     <header className={styles.account__header}>
-      <h1 className='a11yHidden'>티빙 로고</h1>
+      <h1 className='a11yHidden'>타잉 로고</h1>
       <Link to='/'>
         <img
-          src='/account_tving_logo.svg'
+          src={HeaderImage}
           className={styles.header__img}
           alt='tving'
         />

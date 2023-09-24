@@ -425,12 +425,12 @@ function TvingRegist() {
   return (
     <div>
       <Helmet>
-        <title>티빙 회원가입</title>
+        <title>타잉 회원가입</title>
       </Helmet>
-      <UserTitle title="티빙 회원가입" />
+      <UserTitle title="타잉 회원가입" />
 
       <h2 className={styles.regist__subtitle}>
-        아이디와 이메일로 간편하게 티빙을 시작하세요!
+        아이디와 이메일로 간편하게 타잉을 시작하세요!
       </h2>
 
       <form onSubmit={handleRegist} className={styles.regist__Form}>

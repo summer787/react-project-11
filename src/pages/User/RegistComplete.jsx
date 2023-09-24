@@ -34,10 +34,10 @@ function RegistComplete() {
         회원가입 완료
       </motion.h2>
       <h2 className={styles.complete__title}>
-        티빙 회원이 되신 것을 환영해요!
+        타잉 회원이 되신 것을 환영해요!
       </h2>
       <p className={styles.complete__text}>
-        지금 바로 이용권을 구독하고 티빙 오리지널과
+        지금 바로 이용권을 구독하고 타잉 오리지널과
       </p>
       <p
         className={`${styles.complete__text} ${styles.complete__text__bottom}`}
