@@ -67,7 +67,7 @@ function SearchResult() {
   return (
     <>
       <Helmet>
-        <title>검색 | TVING</title>
+        <title>검색 | TAING</title>
       </Helmet>
       <MainHeader />
       <section className={styles.container}>

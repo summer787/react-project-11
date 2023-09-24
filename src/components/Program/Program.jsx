@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
 import { PropTypes } from "prop-types";
 import { Pagination, Navigation, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,7 +16,7 @@ import "swiper/css/navigation";
 
 import styles from "./Program.module.css";
 
-function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad, extraStyles, subpageExtraStyle}) {
+function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
   const [data, setData] = useState(null);
   const swiperRef = useRef(null);
 
@@ -45,26 +44,6 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad, extraS
         });
     return response.items;
   });
-
-  //강제 새로 고침..
-  const location = useLocation();
-
-useEffect(() => {
-  let previousURL = location.pathname;
-
-  return () => {
-    if (previousURL !== location.pathname) {
-      // 여기에 필요한 스타일 업데이트 로직 추가
-      const element = document.querySelector('.styles.tagItemPoster');
-      if (element) {
-        element.className = 'styles.tagItemPoster'; // Reset the class to the original value
-      }
-    }
-
-    previousURL = location.pathname;
-  };
-}, [location]);
-
 
   useEffect(() => {
     setData(items);
@@ -127,7 +106,7 @@ useEffect(() => {
                     <img
                       src={getImageURL(item, "poster")}
                       alt={item.title}
-                      className={`${styles.tagItemPoster} ${extraStyles ? extraStyles.tagItemPoster : subpageExtraStyle ? subpageExtraStyle.tagItemPoster : ""}`}
+                      className={styles.tagItemPoster}
                     />
                     {isTving && (
                       <div className={styles.tvingOriginal}>

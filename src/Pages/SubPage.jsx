@@ -12,7 +12,7 @@ import MovieSubPageTitle from "@/components/MovieSubPageTitle";
 import MainHeader from "@/layout/MainHeader/MainHeader";
 import Footer from "@/layout/Footer/Footer";
 import Program from "@/components/Program/Program";
-import subpageExtraStyle from '../components/Program/SubExtraProgram.module.css';
+import subpageExtraStyle from "../components/Program/SubExtraProgram.module.css";
 
 function SubPage() {
   const [record, setRecord] = useState(null);
@@ -49,7 +49,7 @@ function SubPage() {
       <MainHeader />
       <SubPageTitle record={record} />
       <VideoPlayer record={record} />
-      <RelatedVideo />
+      <RelatedVideo record={record} />
       {/* <Recommendation /> */}
       {record && (
         <Program

@@ -16,7 +16,7 @@ function Live() {
       }}
     >
       <Helmet>
-        <title>라이브 | TVING</title>
+        <title>라이브 | TAING</title>
       </Helmet>
       <MainHeader />
       Live

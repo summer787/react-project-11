@@ -33,7 +33,12 @@
 
     & .tagImage {
       position: relative;
-      
+      & img {
+        width: 100%;
+
+        border-radius: 0.25rem;
+      }
+
       & .tvingOriginal {
         position: absolute;
         width: 6.25rem;

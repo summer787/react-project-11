@@ -46,7 +46,7 @@ function Movie() {
       }}
     >
       <Helmet>
-        <title>영화 | TVING</title>
+        <title>영화 | TAING</title>
       </Helmet>
       <MainHeader />
       <TagList tag="movietag" setSelectedTag={setSelectedTag} />
@@ -86,7 +86,7 @@ function Movie() {
         </section>
       ) : (
         <section>
-          <Program tagTitle="티빙 TOP 20 영화" ranking isMovie />
+          <Program tagTitle="타잉 TOP 20 영화" ranking isMovie />
           <Program tagTitle="코미디 영화" isMovie filter={"tag.tag='코미디'"} />
           <Program
             tagTitle="애니메이션 영화"

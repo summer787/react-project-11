@@ -15,7 +15,7 @@ function Paramount() {
       }}
     >
       <Helmet>
-        <title>파라마운트 | TVING</title>
+        <title>파라마운트 | TAING</title>
       </Helmet>
       <MainHeader />
       Paramount

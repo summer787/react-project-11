@@ -46,7 +46,7 @@ function Tv() {
       }}
     >
       <Helmet>
-        <title>프로그램 | TVING</title>
+        <title>프로그램 | TAING</title>
       </Helmet>
       <MainHeader />
       <TagList tag="tvtag" setSelectedTag={setSelectedTag} />
@@ -86,7 +86,7 @@ function Tv() {
         </section>
       ) : (
         <section>
-          <Program tagTitle="티빙 TOP 20 프로그램" ranking />
+          <Program tagTitle="타잉 TOP 20 프로그램" ranking />
           <Program
             tagTitle="지금 방영중인 인기 예능"
             nowBroad

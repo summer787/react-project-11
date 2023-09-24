@@ -85,7 +85,7 @@ function Footer() {
             >
               <Link to="/home">1:1 게시판 문의</Link>
             </span>
-            <span className={styles.slash}>대표메일 : tving@cj.net</span>
+            <span className={styles.slash}>대표메일 : taing@cj.net</span>
             <span>전화번호(ARS) : 1670-1525 (챗봇/채팅 상담 연결)</span>
           </p>
           <p>

@@ -40,7 +40,7 @@ function MainHeader() {
       >
         <h1>
           <Link to="/home">
-            <img src={MainHeaderImage.logo} alt="티빙" />
+            <img src={MainHeaderImage.logo} alt="타잉" />
           </Link>
         </h1>
         <div className={styles.navigation}>
