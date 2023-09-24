@@ -4,6 +4,7 @@ import agreementIcon from "@/assets/Regist/agreement_icon_link.svg";
 import { UsernameReg, PasswordReg } from "@/utils/validation";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { toast } from "react-hot-toast";
 import debounce from "@/utils/debounce";
 import RegistInput from "@/components/Regist/RegistInput";
@@ -149,7 +150,7 @@ function TvingRegist() {
     }
   };
 
-  // 체크 박스
+  // 체크 박스 모두 동의
   const handleAllChecked = () => {
     if (allChecked === false) {
       setAgeAgree(true);
@@ -171,7 +172,7 @@ function TvingRegist() {
       setSnsInfo(false);
     }
   };
-
+  // 체크 박스 만 14세 이상
   const handleAgeCheck = () => {
     if (ageAgree === false) {
       setAgeAgree(true);
@@ -181,6 +182,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 필수 서비스 약관동의
   const handleRequiredServiceCheck = () => {
     if (requiredService === false) {
       setRequiredService(true);
@@ -190,6 +192,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 필수 개인정보 수집 동의
   const handleRequiredInfoCheck = () => {
     if (requiredInfo === false) {
       setRequiredInfo(true);
@@ -199,6 +202,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 선택 개인정보 수집 동의
   const handleOptionalInfoCheck = () => {
     if (optionalInfo === false) {
       setOptionalInfo(true);
@@ -208,6 +212,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 마케팅 정보 동의
   const handleMarketingInfoCheck = () => {
     if (marketingInfo === false) {
       setMarketingInfo(true);
@@ -223,6 +228,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 푸쉬 알림
   const handlePushInfo = () => {
     if (pushInfo === false) {
       setPushInfo(true);
@@ -231,6 +237,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 이메일 알림
   const handleEmailInfo = () => {
     if (emailInfo === false) {
       setEmailInfo(true);
@@ -239,6 +246,7 @@ function TvingRegist() {
     }
   };
 
+  // 체크박스 sns 알림
   const handleSnsInfo = () => {
     if (snsInfo === false) {
       setSnsInfo(true);
@@ -379,7 +387,6 @@ function TvingRegist() {
     });
 
     activeClearButton(name, value);
-
     handleValidate(name, value);
   });
 
@@ -417,6 +424,9 @@ function TvingRegist() {
 
   return (
     <div>
+      <Helmet>
+        <title>티빙 회원가입</title>
+      </Helmet>
       <UserTitle title="티빙 회원가입" />
 
       <h2 className={styles.regist__subtitle}>
@@ -540,13 +550,12 @@ function TvingRegist() {
             >
               <img src={agreementIcon} alt="서비스 이용약관 안내" />
             </button>
-            {isModalOpenOne && (
-              <RegistModalOne
-                isOpen={isModalOpenOne}
-                onClose={handleCloseModalOne}
-                title="서비스 이용약관"
-              />
-            )}
+
+            <RegistModalOne
+              isOpen={isModalOpenOne}
+              onClose={handleCloseModalOne}
+              title="서비스 이용약관"
+            />
           </li>
 
           <li className={styles.agree__item}>
@@ -565,13 +574,12 @@ function TvingRegist() {
                 alt="[필수] 개인정보 수집 및 이용 동의안내"
               />
             </button>
-            {isModalOpenTwo && (
-              <RegistModalTwo
-                isOpen={isModalOpenTwo}
-                onClose={handleCloseModalTwo}
-                title="개인정보 수집 및 이용 동의"
-              />
-            )}
+
+            <RegistModalTwo
+              isOpen={isModalOpenTwo}
+              onClose={handleCloseModalTwo}
+              title="개인정보 수집 및 이용 동의"
+            />
           </li>
           <li className={styles.agree__item}>
             <CheckboxNoFilled
@@ -589,13 +597,12 @@ function TvingRegist() {
                 alt="[선택] 개인정보 수집 및 이용 동의 안내"
               />
             </button>
-            {isModalOpenThree && (
-              <RegistModalThree
-                isOpen={isModalOpenThree}
-                onClose={handleCloseModalThree}
-                title="개인정보 수집 및 이용 동의"
-              />
-            )}
+
+            <RegistModalThree
+              isOpen={isModalOpenThree}
+              onClose={handleCloseModalThree}
+              title="개인정보 수집 및 이용 동의"
+            />
           </li>
           <li className={styles.agree__item}>
             <CheckboxNoFilled
@@ -610,13 +617,12 @@ function TvingRegist() {
             >
               <img src={agreementIcon} alt="마케팅 정보 수신 동의 안내" />
             </button>
-            {isModalOpenFour && (
-              <RegistModalFour
-                isOpen={isModalOpenFour}
-                onClose={handleCloseModalFour}
-                title="마케팅 정보 수신 동의"
-              />
-            )}
+
+            <RegistModalFour
+              isOpen={isModalOpenFour}
+              onClose={handleCloseModalFour}
+              title="마케팅 정보 수신 동의"
+            />
           </li>
         </ul>
 

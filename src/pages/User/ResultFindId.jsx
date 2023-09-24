@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { FindUserContext } from '@/components/contexts/FindUserContext';
 import UserTitle from '@/components/User/UserTitle';
 import UserTitleDescription from '@/components/User/UserTitleDescription';
-
 import style from './ResultFindId.module.css';
 
 const description = {
@@ -39,6 +39,9 @@ function ResultFindId() {
 
   return (
     <>
+      <Helmet>
+        <title>아이디찾기_결과있음</title>
+      </Helmet>
       <UserTitle title='아이디 찾기 결과' a11yHidden />
       <UserTitleDescription activeImage description={description} />
       <dl className={style.result__findId__item__list}>
