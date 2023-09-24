@@ -4,13 +4,19 @@
 <br>
 
 # <img src="https://github.com/M-Moong/ID-NUMBER/assets/105577805/4e893c53-c256-4b81-9c5e-4511ee48a13e" width="33" height="33"/>  T<img src ='https://github.com/kimInDa/react-project-11/assets/105577805/ae510fa3-c3e9-4a72-a159-25bdc98b7a48' width='33' height='33'/>ING
-![메인](https://github.com/kimInDa/react-project-11/assets/105577805/557c6144-d94b-48ec-87d8-c92265587bc1)
+
+<br>
+
+> #### 🔗 배포 주소 : https://taingeleven.netlify.app/
 
 <br>
 
 OTT 사이트 TVING을 구현하였습니다.
 
-> #### 🔗 배포 주소 : https://taingeleven.netlify.app/
+<br>
+
+![메인](https://github.com/kimInDa/react-project-11/assets/105577805/557c6144-d94b-48ec-87d8-c92265587bc1)
+
 
 <br>
 <br>
@@ -150,17 +156,17 @@ react-project-11
 <br>
 
 ## 📈 성능 및 최적화
-- 검사 Tool
+- **검사 Tool**
   - LightHouse
  
 
-- 검사 항목
+- **검사 항목**
   - 성능
   - 접근성
   - 최적화
   - SEO 최적화
  
- - 검사 결과
+ - **검사 결과**
    - 메인
    - 프로그램 상세 정보
    - [계정 선택](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BTest%5D-%EA%B3%84%EC%A0%95%EC%84%A0%ED%83%9D)
