@@ -170,7 +170,7 @@ react-project-11
    - 메인
    - 프로그램 상세 정보
    - [계정 선택](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BTest%5D-%EA%B3%84%EC%A0%95%EC%84%A0%ED%83%9D)
-   - 회원 가입
+   - [회원 가입](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BTest%5D-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85)
    - [로그인](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BTest%5D-%EB%A1%9C%EA%B7%B8%EC%9D%B8)
    - [아이디찾기](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BTest%5D-%EC%95%84%EC%9D%B4%EB%94%94%EC%B0%BE%EA%B8%B0)
    - [아이디찾기 결과](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BTest%5D-%EC%95%84%EC%9D%B4%EB%94%94%EC%B0%BE%EA%B8%B0-%EA%B2%B0%EA%B3%BC)
