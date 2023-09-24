@@ -6,10 +6,10 @@ import styles from './AccountButton.module.css';
 const buttons = [
   {
     id: 1,
-    text: 'TVING ID로 시작하기',
-    alt: '티빙 아이콘',
+    text: 'TAING ID로 시작하기',
+    alt: '타잉 아이콘',
     image: AccountImage.tvingIcon,
-    link: '/user/tvingLogin',
+    link: '/user/taingLogin',
     isService: true,
   },
   {

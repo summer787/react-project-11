@@ -48,20 +48,20 @@ function ResultFindId() {
         <dt className='a11yHidden'>계정명</dt>
         <dd
           className={style.result__findId__item__brand}
-          aria-label='티빙아이디'
+          aria-label='타잉아이디'
         >
-          TVING ID
+          TAING ID
         </dd>
         <dt className='a11yHidden'>아이디</dt>
         <dd className={style.result__findId__item__id}>{convertId}</dd>
       </dl>
 
       <span className={style.result__findId__info}>
-        SNS 회원은 해당 SNS 아이디가 아닌 티빙 가입 시 등록한 이메일을
+        SNS 회원은 해당 SNS 아이디가 아닌 타잉 가입 시 등록한 이메일을
         알려드립니다.
       </span>
 
-      <NavLink to='/user/tvingLogin' className={style.result__findId__link}>
+      <NavLink to='/user/taingLogin' className={style.result__findId__link}>
         로그인 하러 가기
       </NavLink>
     </>
