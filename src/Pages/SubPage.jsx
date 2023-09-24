@@ -12,6 +12,7 @@ import MovieSubPageTitle from "@/components/MovieSubPageTitle";
 import MainHeader from "@/layout/MainHeader/MainHeader";
 import Footer from "@/layout/Footer/Footer";
 import Program from "@/components/Program/Program";
+import subpageExtraStyle from '../components/Program/SubExtraProgram.module.css';
 
 function SubPage() {
   const [record, setRecord] = useState(null);
@@ -54,6 +55,7 @@ function SubPage() {
         <Program
           tagTitle="비슷한 프로그램"
           filter={`tag.tag='${record.expand.tag[0].tag}'`}
+          extraStyles={subpageExtraStyle}
         />
       )}
       <Footer />
