@@ -73,6 +73,7 @@ function MovieSubPageTitle({ record }) {
 
   if (data) {
     const {
+      titleImage,
       title,
       audiencerating,
       release,
@@ -85,7 +86,7 @@ function MovieSubPageTitle({ record }) {
     } = data;
     const { tag: tagArray } = expand;
     const { tag } = tagArray[0];
-    // console.log(data)
+    console.log(titleImage);
     return (
       <>
         <Helmet>
@@ -96,6 +97,7 @@ function MovieSubPageTitle({ record }) {
             className={`${sub.contentInformation} ${
               isExpanded ? sub.PageTitleExpanded : ""
             }`}
+            style={{ paddingTop: "100px" }}
           >
             <div
               className={sub.backgroundImage}
@@ -106,8 +108,15 @@ function MovieSubPageTitle({ record }) {
             <div className={sub.blurOverlay}></div>
             <div className={sub.content}>
               <article className={sub.contentMain}>
-                <h1 className={sub.titleImg}>
-                  <img src={getImageURL(data, "titleImage")} alt={title} />
+                <h1
+                  className={sub.titleImg}
+                  style={{ font: "var(--heading-xxxl)", color: "white" }}
+                >
+                  {titleImage === "" ? (
+                    title
+                  ) : (
+                    <img src={getImageURL(data, "titleImage")} alt={title} />
+                  )}
                 </h1>
                 <div></div>
                 <ul className={sub.tagWrap}>

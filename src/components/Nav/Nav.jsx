@@ -33,6 +33,9 @@ function Nav() {
         {/* <li>
           <Link to="/paramount">파라마운트+</Link>
         </li> */}
+        <li>
+          <Link to="/like">찜목록</Link>
+        </li>
       </ul>
     </nav>
   );

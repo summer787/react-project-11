@@ -168,32 +168,40 @@ function VideoPlayer({ record }) {
           )}
           <Swiper
             modules={[Navigation, Scrollbar]}
-            breakpoints={{
-              375: {
-                slidesPerView: 1.5,
-              },
-              540: {
-                slidesPerView: 2.2,
-              },
-              768: {
-                slidesPerView: 2.8,
-              },
-              929: {
-                slidesPerView: 3.8,
-              },
-              1024: {
-                slidesPerView: 4.5,
-              },
-              1300: {
-                slidesPerView: 5.2,
-              },
-              1500: {
-                slidesPerView: 5.8,
-              },
-              1920: {
-                slidesPerView: 6.2,
-              },
-            }}
+            breakpoints={
+              data?.thumbnailSeason1.length > 6
+                ? {
+                    375: {
+                      slidesPerView: 1.5,
+                    },
+                    540: {
+                      slidesPerView: 2.2,
+                    },
+                    768: {
+                      slidesPerView: 2.8,
+                    },
+                    929: {
+                      slidesPerView: 3.8,
+                    },
+                    1024: {
+                      slidesPerView: 4.5,
+                    },
+                    1300: {
+                      slidesPerView: 5.2,
+                    },
+                    1500: {
+                      slidesPerView: 5.8,
+                    },
+                    1920: {
+                      slidesPerView: 6.2,
+                    },
+                  }
+                : {
+                    375: {
+                      slidesPerView: data?.thumbnailSeason1.length,
+                    },
+                  }
+            }
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",

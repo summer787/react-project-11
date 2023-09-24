@@ -14,6 +14,7 @@
   z-index: 10;
   height: 31.25rem;
   z-index: 0;
+  margin-bottom: 30px;
 }
 
 .PageTitleExpanded {
@@ -125,6 +126,7 @@
 .playIcon {
   width: 1.25rem;
   height: 1.375rem;
+  aspect-ratio: 0.87 !important;
   margin-right: 0.9375rem;
 }
 
@@ -757,3 +759,8 @@ button {
 :global(.swiper-scrollbar-drag) {
   background-color: #6b6b6b;
 } */
+
+:global(.swiper) {
+  margin-right: 0;
+  margin-left: 0;
+}

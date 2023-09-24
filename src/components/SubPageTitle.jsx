@@ -107,8 +107,15 @@ function SubPageTitle({ record }) {
             <div className={sub.blurOverlay} />
             <div className={sub.content}>
               <article className={sub.contentMain}>
-                <h1 className={sub.titleImg}>
-                  <img src={getImageURL(data, "titleImage")} alt={title} />
+                <h1
+                  className={sub.titleImg}
+                  style={{ font: "var(--heading-xxxl)", color: "white" }}
+                >
+                  {data?.titleImg === undefined ? (
+                    <img src={getImageURL(data, "titleImage")} alt={title} />
+                  ) : (
+                    title
+                  )}
                 </h1>
                 <div></div>
                 <ul className={sub.tagWrap}>

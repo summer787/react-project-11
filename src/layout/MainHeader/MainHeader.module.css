@@ -30,14 +30,15 @@
     align-items: center;
   }
 
-  & h1 a {
+  & h1 {
     margin-right: 3.25rem;
     display: flex;
     align-items: center;
   }
-  & h1 a img {
+  & h1 img {
     width: 8.25rem;
     height: 2.5rem;
+    aspect-ratio: 3.3;
   }
 
   & .navigation {
