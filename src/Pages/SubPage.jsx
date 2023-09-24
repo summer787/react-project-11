@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import MovieSubPageTitle from "@/components/MovieSubPageTitle";
 import MainHeader from "@/layout/MainHeader/MainHeader";
 import Footer from "@/layout/Footer/Footer";
+import Program from "@/components/Program/Program";
 
 function SubPage() {
   const [record, setRecord] = useState(null);
@@ -42,16 +43,22 @@ function SubPage() {
     getTv();
   }, [id]);
 
-    return (
-        <main>
-            <div className={sub.contentWrap}>
-                    <SubPageTitle record={record}/>
-                    <VideoPlayer record={record}/>
-                    <RelatedVideo/>
-                    <Recommendation />
-            </div>   
-        </main>
-    );
+  return (
+    <div className={sub.contentWrap}>
+      <MainHeader />
+      <SubPageTitle record={record} />
+      <VideoPlayer record={record} />
+      <RelatedVideo />
+      {/* <Recommendation /> */}
+      {record && (
+        <Program
+          tagTitle="비슷한 프로그램"
+          filter={`tag.tag='${record.expand.tag[0].tag}'`}
+        />
+      )}
+      <Footer />
+    </div>
+  );
 }
 
 export default SubPage;

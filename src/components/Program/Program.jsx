@@ -5,8 +5,10 @@ import { Pagination, Navigation, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import TvingOriginal from "@/assets/TvingOriginal/TvingOriginal";
 import Rankings from "@/assets/Ranking/Rankings";
+import { useQuery } from "@tanstack/react-query";
 import getImageURL from "@/utils/getImageURL";
 import pb from "@/api/pocketbase";
+import Spinner from "@/components/Spinner";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -24,50 +26,33 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
     }
   };
 
+  const {
+    isLoading,
+    error,
+    data: items,
+  } = useQuery(["items", filter, ranking, isMovie, nowBroad], async () => {
+    const response = !isMovie
+      ? await pb.collection("tv").getList(1, ranking ? 20 : 30, {
+          expand: "tag",
+          sort: `${nowBroad ? "-release" : "-likes"}`,
+          filter: `${filter || ""}`,
+        })
+      : await pb.collection("movie").getList(1, ranking ? 20 : 30, {
+          expand: "tag",
+          sort: "-likes",
+          filter: `${filter || ""}`,
+        });
+    return response.items;
+  });
+
   useEffect(() => {
-    let isMounted = true;
-    const abortController = new AbortController();
-    const { signal } = abortController;
+    setData(items);
+  }, [items]);
 
-    async function fetchData(filterData) {
-      try {
-        const response = !isMovie
-          ? await pb.collection("tv").getList(
-              1,
-              ranking ? 20 : 30,
-              {
-                expand: "tag",
-                sort: `${nowBroad ? "-release" : "-likes"}`,
-                filter: `${filterData || ""}`,
-              },
-              { signal }
-            )
-          : await pb.collection("movie").getList(
-              1,
-              ranking ? 20 : 30,
-              {
-                expand: "tag",
-                sort: "-likes",
-                filter: `${filterData || ""}`,
-              },
-              { signal }
-            );
+  if (isLoading)
+    return <Spinner isOpen={true} message="이미지를 로딩 중입니다." />;
 
-        if (isMounted) {
-          setData(response);
-        }
-      } catch (error) {
-        throw new Error(error);
-      }
-    }
-
-    fetchData(filter);
-
-    return () => {
-      isMounted = false;
-      abortController.abort();
-    };
-  }, [filter, ranking, isMovie, nowBroad]);
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <section className={styles.tagContainer}>
@@ -106,7 +91,7 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
         }}
       >
         {data &&
-          data.items.map((item, index) => (
+          data.map((item, index) => (
             <SwiperSlide key={item.id}>
               <Link
                 className={styles.programLink}

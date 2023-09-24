@@ -8,12 +8,12 @@ function Nav() {
   return (
     <nav className={styles.nav}>
       <ul>
-        <li className={styles.live}>
+        {/* <li className={styles.live}>
           <Link to="/live">
             <MainHeaderImage.Live />
             <span>실시간</span>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             to="/tv"
@@ -30,9 +30,9 @@ function Nav() {
             영화
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/paramount">파라마운트+</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
