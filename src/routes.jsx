@@ -57,7 +57,7 @@ const router = createBrowserRouter(
         <Route element={<UserMain />}>
           <Route path='account' element={<Account />} />
           <Route path='user/taingLogin' element={<TvingLogin />} />
-          <Route path='user/tvingRegist' element={<TvingRegist />} />
+          <Route path='user/taingRegist' element={<TvingRegist />} />
           <Route path='user/findId' element={<FindUserId />} />
           <Route path='user/findPassword' element={<FindUserPassword />} />
           <Route

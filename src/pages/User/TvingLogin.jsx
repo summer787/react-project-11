@@ -163,7 +163,7 @@ function TvingLogin() {
       {/* 회원가입하기 링크 */}
       <UserInfo
         text='아직 계정이 없으신가요?'
-        linkpath='/user/tvingRegist'
+        linkpath='/user/taingRegist'
         linktext='회원가입 하기'
         styleClass='text__large'
       />
