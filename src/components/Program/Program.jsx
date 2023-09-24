@@ -97,6 +97,7 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
                 className={styles.programLink}
                 to={`/${isMovie ? "movie" : "tv"}/${item.id}`}
                 onFocus={() => handleFocus(index)}
+                onClick={() => window.scrollTo(0, 0)}
               >
                 <div className={styles.tagItem}>
                   <div className={styles.ranking}>

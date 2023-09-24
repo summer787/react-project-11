@@ -12,7 +12,16 @@ import twitter from "../assets/Subpage/twitter_icon.svg";
 import link from "../assets/Subpage/link_icon.svg";
 import sub from "../styles/subpage.module.css";
 
+import pb from "@/api/pocketbase";
+import { getData, setData as setStorageData } from "@/hooks/useStorage";
+import { useParams } from "react-router-dom";
+import { is } from "ramda";
+const initLikeData = getData("pocketbase_auth");
+
+console.log(setStorageData);
+
 function SubPageTitle({ record }) {
+  const { id: paramsId } = useParams();
   const [data, setData] = useState();
   const [showSharePopup, setShowSharePopup] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -29,9 +38,36 @@ function SubPageTitle({ record }) {
   };
   const [isLiked, setIsLiked] = useState(false);
   const [showPostPopup, setShowPostPopup] = useState(false);
+  const [likeData, setLikeData] = useState(initLikeData);
+  console.log(likeData);
+
   const handleLikeIconClick = () => {
-    setIsLiked(!isLiked);
+    // setIsLiked(!isLiked);
+
+    if (likeData.model.liketv.includes(paramsId)) {
+      setLikeData({
+        ...initLikeData,
+        liketv: likeData.model.liketv.filter((id) => id !== paramsId),
+      });
+      setStorageData("pocketbase_auth", likeData);
+      setIsLiked(false);
+    } else {
+      setLikeData({
+        ...initLikeData,
+        liketv: [...likeData.model.liketv, paramsId],
+      });
+      setStorageData("pocketbase_auth", likeData);
+      setIsLiked(true);
+    }
   };
+
+  useEffect(() => {
+    pb.collection("users").update(
+      `${getData("pocketbase_auth").model.id}`,
+      likeData
+    );
+  }, [isLiked]);
+
   const handleShowPostPopup = () => {
     setShowPostPopup(true);
     setTimeout(() => {
@@ -42,11 +78,15 @@ function SubPageTitle({ record }) {
     handleLikeIconClick();
     handleShowPostPopup();
   };
+
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // console.log(record);
     setData(record);
+    getData("pocketbase_auth").model.liketv.includes(data?.id)
+      ? setIsLiked(true)
+      : setIsLiked(false);
   }, [record]);
 
   useEffect(() => {
@@ -149,7 +189,9 @@ function SubPageTitle({ record }) {
                         role="alert"
                         aria-live="assertive"
                       >
-                        포스트가 찜 되었습니다.
+                        {isLiked
+                          ? "포스트가 찜 되었습니다."
+                          : "포스트가 해제 되었습니다."}
                       </div>,
                       document.body
                     )}

@@ -1,0 +1,28 @@
+.likeWrapper {
+  padding: 0 4.25rem;
+
+  & h3 {
+    font: var(--heading-xxl);
+  }
+
+  & h4 {
+    margin-top: 1.5rem;
+    font: var(--heading-xl);
+  }
+
+  & .like {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+
+    & .link {
+      display: block;
+      width: 12rem;
+
+      & img {
+        width: 100%;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+}

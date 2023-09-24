@@ -5,7 +5,7 @@ const {
   JSON: { stringify: serialize, parse: deserialize },
 } = globalThis;
 
-const setData = (key, nextData) => {
+export const setData = (key, nextData) => {
   storage.setItem(key, serialize(nextData));
 };
 

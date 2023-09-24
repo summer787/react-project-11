@@ -86,7 +86,6 @@ function MovieSubPageTitle({ record }) {
     } = data;
     const { tag: tagArray } = expand;
     const { tag } = tagArray[0];
-    console.log(titleImage);
     return (
       <>
         <Helmet>
