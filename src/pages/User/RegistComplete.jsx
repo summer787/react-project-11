@@ -8,7 +8,7 @@ function RegistComplete() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/user/tvingLogin");
+    navigate("/user/taingLogin");
   };
 
   return (
