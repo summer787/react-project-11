@@ -1,5 +1,5 @@
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=200&section=header&text={+🦁+멋쟁이+사자처럼+프론트엔드+스쿨+6기+|+React+팀+프로젝트+11조+-+갓동균에게+십일조+내조+🦁+}&fontSize=20&animation=twinkling" />
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:000000,100:ff153c&height=200&section=header&text={+🦁+멋쟁이+사자처럼+프론트엔드+스쿨+6기+|+React+팀+프로젝트+11조+-+갓동균에게+십일조+내조+🦁+}&fontSize=20&fontColor=ffffff&animation=twinkling" />
 
 <br>
 
