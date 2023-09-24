@@ -6,11 +6,14 @@ import useStorage from "@/hooks/useStorageSearch";
 import MainheaderImage from "@/assets/MainHeader/MainHeader_image";
 import pb from "@/api/pocketbase";
 import getImageURL from "@/utils/getImageURL";
+import { useQuery } from "@tanstack/react-query";
 
 import SearchContext from "@/context/SearchContext";
 
 import nowDate from "../../utils/getNowDate";
 import styles from "./Search.module.css";
+
+import Spinner from "../Spinner";
 
 function Search({ isOpen, onRequestClose }) {
   const inputRef = useRef(null);
@@ -22,8 +25,6 @@ function Search({ isOpen, onRequestClose }) {
     remove,
   } = useStorage("recentSearches", []);
   const [currentTime, setCurrentTime] = useState(() => nowDate());
-  const [data, setData] = useState(null);
-  const [movieData, setMovieData] = useState(null);
   const { setSearchResults } = useContext(SearchContext);
   const navigate = useNavigate();
   const { searchResult } = useParams();
@@ -53,50 +54,21 @@ function Search({ isOpen, onRequestClose }) {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    let isMounted = true;
-    const abortController = new AbortController();
-    const { signal } = abortController;
+  const tvQuery = useQuery(["tvData", searchInput], async () => {
+    const response = await pb.collection("tv").getList(1, 50, {
+      expand: "tag",
+      filter: `title?~'${searchInput}' || actor?~'${searchInput}' || creator?~'${searchInput}'`,
+    });
+    return response;
+  });
 
-    async function fetchData() {
-      try {
-        const response = await pb.collection("tv").getList(
-          1,
-          50,
-          {
-            expand: "tag",
-            filter: `title?~'${searchInput}' || actor?~'${searchInput}' || creator?~'${searchInput}'`,
-          },
-          { signal }
-        );
-
-        const responseMovie = await pb.collection("movie").getList(
-          1,
-          50,
-          {
-            expand: "tag",
-            filter: `title?~'${searchInput}' || actor?~'${searchInput}' || creator?~'${searchInput}'`,
-          },
-          { signal }
-        );
-
-        if (isMounted) {
-          setData(response);
-          setMovieData(responseMovie);
-          setSearchResults({ tv: response, movie: responseMovie });
-        }
-      } catch (error) {
-        throw new Error(error);
-      }
-    }
-
-    if (searchInput) fetchData();
-
-    return () => {
-      isMounted = false;
-      abortController.abort();
-    };
-  }, [searchInput, setSearchResults]);
+  const movieQuery = useQuery(["movieData", searchInput], async () => {
+    const response = await pb.collection("movie").getList(1, 50, {
+      expand: "tag",
+      filter: `title?~'${searchInput}' || actor?~'${searchInput}' || creator?~'${searchInput}'`,
+    });
+    return response;
+  });
 
   return (
     <ReactModal
@@ -137,41 +109,57 @@ function Search({ isOpen, onRequestClose }) {
         {searchInput ? (
           <div className={styles.searchData}>
             <div className={styles.searchPoster}>
-              {data &&
-                data.items.slice(0, 3).map((item) => (
-                  <Link key={item.id} href={`tv/${item.id}`}>
-                    <img src={getImageURL(item, "poster")} alt={item.title} />
-                    <span>{item.title}</span>
-                  </Link>
-                ))}
-              {movieData &&
-                movieData.items.slice(0, 3).map((item) => (
-                  <Link key={item.id} href={`movie/${item.id}`}>
-                    <img src={getImageURL(item, "poster")} alt={item.title} />
-                    <span>{item.title}</span>
-                  </Link>
-                ))}
+              {tvQuery.isLoading ||
+              movieQuery.isLoading ? null : tvQuery.error ||
+                movieQuery.error ? (
+                <div>
+                  Error: {tvQuery.error?.message || movieQuery.error?.message}
+                </div>
+              ) : (
+                <>
+                  {tvQuery.data?.items.slice(0, 3).map((item) => (
+                    <Link key={item.id} to={`/tv/${item.id}`}>
+                      <img src={getImageURL(item, "poster")} alt={item.title} />
+                      <span>{item.title}</span>
+                    </Link>
+                  ))}
+                  {movieQuery.data?.items.slice(0, 3).map((item) => (
+                    <Link key={item.id} to={`/movie/${item.id}`}>
+                      <img src={getImageURL(item, "poster")} alt={item.title} />
+                      <span>{item.title}</span>
+                    </Link>
+                  ))}
+                </>
+              )}
             </div>
             <div>
               <ul className={styles.searchList}>
-                {data &&
-                  data.items.length > 7 &&
-                  data.items.slice(7, 9).map((item) => (
-                    <li key={item.id}>
-                      <Link to={`/tv/${item.id}`}>
-                        <span>{item.title}</span>
-                      </Link>
-                    </li>
-                  ))}
-                {movieData &&
-                  movieData.items.length > 7 &&
-                  movieData.items.slice(7, 9).map((item) => (
-                    <li key={item.id}>
-                      <Link to={`/movie/${item.id}`}>
-                        <span>{item.title}</span>
-                      </Link>
-                    </li>
-                  ))}
+                {tvQuery.isLoading || movieQuery.isLoading ? (
+                  <div>Loading...</div>
+                ) : tvQuery.error || movieQuery.error ? (
+                  <div>
+                    Error: {tvQuery.error?.message || movieQuery.error?.message}
+                  </div>
+                ) : (
+                  <>
+                    {tvQuery.data?.items.length > 7 &&
+                      tvQuery.data?.items.slice(7, 9).map((item) => (
+                        <li key={item.id}>
+                          <Link to={`/tv/${item.id}`}>
+                            <span>{item.title}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    {movieQuery.data?.items.length > 7 &&
+                      movieQuery.data?.items.slice(7, 9).map((item) => (
+                        <li key={item.id}>
+                          <Link to={`/movie/${item.id}`}>
+                            <span>{item.title}</span>
+                          </Link>
+                        </li>
+                      ))}
+                  </>
+                )}
               </ul>
             </div>
           </div>

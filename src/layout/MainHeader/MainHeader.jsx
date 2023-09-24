@@ -1,4 +1,3 @@
-// /src/layout/MainHeader/MainHeader.jsx
 import { useState, useEffect } from "react";
 import MainHeaderImage from "@/assets/MainHeader/MainHeader_image";
 import SearchIcon from "@/components/Search/SearchIcon";

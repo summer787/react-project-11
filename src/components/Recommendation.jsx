@@ -5,7 +5,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import sub from "../styles/subpage.module.css";
-import SubPage from '@/pages/SubPage';
 import poster from '../assets/Subpage/subpage_poster.png';
 
 function Recommendation({record}){
@@ -13,10 +12,9 @@ function Recommendation({record}){
         <div>
         <section className={sub.recommendation}>
                 <header className={sub.recommendationVideoHeader}>
-                <h2 className={sub.title}>
-                    {/* {collection === 'movie' ? '비슷한 영화' : '비슷한 TV프로그램'} */}
+                <h1 className={sub.title} id="recommendation-title">
                     비슷한 프로그램
-                </h2>
+                </h1>
                         <div className="custom-pagination"></div> 
                 </header>
                     <div className={sub.recommendationAll}>
@@ -43,6 +41,7 @@ function Recommendation({record}){
                                 pagination={{ 
                                     el: '.custom-pagination',
                                     clickable: true, }}
+                                aria-labelledby="recommendation-title"
                         >
                             <SwiperSlide>
                                 <section className={sub.recommendationWrap}>

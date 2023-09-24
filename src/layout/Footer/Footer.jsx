@@ -62,7 +62,9 @@ function Footer() {
         <div>
           <p>
             <span className={styles.slash}>대표이사 : 최주희</span>
-            <span className={`${styles.slash} ${styles.underline}`}>
+            <span
+              className={`${styles.slash} ${styles.underline} ${styles.accent}`}
+            >
               <Link to="/home">사업자정보확인</Link>
             </span>
             <span className={styles.slash}>사업자등록번호 : 188-88-01893</span>
@@ -78,7 +80,9 @@ function Footer() {
             <span className={styles.slash}>
               고객센터 (평일 09시~17시/점심시간 13시~14시)
             </span>
-            <span className={`${styles.slash} ${styles.underline}`}>
+            <span
+              className={`${styles.slash} ${styles.underline} ${styles.accent}`}
+            >
               <Link to="/home">1:1 게시판 문의</Link>
             </span>
             <span className={styles.slash}>대표메일 : tving@cj.net</span>
@@ -95,22 +99,22 @@ function Footer() {
       <div className={styles.icons}>
         {/* <IconColorProvider> */}
         <div>
-          <Link to="/home">
+          <Link to="/home" aria-label="Youtube">
             <YoutubeIcon />
           </Link>
         </div>
         <div>
-          <Link to="/home">
+          <Link to="/home" aria-label="Instagram">
             <InstagramIcon />
           </Link>
         </div>
         <div>
-          <Link to="/home">
+          <Link to="/home" aria-label="Twitter">
             <TwitterIcon />
           </Link>
         </div>
         <div>
-          <Link to="/home">
+          <Link to="/home" aria-label="Facebook">
             <FacebookIcon />
           </Link>
         </div>

@@ -88,6 +88,10 @@ function MainCarousel() {
       applyKeydownHandler(".swiper-pagination-bullet");
       applyKeydownHandler(".swiper-button-prev, .swiper-button-next");
     }
+
+    document.querySelectorAll(".swiper-pagination-bullet").forEach((e) => {
+      e.setAttribute("aria-label", "Slide");
+    });
   }, [bannerData]);
 
   return (

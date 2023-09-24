@@ -106,9 +106,9 @@ function TvingLogin() {
   return (
     <>
       <Helmet>
-        <title>TVINGID로그인</title>
+        <title>TAINGID로그인</title>
       </Helmet>
-      <UserTitle title='TVING ID 로그인' />
+      <UserTitle title='TAING ID 로그인' />
 
       <form onSubmit={handleLogin}>
         <div className={style.form__wrapper}>
@@ -163,7 +163,7 @@ function TvingLogin() {
       {/* 회원가입하기 링크 */}
       <UserInfo
         text='아직 계정이 없으신가요?'
-        linkpath='/user/tvingRegist'
+        linkpath='/user/taingRegist'
         linktext='회원가입 하기'
         styleClass='text__large'
       />

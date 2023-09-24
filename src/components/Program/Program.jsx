@@ -1,12 +1,15 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { PropTypes } from "prop-types";
 import { Pagination, Navigation, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import TvingOriginal from "@/assets/TvingOriginal/TvingOriginal";
 import Rankings from "@/assets/Ranking/Rankings";
+import { useQuery } from "@tanstack/react-query";
 import getImageURL from "@/utils/getImageURL";
 import pb from "@/api/pocketbase";
+import Spinner from "@/components/Spinner";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,7 +17,7 @@ import "swiper/css/navigation";
 
 import styles from "./Program.module.css";
 
-function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
+function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad, extraStyles, subpageExtraStyle}) {
   const [data, setData] = useState(null);
   const swiperRef = useRef(null);
 
@@ -24,50 +27,53 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
     }
   };
 
-  useEffect(() => {
-    let isMounted = true;
-    const abortController = new AbortController();
-    const { signal } = abortController;
+  const {
+    isLoading,
+    error,
+    data: items,
+  } = useQuery(["items", filter, ranking, isMovie, nowBroad], async () => {
+    const response = !isMovie
+      ? await pb.collection("tv").getList(1, ranking ? 20 : 30, {
+          expand: "tag",
+          sort: `${nowBroad ? "-release" : "-likes"}`,
+          filter: `${filter || ""}`,
+        })
+      : await pb.collection("movie").getList(1, ranking ? 20 : 30, {
+          expand: "tag",
+          sort: "-likes",
+          filter: `${filter || ""}`,
+        });
+    return response.items;
+  });
 
-    async function fetchData(filterData) {
-      try {
-        const response = !isMovie
-          ? await pb.collection("tv").getList(
-              1,
-              ranking ? 20 : 30,
-              {
-                expand: "tag",
-                sort: `${nowBroad ? "-release" : "-likes"}`,
-                filter: `${filterData || ""}`,
-              },
-              { signal }
-            )
-          : await pb.collection("movie").getList(
-              1,
-              ranking ? 20 : 30,
-              {
-                expand: "tag",
-                sort: "-likes",
-                filter: `${filterData || ""}`,
-              },
-              { signal }
-            );
+  //강제 새로 고침..
+  const location = useLocation();
 
-        if (isMounted) {
-          setData(response);
-        }
-      } catch (error) {
-        throw new Error(error);
+useEffect(() => {
+  let previousURL = location.pathname;
+
+  return () => {
+    if (previousURL !== location.pathname) {
+      // 여기에 필요한 스타일 업데이트 로직 추가
+      const element = document.querySelector('.styles.tagItemPoster');
+      if (element) {
+        element.className = 'styles.tagItemPoster'; // Reset the class to the original value
       }
     }
 
-    fetchData(filter);
+    previousURL = location.pathname;
+  };
+}, [location]);
 
-    return () => {
-      isMounted = false;
-      abortController.abort();
-    };
-  }, [filter, ranking, isMovie, nowBroad]);
+
+  useEffect(() => {
+    setData(items);
+  }, [items]);
+
+  if (isLoading)
+    return <Spinner isOpen={true} message="이미지를 로딩 중입니다." />;
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <section className={styles.tagContainer}>
@@ -106,7 +112,7 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
         }}
       >
         {data &&
-          data.items.map((item, index) => (
+          data.map((item, index) => (
             <SwiperSlide key={item.id}>
               <Link
                 className={styles.programLink}
@@ -121,7 +127,7 @@ function Program({ tagTitle, filter, ranking, isTving, isMovie, nowBroad }) {
                     <img
                       src={getImageURL(item, "poster")}
                       alt={item.title}
-                      className={styles.tagItemPoster}
+                      className={`${styles.tagItemPoster} ${extraStyles ? extraStyles.tagItemPoster : subpageExtraStyle ? subpageExtraStyle.tagItemPoster : ""}`}
                     />
                     {isTving && (
                       <div className={styles.tvingOriginal}>

@@ -15,7 +15,7 @@ import style from './CancelMembership.module.css';
 const description = {
   mainText: '탈퇴를 원하시면, 아래 사항을 반드시 확인해주세요.',
   subText:
-    '회원 탈퇴 시 티빙 서비스를 이용하실 수 없으며 \n 보유하신 이용권이나 캐시, 쿠폰 등 유료 서비스가 종료됩니다.',
+    '회원 탈퇴 시 타잉 서비스를 이용하실 수 없으며 \n 보유하신 이용권이나 캐시, 쿠폰 등 유료 서비스가 종료됩니다.',
 };
 
 function CancelMembership() {
@@ -53,7 +53,7 @@ function CancelMembership() {
   return (
     <>
       <Helmet>
-        <title>티빙 | 언제 어디서나 티빙</title>
+        <title>타잉 | 언제 어디서나 타잉</title>
       </Helmet>
       <UserTitle title='회원탈퇴' sidePosition />
       <section>
