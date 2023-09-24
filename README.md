@@ -1,7 +1,5 @@
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:000000,100:ff153c&height=200&section=header&text={+🦁+멋쟁이+사자처럼+프론트엔드+스쿨+6기+|+React+팀+프로젝트+11조+-+갓동균에게+십일조+내조+🦁+}&fontSize=20&fontColor=ffffff&animation=twinkling" />
-
-<br>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:ff0000&height=180&section=header&text={+🦁+멋쟁이+사자처럼+프론트엔드+스쿨+6기+|+React+팀+프로젝트+11조+-+갓동균에게+십일조+내조+🦁+}&fontSize=20&fontColor=ffffff&fontAlignY=30&animation=twinkling" />
 
 # <img src="https://github.com/M-Moong/ID-NUMBER/assets/105577805/4e893c53-c256-4b81-9c5e-4511ee48a13e" width="33" height="33"/>  T<img src ='https://github.com/kimInDa/react-project-11/assets/105577805/ae510fa3-c3e9-4a72-a159-25bdc98b7a48' width='33' height='33'/>ING
 
