@@ -6,13 +6,15 @@ import style from './Spinner.module.css';
 function Spinner({ message = '로딩 중입니다.', isOpen = false }) {
   useEffect(() => {
     // 컴포넌트가 마운트되면 body의 overflow를 hidden으로 설정하여 스크롤 방지
-    document.body.style.overflow = 'hidden';
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
 
     return () => {
       // 컴포넌트가 언마운트되면 body의 overflow를 원래대로 되돌림(스크롤 복구)
       document.body.style.overflow = 'auto';
     };
-  }, []);
+  }, [isOpen]);
   return (
     <ReactModal
       isOpen={isOpen}

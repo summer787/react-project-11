@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import debounce from '@/utils/debounce';
 import UserTitle from '@/components/User/UserTitle';
 import UserDescription from '@/components/User/UserDescription';
@@ -40,6 +41,9 @@ function FindUserPassword() {
 
   return (
     <>
+      <Helmet>
+        <title>비밀번호찾기</title>
+      </Helmet>
       <form onSubmit={handleSubmit}>
         <div className={style.find__password__wrapper}>
           <UserTitle title='비밀번호 찾기' />

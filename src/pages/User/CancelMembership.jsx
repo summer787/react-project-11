@@ -1,14 +1,15 @@
 /* eslint-disable no-restricted-globals */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import pb from '@/api/pocketbase';
 import UserTitle from '@/components/User/UserTitle';
 import UserTitleDescription from '@/components/User/UserTitleDescription';
 import UserCancelDescriptionList from '@/components/User/UserCancelDescriptionList';
 import UserUsingProductTable from '@/components/User/UserUsingProductTable';
 import CheckboxRounded from '@/components/User/CheckboxRounded';
 import UserButtonShort from '@/components/User/UserButtonShort';
-
-import pb from '@/api/pocketbase';
+import Spinner from '@/components/Spinner';
 import style from './CancelMembership.module.css';
 
 const description = {
@@ -19,6 +20,7 @@ const description = {
 
 function CancelMembership() {
   const [isChecked, setIsChecked] = useState(false);
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
 
   // 이용중 상품 포기 동의 체크
@@ -35,11 +37,14 @@ function CancelMembership() {
     if (confirm(cancelConfirmMessage)) {
       if (pb.authStore.model) {
         try {
+          setModal(true);
           await pb.collection('users').delete(pb.authStore.model.id);
           alert('회원 탈퇴에 성공하였습니다. 시작 화면으로 이동합니다.');
+          setModal(false);
           navigate('/Account');
         } catch (error) {
-          console.log(error);
+          setModal(false);
+          throw new Error(error);
         }
       }
     }
@@ -47,6 +52,9 @@ function CancelMembership() {
 
   return (
     <>
+      <Helmet>
+        <title>티빙 | 언제 어디서나 티빙</title>
+      </Helmet>
       <UserTitle title='회원탈퇴' sidePosition />
       <section>
         <h3 className='a11yHidden'>회원 탈퇴 시 유의사항</h3>
@@ -70,6 +78,7 @@ function CancelMembership() {
           <UserButtonShort text='취소' color='black' onChange={handleCancel} />
         </div>
       </section>
+      <Spinner message='탈퇴 중입니다.' isOpen={modal} />
     </>
   );
 }

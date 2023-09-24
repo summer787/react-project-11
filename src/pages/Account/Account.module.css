@@ -18,7 +18,7 @@
     background-size: 100%;
     background-repeat: no-repeat;
     animation: 5s size-down;
-    z-index: -99999;
+    z-index: -999;
   }
 }
 @keyframes size-down {
