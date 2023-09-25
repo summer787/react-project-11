@@ -1,0 +1,11 @@
+.account__header {
+  display: flex;
+  align-items: center;
+  margin: 1.875rem 3.888rem;
+  width: calc(100% - 7.776rem);
+}
+
+.header__img {
+  width: 7.333rem;
+  height: 100%;
+}

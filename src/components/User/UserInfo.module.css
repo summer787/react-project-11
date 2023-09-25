@@ -1,0 +1,35 @@
+.user__info {
+  text-align: center;
+  margin-top: 3rem;
+
+  & span {
+    color: var(--gray-500);
+    margin-right: 1rem;
+  }
+
+  & .link {
+    text-decoration: none;
+    color: var(--gray-300);
+
+    &:hover,
+    &:focus {
+      color: var(--white);
+    }
+
+    &:focus {
+      outline: 1px solid #6b6b6b;
+      border-radius: 3px;
+    }
+  }
+}
+
+.text__small {
+  font: var(--paragraph-large);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.text__large {
+  font: var(--paragraph-large);
+  font-size: 1.6rem;
+}

@@ -1,0 +1,31 @@
+.tag {
+  padding: 0 0 0 4.375rem;
+  margin-bottom: 1.5rem;
+
+  & h2 {
+    font: var(--heading-xl);
+    margin-bottom: 1.5rem;
+  }
+
+  & .contents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    & div {
+      width: 16rem;
+
+      & img {
+        width: 100%;
+        border-radius: 0.25rem;
+      }
+
+      & p {
+        font: var(--label-medium);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}

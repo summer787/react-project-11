@@ -1,0 +1,34 @@
+.modaltwo__table {
+  font: var(--paragraph-large);
+  color: var(--gray-400);
+  font-weight: 500;
+  word-break: keep-all;
+  border: 0.0625rem solid;
+
+  & th {
+    color: var(--gray-400);
+    border: 0.063rem solid;
+    text-align: left;
+    padding-top: 0.5rem;
+    padding-left: 0.7rem;
+  }
+
+  & tr,
+  & td {
+    color: var(--gray-400);
+    border: 0.063rem solid;
+    padding: 3rem 0.7rem 3rem 0.7rem;
+  }
+}
+.modaltwo__text {
+  font: var(--paragraph-large);
+  color: var(--gray-400);
+  font-weight: 500;
+  word-break: keep-all;
+  margin-top: 2.5rem;
+}
+
+.modaltwo__text__bold {
+  font-weight: 700;
+  text-decoration: underline;
+}

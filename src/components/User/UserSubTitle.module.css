@@ -1,0 +1,5 @@
+.user__subtitle {
+  font: var(--label-xl);
+  margin-bottom: 0.5rem;
+  color: #dedede;
+}

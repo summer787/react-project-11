@@ -1,0 +1,21 @@
+.user__description__list {
+  background-color: var(--brand-dark-bg-1);
+  padding: 3rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  font: (--paragraph-large);
+
+  & li {
+    font: var(--paragraph-large);
+    color: #808080;
+    text-indent: -9px;
+  }
+  & li::before {
+    content: '- ';
+  }
+
+  & .user__description__list__link {
+    text-decoration: underline;
+    color: #b3b3b3;
+  }
+}

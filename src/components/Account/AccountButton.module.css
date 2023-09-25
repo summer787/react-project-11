@@ -1,0 +1,78 @@
+@import '@/styles/global.css';
+
+.account__button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font:
+    400 1.333rem 'Noto Sans KR',
+    sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border-style: solid;
+  border-width: 0.063px;
+  padding: 1.675rem 0;
+  border-color: var(--gray-700);
+  border-radius: 0.156rem;
+  color: var(--gray-300);
+  cursor: pointer;
+  margin-top: 1rem;
+
+  &:hover {
+    border-color: var(--white);
+    color: var(--white);
+  }
+}
+
+.button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.875rem;
+}
+
+.icon__image {
+  position: absolute;
+  left: 1.25rem;
+  width: 2.25rem;
+  width: 2.25rem;
+}
+
+.account__buttonlable__wrpper {
+  position: relative;
+}
+
+.account__onService {
+  color: var(--black);
+  font: var(--label-medium);
+  width: 7rem;
+  height: 2rem;
+  display: inline-block;
+  background: url(../../assets/Account/Account-bubble.png) no-repeat;
+  background-size: 90% 100%;
+  text-align: center;
+  line-height: 2rem;
+  padding-right: 0.4rem;
+  margin-left: 0.5rem;
+  position: absolute;
+  bottom: -2%;
+  animation: zoomin 0.4s linear;
+}
+
+@keyframes zoomin {
+  0% {
+    transform: scale(0%) translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0%) translateX(-50%);
+    opacity: 10;
+  }
+  100% {
+    transform: scale(100%) translateX(0%);
+    opacity: 100;
+  }
+}
