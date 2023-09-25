@@ -154,7 +154,6 @@ react-project-11
 
 <br>
 <br>
-![아이디+결과](https://github.com/kimInDa/react-project-11/assets/105577805/b81e6b97-c0bc-4436-96e7-c60066e5ff8a)
 
 
 
