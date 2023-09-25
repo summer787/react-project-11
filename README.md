@@ -146,13 +146,18 @@ react-project-11
 | **프로그램 상세정보** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/ff3eeb69-df35-4fdb-a4bd-eeea4d723afe" height="800px"/> | ▪️  [프로그램 상세](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EA%B0%95%EC%88%98%ED%98%84%E2%80%90-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%83%81%EC%84%B8)|
 | **계정선택** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/c4d58f30-c94a-472b-9175-63044f1a44b2" width="400px"/> | ▪️ [헤더(User)](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EC%9D%B4%EC%86%A1%EC%97%BD-%E2%80%90-%ED%97%A4%EB%8D%94(User)) <br> ▪️ [계정선택](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EC%9D%B4%EC%86%A1%EC%97%BD-%E2%80%90-%EA%B3%84%EC%A0%95%EC%84%A0%ED%83%9D)|
 | **회원가입** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/8cd6f669-ff8f-40c3-a930-d55c91ac2979" width="400px"/> | ▪️ [회원가입](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EC%9D%B4%EC%86%A1%EC%97%BD-%E2%80%90-%ED%9A%8C%EC%9B%90-%EA%B0%80%EC%9E%85)|
+| **회원가입 완료** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/016e546e-4432-46b2-8e89-6cc6cbb6f945" width="400px"/> | ▪️ 기능 없음|
 | **로그인** |  <img src="https://github.com/kimInDa/react-project-11/assets/105577805/b629e81e-e235-4bdb-92eb-ea33f7e6dcf5" width="400px"/> | ▪️ [로그인](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EA%B9%80%EB%8B%A4%EC%9D%B8-%E2%80%90-%EB%A1%9C%EA%B7%B8%EC%9D%B8)|
-| **아이디찾기** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/0866b219-9ed2-4b0b-bf98-92051d42bc04" width="400px"/> | ▪️ [아이디찾기](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EA%B9%80%EB%8B%A4%EC%9D%B8-%E2%80%90-%EC%95%84%EC%9D%B4%EB%94%94-%EC%B0%BE%EA%B8%B0) |
-| **비밀번호찾기** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/a95fc997-8d83-4283-8c86-503cbc93073a" width="400px"/> | ▪️ 기능X(마크업만 구현) |
+| **아이디찾기<br>아이디찾기 결과** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/b81e6b97-c0bc-4436-96e7-c60066e5ff8a" width="400px"/> | ▪️ [아이디찾기](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EA%B9%80%EB%8B%A4%EC%9D%B8-%E2%80%90-%EC%95%84%EC%9D%B4%EB%94%94-%EC%B0%BE%EA%B8%B0) |
+| **비밀번호찾기** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/a95fc997-8d83-4283-8c86-503cbc93073a" width="400px"/> | ▪️ 기능 구현 X(마크업만 구현) |
 | **회원탈퇴** | <img src="https://github.com/kimInDa/react-project-11/assets/105577805/87cbad65-ee60-4a31-8299-e042d97e15d6" width="400px"/> | ▪️ [회원탈퇴](https://github.com/FRONTENDSCHOOL6/react-project-11/wiki/%5BCode-Review%5D-%EA%B9%80%EB%8B%A4%EC%9D%B8-%E2%80%90-%ED%9A%8C%EC%9B%90-%ED%83%88%ED%87%B4)|
 
 <br>
 <br>
+![아이디+결과](https://github.com/kimInDa/react-project-11/assets/105577805/b81e6b97-c0bc-4436-96e7-c60066e5ff8a)
+
+
+
 
 ## 📈 성능 및 최적화
 - **검사 Tool**
